@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn7jpye4pg8ie"]
+
+[ext_resource type="PackedScene" uid="uid://lu78oh1x02pi" path="res://addons/taubert_tools/scene_management/loading_screen/LoadingScreen.tscn" id="1_qhw11"]
+[ext_resource type="Script" path="res://addons/taubert_tools/scene_management/loading_screen/BasicLoadingScreen.gd" id="2_axhip"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_stsvx"]
+font_size = 36
+
+[node name="BasicLoadingScreen" node_paths=PackedStringArray("label") instance=ExtResource("1_qhw11")]
+script = ExtResource("2_axhip")
+label = NodePath("Control/ColorRect/MarginContainer/Label")
+
+[node name="Control" type="Control" parent="." index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ColorRect" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="Control/ColorRect/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Loading %"
+label_settings = SubResource("LabelSettings_stsvx")

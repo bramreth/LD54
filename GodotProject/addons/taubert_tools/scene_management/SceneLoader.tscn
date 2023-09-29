@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgq6sbf5ygvuh"]
+
+[ext_resource type="Script" path="res://addons/taubert_tools/scene_management/SceneLoader.gd" id="1_qi54q"]
+[ext_resource type="PackedScene" uid="uid://bn7jpye4pg8ie" path="res://addons/taubert_tools/scene_management/loading_screen/BasicLoadingScreen.tscn" id="2_8l2br"]
+
+[node name="SceneLoader" type="Node"]
+script = ExtResource("1_qi54q")
+loading_screen_packed_scene = ExtResource("2_8l2br")

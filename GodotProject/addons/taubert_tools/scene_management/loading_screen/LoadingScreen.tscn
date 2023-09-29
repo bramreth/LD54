@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://lu78oh1x02pi"]
+
+[ext_resource type="Script" path="res://addons/taubert_tools/scene_management/loading_screen/LoadingScreen.gd" id="1_vodwy"]
+
+[node name="LoadingScreen" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_vodwy")
