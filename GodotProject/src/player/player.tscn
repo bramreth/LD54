@@ -28,11 +28,10 @@ target = NodePath("../CameraDirection")
 speed = 22.0
 
 [node name="PhantomCamera3D" type="Node3D" parent="CinematicCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
 script = ExtResource("3_ecfyq")
 priority = 1
 follow_mode = 0
 look_at_mode = 0
 tween_parameters = null
-tween_on_load = true
+tween_on_load = false
 inactive_update_mode = 0

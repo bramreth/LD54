@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://cekdchqmtjhru"]
+
+[ext_resource type="Material" uid="uid://sxhmstlqtvmt" path="res://addons/kenney_prototype_tools/materials/dark/material_09.tres" id="1_1xwuj"]
+[ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange/material_01.tres" id="2_x1sfl"]
+[ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_yieme"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ci0af"]
+sky_material = SubResource("ProceduralSkyMaterial_43nii")
+
+[sub_resource type="Environment" id="Environment_1l2ll"]
+background_mode = 2
+sky = SubResource("Sky_ci0af")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_l5ofk"]
+density = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u33nt"]
+albedo_color = Color(0.592157, 0.435294, 0.215686, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ka5gs"]
+albedo_color = Color(0.333333, 0.164706, 0.105882, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmq8v"]
+albedo_color = Color(0.34902, 0.439216, 0.447059, 1)
+
+[node name="BookWarehouse" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1l2ll")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+
+[node name="Room" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.25, 2.08165e-12)
+material_override = ExtResource("1_1xwuj")
+use_collision = true
+flip_faces = true
+size = Vector3(12, 4.5, 14)
+
+[node name="FogVolume" type="FogVolume" parent="Room"]
+visible = false
+size = Vector3(12, 4.5, 14)
+material = SubResource("FogMaterial_l5ofk")
+
+[node name="Conveyor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0.375, 2.08165e-12)
+material_override = ExtResource("2_x1sfl")
+use_collision = true
+size = Vector3(1.5, 0.75, 14)
+
+[node name="BestSeller" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.125, -6.5)
+use_collision = true
+size = Vector3(7, 2.25, 1)
+material = SubResource("StandardMaterial3D_u33nt")
+
+[node name="Classics" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.125, 6.5)
+use_collision = true
+size = Vector3(7, 2.25, 1)
+material = SubResource("StandardMaterial3D_ka5gs")
+
+[node name="SciFi" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1.125, 2.08165e-12)
+use_collision = true
+size = Vector3(10, 2.25, 1)
+material = SubResource("StandardMaterial3D_kmq8v")
+
+[node name="Player" parent="." instance=ExtResource("3_5yjj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+script = ExtResource("4_yieme")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 2.08165e-12)
+light_energy = 2.0
+light_indirect_energy = 16.0
+omni_range = 8.0
+omni_attenuation = 0.5

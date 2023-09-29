@@ -225,7 +225,7 @@ func show_viewfinder_in_play() -> void:
 		if not Engine.is_editor_hint() && OS.has_feature("editor"): # Only appears when running in the editor
 			var canvas_layer: CanvasLayer = CanvasLayer.new()
 			get_tree().get_root().get_child(0).add_child(canvas_layer)
-			
+
 			framed_viewfinder_node = framed_viewfinder_scene.instantiate()
 			canvas_layer.add_child(framed_viewfinder_node)
 	else:
