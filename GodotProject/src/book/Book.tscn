@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8yli7labwl3f"]
+
+[ext_resource type="Material" uid="uid://dv8yeslwdnoa7" path="res://addons/kenney_prototype_tools/materials/orange/material_08.tres" id="1_52u48"]
+[ext_resource type="Script" path="res://src/book/Book.gd" id="1_o02ga"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2w7gx"]
+material = ExtResource("1_52u48")
+size = Vector3(0.35, 0.15, 0.55)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uqjfi"]
+size = Vector3(0.35, 0.15, 0.55)
+
+[node name="Book" type="RigidBody3D"]
+mass = 0.3
+script = ExtResource("1_o02ga")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_2w7gx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_uqjfi")

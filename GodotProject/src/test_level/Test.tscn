@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbvn7snms3l1"]
+[gd_scene load_steps=9 format=3 uid="uid://bbvn7snms3l1"]
 
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="1_3ba28"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_odm80"]
+[ext_resource type="PackedScene" uid="uid://c8yli7labwl3f" path="res://src/book/Book.tscn" id="3_n3ncw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_igvsh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,7 +20,7 @@ glow_enabled = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_yj1mg"]
 size = Vector2(50, 50)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3gm1u"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7c8dt"]
 data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
 
 [node name="Test" type="Node3D"]
@@ -37,7 +38,7 @@ mesh = SubResource("PlaneMesh_yj1mg")
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_3gm1u")
+shape = SubResource("ConcavePolygonShape3D_7c8dt")
 
 [node name="Player" parent="." instance=ExtResource("1_3ba28")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8499, 0)
@@ -46,3 +47,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8499, 0)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("2_odm80")
+
+[node name="Book" parent="." instance=ExtResource("3_n3ncw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220136, 1.94981, -4.0412)
+
+[node name="Book2" parent="." instance=ExtResource("3_n3ncw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.373286, 1.94981, -4.0412)
+
+[node name="Book3" parent="." instance=ExtResource("3_n3ncw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206422, 2.11748, -1.13758)
