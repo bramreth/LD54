@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=16 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Material" uid="uid://sxhmstlqtvmt" path="res://addons/kenney_prototype_tools/materials/dark/material_09.tres" id="1_1xwuj"]
 [ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange/material_01.tres" id="2_x1sfl"]
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
+[ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark/material_13.tres" id="3_a43wp"]
+[ext_resource type="PackedScene" uid="uid://qog8enelwhx8" path="res://src/ConveyorBelt/conveyor.tscn" id="4_v6cgb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_yieme"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
@@ -23,6 +25,13 @@ volumetric_fog_density = 0.0
 [sub_resource type="FogMaterial" id="FogMaterial_l5ofk"]
 density = 0.03
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ndk5e"]
+albedo_color = Color(0, 0, 0, 1)
+proximity_fade_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_mtvkk"]
+size = Vector3(1.5, 0.8, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u33nt"]
 albedo_color = Color(0.592157, 0.435294, 0.215686, 1)
 
@@ -40,23 +49,53 @@ environment = SubResource("Environment_1l2ll")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 
-[node name="Room" type="CSGBox3D" parent="."]
+[node name="FogVolume" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.25, 2.08165e-12)
-material_override = ExtResource("1_1xwuj")
-use_collision = true
-flip_faces = true
-size = Vector3(12, 4.5, 14)
-
-[node name="FogVolume" type="FogVolume" parent="Room"]
 visible = false
 size = Vector3(12, 4.5, 14)
 material = SubResource("FogMaterial_l5ofk")
 
-[node name="Conveyor" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0.375, 2.08165e-12)
-material_override = ExtResource("2_x1sfl")
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_override = ExtResource("1_1xwuj")
 use_collision = true
-size = Vector3(1.5, 0.75, 14)
+
+[node name="Room" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 2.08165e-12)
+use_collision = true
+flip_faces = true
+size = Vector3(12, 4, 14)
+
+[node name="ConveyorHole" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 1.125, 8)
+material_override = ExtResource("2_x1sfl")
+operation = 2
+use_collision = true
+size = Vector3(1.5, 0.75, 2)
+
+[node name="ConveyorHole2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 1.125, -8)
+material_override = ExtResource("2_x1sfl")
+operation = 2
+use_collision = true
+size = Vector3(1.5, 0.75, 2)
+
+[node name="Conveyor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0.25, 2.08165e-12)
+material_override = ExtResource("3_a43wp")
+use_collision = true
+size = Vector3(1.5, 0.5, 16)
+
+[node name="Conveyor" parent="Conveyor" instance=ExtResource("4_v6cgb")]
+
+[node name="Abyss" type="MeshInstance3D" parent="Conveyor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.85, 7.5)
+material_override = SubResource("StandardMaterial3D_ndk5e")
+mesh = SubResource("BoxMesh_mtvkk")
+
+[node name="Abyss2" type="MeshInstance3D" parent="Conveyor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, -7.5)
+material_override = SubResource("StandardMaterial3D_ndk5e")
+mesh = SubResource("BoxMesh_mtvkk")
 
 [node name="BestSeller" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.125, -6.5)
