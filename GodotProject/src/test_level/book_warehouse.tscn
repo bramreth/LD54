@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=17 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Material" uid="uid://sxhmstlqtvmt" path="res://addons/kenney_prototype_tools/materials/dark/material_09.tres" id="1_1xwuj"]
 [ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange/material_01.tres" id="2_x1sfl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark/material_13.tres" id="3_a43wp"]
 [ext_resource type="PackedScene" uid="uid://qog8enelwhx8" path="res://src/ConveyorBelt/conveyor.tscn" id="4_v6cgb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_yieme"]
+[ext_resource type="PackedScene" uid="uid://cqqvwy1c75xv7" path="res://src/BookSpawner/book_spawner.tscn" id="7_vwrja"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -72,28 +73,17 @@ operation = 2
 use_collision = true
 size = Vector3(1.5, 0.75, 2)
 
-[node name="ConveyorHole2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 1.125, -8)
-material_override = ExtResource("2_x1sfl")
-operation = 2
-use_collision = true
-size = Vector3(1.5, 0.75, 2)
-
 [node name="Conveyor" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0.25, 2.08165e-12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0.25, 1)
 material_override = ExtResource("3_a43wp")
 use_collision = true
 size = Vector3(1.5, 0.5, 16)
 
 [node name="Conveyor" parent="Conveyor" instance=ExtResource("4_v6cgb")]
+constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
 
 [node name="Abyss" type="MeshInstance3D" parent="Conveyor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.85, 7.5)
-material_override = SubResource("StandardMaterial3D_ndk5e")
-mesh = SubResource("BoxMesh_mtvkk")
-
-[node name="Abyss2" type="MeshInstance3D" parent="Conveyor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, -7.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 6.5)
 material_override = SubResource("StandardMaterial3D_ndk5e")
 mesh = SubResource("BoxMesh_mtvkk")
 
@@ -130,3 +120,5 @@ light_energy = 2.0
 light_indirect_energy = 16.0
 omni_range = 8.0
 omni_attenuation = 0.5
+
+[node name="BookSpawner" parent="." instance=ExtResource("7_vwrja")]

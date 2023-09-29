@@ -58,7 +58,7 @@ shape = SubResource("ConvexPolygonShape3D_h6bm6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
-speed_scale = 0.06
+speed_scale = 0.03
 libraries = {
 "": SubResource("AnimationLibrary_a1g6s")
 }
