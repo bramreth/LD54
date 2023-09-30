@@ -23,7 +23,7 @@ func _on_rack_full(rack: BookRack, score: int) -> void:
 	finished_racks.append(rack)
 	total_score += score
 	print(finished_racks)
-	
-	if finished_racks.size() >= 3: 
+
+	if finished_racks.size() >= 3:
 		UiEventBus.score_changed.emit(total_score)
 		shelf_finished.emit()

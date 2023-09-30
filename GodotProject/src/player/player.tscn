@@ -43,6 +43,7 @@ player = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.374214, -0.7)
 
 [node name="DebugHand" type="MeshInstance3D" parent="CinematicCamera/Hands/HandTarget"]
+visible = false
 mesh = SubResource("SphereMesh_krod2")
 
 [node name="FloatingRemote" type="RemoteTransform3D" parent="CinematicCamera/Hands/HandTarget" node_paths=PackedStringArray("target")]
