@@ -27,8 +27,11 @@ func _on_rack_full(rack: BookRack, score: int) -> void:
 
 	if finished_racks.size() >= 3:
 		UiEventBus.score_changed.emit(total_score)
-		animation_player. play("filled")
-		reset_timer.start(5.0)
+#		reset_anim()
+
+func reset_anim() -> void:
+	animation_player. play("filled")
+	reset_timer.start(5.0)
 
 
 func reset() -> void:

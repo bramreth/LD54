@@ -15,6 +15,29 @@ class_name Book
 	preload("res://MashaAssets/Wuthering Heights.png")
 ]
 
+@export var scifi_books: Array[CompressedTexture2D] = [
+	preload("res://MashaAssets/Annihilation.png"),
+	preload("res://MashaAssets/Children of Time.png"),
+	preload("res://MashaAssets/Dune.png"),
+	preload("res://MashaAssets/Frankenstein.png"),
+	preload("res://MashaAssets/Ringworld.png"),
+	preload("res://MashaAssets/The Hitcher's Guide to the Galaxy.png"),
+	preload("res://MashaAssets/The Martian.png"),
+	preload("res://MashaAssets/The Stand.png"),
+	preload("res://MashaAssets/The War of the Worlds.png")
+]
+
+@export var best_books: Array[CompressedTexture2D] = [
+	preload("res://MashaAssets/Borris's Web.png"),
+	preload("res://MashaAssets/Giant Women.png"),
+	preload("res://MashaAssets/Greener Grass.png"),
+	preload("res://MashaAssets/Lord of the Mosquitoes.png"),
+	preload("res://MashaAssets/Murderous Mockingbird.png"),
+	preload("res://MashaAssets/Sand Pile.png"),
+	preload("res://MashaAssets/The Sunrise Library.png"),
+	preload("res://MashaAssets/Windy Wendy Leaves Her Pan.png")
+]
+
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var book_mesh := $BookMesh
 @onready var label_1: Label3D = $BookMesh/TempLabel
@@ -26,7 +49,8 @@ var in_rack: bool = false
 
 func setup(book_res_in: BookRes) -> void:
 	book_res = book_res_in
-	book_mesh.get("surface_material_override/0").albedo_texture = classic_books.pick_random()
+	var rand_book = [classic_books.pick_random(), scifi_books.pick_random(), best_books.pick_random()]
+	book_mesh.get("surface_material_override/0").albedo_texture = rand_book.pick_random()
 	match book_res.sort:
 		BookRes.SORT.TOP:
 			label_1.text = "T"
