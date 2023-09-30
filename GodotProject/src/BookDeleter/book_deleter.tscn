@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b03u3q14ci8al"]
+
+[ext_resource type="Script" path="res://src/BookDeleter/book_deleter.gd" id="1_vtvhw"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2ixvj"]
+plane = Plane(2.08165e-12, 1, 2.08165e-12, -1)
+
+[node name="BookDeleter" type="Area3D"]
+script = ExtResource("1_vtvhw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 7)
+shape = SubResource("WorldBoundaryShape3D_2ixvj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
