@@ -37,6 +37,8 @@ func _get_special_round() -> Array:
 		return scripted_rounds[TUTORIAL_1].map(map_scripted_book)
 	elif current_round == TUTORIAL_ROUND_2:
 		return scripted_rounds[TUTORIAL_2].map(map_scripted_book)
+	elif current_round == TUTORIAL_ROUND_3:
+		return [7, BookRes.create_random()]
 	elif current_round == FIRST_ALL_ONE_GENRE_ROUND:
 		return _generate_single_genre(BookRes.GENRE.BESTSELLERS)
 	return []
@@ -68,6 +70,7 @@ func _on_timer_timeout() -> void:
 
 const TUTORIAL_ROUND_1 := 0
 const TUTORIAL_ROUND_2 := 1
+const TUTORIAL_ROUND_3 := 2
 const FIRST_ALL_ONE_GENRE_ROUND := 4
 
 const TUTORIAL_1 := "tutorial_1"
