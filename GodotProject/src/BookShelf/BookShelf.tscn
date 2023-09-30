@@ -1,19 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4cgt5eppq4su"]
+[gd_scene load_steps=6 format=3 uid="uid://c6csr3870y21r"]
 
 [ext_resource type="Script" path="res://src/BookShelf/BookShelf.gd" id="1_8gquf"]
+[ext_resource type="PackedScene" uid="uid://b4cgt5eppq4su" path="res://src/BookShelf/BookRack.tscn" id="2_15cuu"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_mulr1"]
-size = Vector3(2.25, 0.75, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fconc"]
 
-[node name="BookShelf" type="Area3D"]
-collision_layer = 4
-collision_mask = 4
+[sub_resource type="BoxMesh" id="BoxMesh_fj1h1"]
+size = Vector3(0.8, 2.25, 0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2ki4o"]
+data = PackedVector3Array(-0.4, 1.125, 0.25, 0.4, 1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, -0.25, 0.4, -1.125, -0.25, -0.4, 1.125, -0.25, -0.4, -1.125, -0.25, 0.4, -1.125, -0.25, 0.4, 1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, -0.25, 0.4, -1.125, 0.25, -0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, 1.125, 0.25, -0.4, 1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, 1.125, -0.25, 0.4, 1.125, -0.25, -0.4, -1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, -1.125, 0.25, 0.4, -1.125, -0.25, -0.4, -1.125, -0.25)
+
+[node name="BookShelf" type="Node3D"]
 script = ExtResource("1_8gquf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_mulr1")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_fconc")
+mesh = SubResource("BoxMesh_fj1h1")
 
-[node name="Books" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.08165e-12, 2.08165e-12)
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 3
+collision_mask = 3
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2ki4o")
+
+[node name="Racks" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10528)
+
+[node name="TopRack" parent="Racks" instance=ExtResource("2_15cuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
+
+[node name="MiddleRack" parent="Racks" instance=ExtResource("2_15cuu")]
+sort = 1
+
+[node name="BottomRack" parent="Racks" instance=ExtResource("2_15cuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.75, 2.08165e-12)
+sort = 2
+
+[connection signal="full" from="Racks/TopRack" to="." method="_on_rack_full"]
+[connection signal="full" from="Racks/MiddleRack" to="." method="_on_rack_full"]
+[connection signal="full" from="Racks/BottomRack" to="." method="_on_rack_full"]
