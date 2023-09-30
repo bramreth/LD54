@@ -85,6 +85,30 @@ book_res = SubResource("Resource_o0wr6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206422, 2.11748, -1.13758)
 book_res = SubResource("Resource_m1mid")
 
+[node name="Book4" parent="." instance=ExtResource("3_n3ncw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220136, 1.94981, -4.0412)
+book_res = SubResource("Resource_v4agp")
+
+[node name="Book5" parent="." instance=ExtResource("3_n3ncw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.373286, 1.94981, -4.0412)
+book_res = SubResource("Resource_o0wr6")
+
+[node name="Book6" parent="." instance=ExtResource("3_n3ncw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206422, 2.11748, -1.13758)
+book_res = SubResource("Resource_m1mid")
+
+[node name="Book7" parent="." instance=ExtResource("3_n3ncw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220136, 1.94981, -4.0412)
+book_res = SubResource("Resource_v4agp")
+
+[node name="Book8" parent="." instance=ExtResource("3_n3ncw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.373286, 1.94981, -4.0412)
+book_res = SubResource("Resource_o0wr6")
+
+[node name="Book9" parent="." instance=ExtResource("3_n3ncw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206422, 2.11748, -1.13758)
+book_res = SubResource("Resource_m1mid")
+
 [node name="BookShelf" parent="." instance=ExtResource("5_ghk5y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02032, 1.125, -5.37829)
 
