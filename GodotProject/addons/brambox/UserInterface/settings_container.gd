@@ -41,32 +41,32 @@ func _ready() -> void:
 	fov_slider.max_value = max_fov
 	fov_slider.value = default_fov
 	_on_fov_slider_value_changed(fov_slider.value)
-	
+
 	# set sensitivity to medium
 	sensitivity_dropdown.select(2)
 	_on_option_button_item_selected(2)
-	
+
 	# set shadow quality to medium
 	shadow_option_button.select(1)
 	_on_shadow_option_button_item_selected(1)
-	
+
 	# enable SSAA
 	ssaa_option_button.select(1)
 	_on_ssaa_option_button_item_selected(1)
-	
+
 	# 4x AA
 	msaa_option_button.select(2)
 	_on_msaa_option_button_item_selected(2)
-	
+
 	# set all sliders to full volume
 	master_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
 	music_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")))
 	sfx_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
 	dialogue_slider.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Dialogue")))
-	
+
 	# enable subtitles
 	subtitles_check_button.button_pressed = true
-	
+
 func _on_button_pressed() -> void:
 	exit.emit()
 
@@ -120,13 +120,13 @@ func _on_msaa_option_button_item_selected(index: int) -> void:
 		0:
 			get_viewport().msaa_3d = Viewport.MSAA_DISABLED
 		1:
-			
+
 			get_viewport().msaa_3d = Viewport.MSAA_2X
 		2:
-			
+
 			get_viewport().msaa_3d = Viewport.MSAA_4X
 		3:
-			
+
 			get_viewport().msaa_3d = Viewport.MSAA_8X
 
 
@@ -140,21 +140,21 @@ func _on_ssaa_option_button_item_selected(index: int) -> void:
 
 func _on_master_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(
-		AudioServer.get_bus_index("Master"), 
+		AudioServer.get_bus_index("Master"),
 		linear_to_db(value)
 		)
 
 
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(
-		AudioServer.get_bus_index("Music"), 
+		AudioServer.get_bus_index("Music"),
 		linear_to_db(value)
 		)
 
 
 func _on_sfx_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(
-		AudioServer.get_bus_index("SFX"), 
+		AudioServer.get_bus_index("SFX"),
 		linear_to_db(value)
 		)
 
@@ -165,7 +165,7 @@ func _on_reload_button_pressed() -> void:
 
 func _on_dialogue_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(
-		AudioServer.get_bus_index("Dialogue"), 
+		AudioServer.get_bus_index("Dialogue"),
 		linear_to_db(value)
 		)
 

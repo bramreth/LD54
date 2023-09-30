@@ -12,7 +12,7 @@ func _ready() -> void:
 	setup()
 
 func setup() -> void:
-	var book_res = BookRes.create_random()
+	book_res = BookRes.create_random()
 	book_mesh.material_override.albedo_color = book_res.get_color()
 	match book_res.sort:
 		BookRes.SORT.TOP:

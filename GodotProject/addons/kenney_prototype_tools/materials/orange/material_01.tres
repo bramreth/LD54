@@ -5,6 +5,5 @@
 [resource]
 vertex_color_is_srgb = true
 albedo_texture = ExtResource("1_t4kux")
-uv1_offset = Vector3(9.6171e-13, 0.461995, 9.6171e-13)
 uv1_world_triplanar = true
 texture_filter = 5
