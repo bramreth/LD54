@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6qf7ecs5lyrt"]
+
+[ext_resource type="Script" path="res://src/rounds/RoundManager.gd" id="1_e1sdm"]
+
+[node name="RoundManager" type="Node"]
+script = ExtResource("1_e1sdm")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

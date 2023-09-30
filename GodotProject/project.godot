@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 UiEventBus="*res://src/UI/UIEventBus.gd"
+RoundManager="*res://src/rounds/RoundManager.tscn"
 
 [display]
 

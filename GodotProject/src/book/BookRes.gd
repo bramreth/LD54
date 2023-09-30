@@ -28,6 +28,14 @@ static func create_random() -> BookRes:
 	return book
 
 
+static func create_from(name_in: String, genre_in: GENRE, sort_in: SORT) -> BookRes:
+	var book = BookRes.new()
+	book.name = name_in
+	book.genre = genre_in
+	book.sort = sort_in
+	return book
+
+
 static func map_color(genre_in: GENRE) -> Color:
 	match(genre_in):
 		GENRE.BESTSELLERS: return best_color
