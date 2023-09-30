@@ -34,6 +34,7 @@ func reset() -> void:
 	finished_racks.clear()
 	for rack in racks.get_children():
 		rack.reset()
+	animation_player.play("reset")
 
 
 func _on_reset_timer_timeout() -> void:
