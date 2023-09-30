@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/BookShelf/BookShelf.gd" id="1_8gquf"]
 [ext_resource type="PackedScene" uid="uid://b4cgt5eppq4su" path="res://src/BookShelf/BookRack.tscn" id="2_15cuu"]
-[ext_resource type="Texture2D" uid="uid://uq4mi1qbmxj2" path="res://KenneyAssets/smoke_01.png" id="3_3ugye"]
+[ext_resource type="Texture2D" uid="uid://cwxudruyd13ne" path="res://KenneyAssets/smoke_01.png" id="3_3ugye"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fconc"]
 resource_local_to_scene = true
@@ -37,6 +37,33 @@ particles_anim_loop = false
 [sub_resource type="QuadMesh" id="QuadMesh_poxds"]
 material = SubResource("StandardMaterial3D_fvkcr")
 
+[sub_resource type="Animation" id="Animation_17sde"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_qe0t1"]
 resource_name = "filled"
 length = 2.5
@@ -63,33 +90,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_17sde"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles3D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_1v6dd"]
