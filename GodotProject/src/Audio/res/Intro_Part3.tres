@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://dm7hpmlwxw653"]
+
+[ext_resource type="AudioStream" uid="uid://vjye0mfojfy8" path="res://src/Audio/files/debug.mp3" id="1_e7wmm"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_jlqp2"]
+
+[resource]
+script = ExtResource("2_jlqp2")
+text = "Please attend the Book Dump Chute™ for first task"
+audio = ExtResource("1_e7wmm")

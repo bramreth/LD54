@@ -7,7 +7,6 @@ var trash = []
 @onready var spawn_point := $Tube/BookSpawnPoint
 
 func _ready() -> void:
-	RoundManager.start_game()
 	RoundManager.round_started.connect(round_started)
 
 

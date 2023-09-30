@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=31 format=3 uid="uid://cekdchqmtjhru"]
 
+[ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
 [ext_resource type="PackedScene" uid="uid://b03u3q14ci8al" path="res://src/BookDeleter/book_deleter.tscn" id="3_63jtg"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark/material_13.tres" id="3_a43wp"]
@@ -85,6 +86,7 @@ size = Vector3(1, 4, 5)
 albedo_color = Color(0.321569, 0.235294, 0.152941, 1)
 
 [node name="BookWarehouse" type="Node3D"]
+script = ExtResource("1_bbmif")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1l2ll")
