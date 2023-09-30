@@ -7,11 +7,13 @@ class_name BookShelf
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var genre: BookRes.GENRE = BookRes.GENRE.BESTSELLERS
+@export var active_onready: bool = true
 
 var finished_racks := []
 var total_score: int = 0
 
 func _ready() -> void:
+	if not active_onready: shelf_mesh.global_position = Vector3(0, -3, 0)
 	shelf_mesh.material_override.albedo_color = BookRes.map_color(genre)
 	for rack in racks.get_children():
 		rack.genre = genre
@@ -30,6 +32,7 @@ func _on_rack_full(rack: BookRack, score: int) -> void:
 
 
 func reset() -> void:
+	reset_timer.stop()
 	total_score = 0
 	finished_racks.clear()
 	for rack in racks.get_children():
