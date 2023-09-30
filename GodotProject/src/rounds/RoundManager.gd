@@ -9,6 +9,7 @@ var one_color_chance: int = 0
 
 
 func start_game() -> void:
+	print("starting")
 	Announcer.play(load("res://src/Audio/res/Alarm.tres"), 1)
 	current_round = 0
 	one_color_chance = 0
@@ -24,8 +25,13 @@ func get_round_books() -> Array:
 	return books
 
 
-func round_dispensed() -> void:
-	timer.start(5.0)
+func evalutae() -> void:
+	next_round()
+
+func next_round() -> void:
+	round_started.emit(current_round, get_round_books())
+	current_round += 1
+	one_color_chance = clamp(one_color_chance + 1, 0, 10)
 
 
 func _get_special_round() -> Array:
@@ -60,9 +66,7 @@ func _get_round_size() -> int: return (current_round + 1) * 2
 
 
 func _on_timer_timeout() -> void:
-	round_started.emit(current_round, get_round_books())
-	current_round += 1
-	one_color_chance = clamp(one_color_chance + 1, 0, 10)
+	next_round()
 
 const TUTORIAL_ROUND_1 := 0
 const TUTORIAL_ROUND_2 := 1

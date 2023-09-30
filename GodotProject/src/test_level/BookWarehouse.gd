@@ -6,16 +6,18 @@ func _ready() -> void:
 
 
 func play_intro() -> void:
-	for message in DialogPacketDb.get_intro_dialog():
-		Announcer.play(message)
-		await Announcer.announcement_over
-
+	await play_messages(DialogPacketDb.get_intro_dialog())
 	RoundManager.start_game()
 
 
 func round_started(round: int, _books: Array) -> void:
 	match(round):
-		RoundManager.TUTORIAL_ROUND_1: pass
-		RoundManager.TUTORIAL_ROUND_2: pass
+		RoundManager.TUTORIAL_ROUND_1: play_messages(DialogPacketDb.get_tutorial_dialog(1))
+		RoundManager.TUTORIAL_ROUND_2: play_messages(DialogPacketDb.get_tutorial_dialog(2))
 		RoundManager.FIRST_ALL_ONE_GENRE_ROUND: pass
-		
+
+
+func play_messages(messages: Array) -> void:
+	for message in messages:
+		Announcer.play(message)
+		await Announcer.announcement_over

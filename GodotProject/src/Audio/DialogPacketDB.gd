@@ -12,7 +12,9 @@ const dialog_packets := {
 		preload("res://src/Audio/res/Tutorial_1_Part2.tres"),
 		preload("res://src/Audio/res/Tutorial_1_Part3.tres")
 	],
-	"tutorial_2": []
+	"tutorial_2": [
+		preload("res://src/Audio/res/Alarm.tres"),
+	]
 }
 
 
