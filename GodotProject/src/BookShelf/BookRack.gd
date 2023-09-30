@@ -15,8 +15,9 @@ var genre: BookRes.GENRE
 var books := []
 
 func toggle_highlight() -> void:
-	animation_player.stop()
-	animation_player.play("fade_out")
+	if books.size() < max_books: 
+		animation_player.stop()
+		animation_player.play("fade_out")
 
 
 func _on_body_entered(body: Node3D) -> void:
@@ -24,8 +25,10 @@ func _on_body_entered(body: Node3D) -> void:
 		try_add_book(body)
 
 
+func is_full() -> bool: return books.size() >= max_books
+
 func try_add_book(book: Book) -> void:
-	if books.size() >= max_books: return
+	if is_full(): return
 	if not book.book_res: return
 	book.call_deferred("pick_up")
 	book.global_transform = books_root.global_transform

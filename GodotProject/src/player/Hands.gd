@@ -21,9 +21,18 @@ func _process(_delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
 		var collider: Object = raycast.get_collider()
-		if collider and collider is Book: _pickup_book(collider)
+		if collider is Book: _pickup_book(collider)
+		elif collider is BookRack: _add_book_to_rack(collider)
 	if event.is_action_pressed("throw"):
 		if current_book: _drop_book(current_book)
+
+
+func _add_book_to_rack(rack: BookRack) -> void:
+	if rack.is_full(): return
+	var book := current_book
+	_drop_book(book)
+	rack.try_add_book(book)
+
 
 var hand_tween: Tween
 
