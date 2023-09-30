@@ -16,8 +16,6 @@ func round_started(round: int, items: Array) -> void:
 		if item is BookRes:
 			spawn_book(item)
 
-	RoundManager.round_dispensed()
-
 
 func spawn_book(book_res: BookRes) -> void:
 	var new_book: Book = book.instantiate()

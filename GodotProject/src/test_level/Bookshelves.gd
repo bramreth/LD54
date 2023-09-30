@@ -12,8 +12,8 @@ func _ready() -> void:
 
 func round_started(round: int, _books: Array) -> void:
 	match(round):
-		0: show_tutorial_shelf()
-		2: show_first_area()
+		RoundManager.TUTORIAL_ROUND_1: show_tutorial_shelf()
+		RoundManager.TUTORIAL_ROUND_2: show_first_area()
 		_: pass
 
 

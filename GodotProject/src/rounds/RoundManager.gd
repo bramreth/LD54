@@ -9,7 +9,6 @@ var one_color_chance: int = 0
 
 
 func start_game() -> void:
-	Announcer.play(load("res://src/Audio/res/Alarm.tres"), 1)
 	current_round = 0
 	one_color_chance = 0
 	timer.start(1.0)
@@ -24,16 +23,21 @@ func get_round_books() -> Array:
 	return books
 
 
-func round_dispensed() -> void:
-	timer.start(5.0)
+func evalutae() -> void:
+	next_round()
+
+func next_round() -> void:
+	round_started.emit(current_round, get_round_books())
+	current_round += 1
+	one_color_chance = clamp(one_color_chance + 1, 0, 10)
 
 
 func _get_special_round() -> Array:
-	if current_round == 0:
+	if current_round == TUTORIAL_ROUND_1:
 		return scripted_rounds[TUTORIAL_1].map(map_scripted_book)
-	elif current_round == 1:
+	elif current_round == TUTORIAL_ROUND_2:
 		return scripted_rounds[TUTORIAL_2].map(map_scripted_book)
-	elif current_round == 4:
+	elif current_round == FIRST_ALL_ONE_GENRE_ROUND:
 		return _generate_single_genre(BookRes.GENRE.BESTSELLERS)
 	return []
 
@@ -60,10 +64,11 @@ func _get_round_size() -> int: return (current_round + 1) * 2
 
 
 func _on_timer_timeout() -> void:
-	round_started.emit(current_round, get_round_books())
-	current_round += 1
-	one_color_chance = clamp(one_color_chance + 1, 0, 10)
+	next_round()
 
+const TUTORIAL_ROUND_1 := 0
+const TUTORIAL_ROUND_2 := 1
+const FIRST_ALL_ONE_GENRE_ROUND := 4
 
 const TUTORIAL_1 := "tutorial_1"
 const TUTORIAL_2 := "tutorial_2"
