@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8yli7labwl3f"]
+[gd_scene load_steps=7 format=3 uid="uid://c8yli7labwl3f"]
 
 [ext_resource type="Script" path="res://src/book/Book.gd" id="1_o02ga"]
 
@@ -11,6 +11,10 @@ texture_filter = 5
 
 [sub_resource type="BoxMesh" id="BoxMesh_2w7gx"]
 size = Vector3(0.35, 0.15, 0.55)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrim8"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_loa77"]
 _surfaces = [{
@@ -41,7 +45,7 @@ material_override = SubResource("StandardMaterial3D_d7xxy")
 mesh = SubResource("BoxMesh_2w7gx")
 
 [node name="Highlight" type="MeshInstance3D" parent="BookMesh"]
-visible = false
+material_override = SubResource("StandardMaterial3D_wrim8")
 mesh = SubResource("ArrayMesh_loa77")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
