@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://jyvg3ym6j4p2"]
+
+[ext_resource type="Texture2D" uid="uid://b53e07spl4lup" path="res://Bram's 3D Hellscape/Book/book_Untitled_Artwork-12.png" id="1_un468"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Material.001"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
+albedo_texture = ExtResource("1_un468")
+roughness = 0.5

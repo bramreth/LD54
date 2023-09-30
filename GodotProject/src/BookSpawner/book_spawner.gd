@@ -16,7 +16,7 @@ func round_started(round: int, items: Array) -> void:
 		await get_tree().create_timer(randf() + 0.1).timeout
 		if item is BookRes:
 			spawn_book(item)
-	
+
 	RoundManager.round_dispensed()
 
 

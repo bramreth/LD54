@@ -40,7 +40,9 @@ func try_add_book(book: Book) -> void:
 	book.queue_free()
 
 	mesh.global_transform = books_root.global_transform
-	mesh.rotate_z(PI/2)
+	mesh.rotate_y(PI/2)
+	mesh.rotate_x(-PI/2)
+
 
 	mesh.global_position += _calculate_book_offset()
 	var tween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)

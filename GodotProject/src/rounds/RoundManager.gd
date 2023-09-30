@@ -20,7 +20,7 @@ func get_round_books() -> Array:
 	if books.is_empty():
 		if randi_range(1, 30) <= one_color_chance: books = _generate_single_genre()
 		else: books = _generate_random_books()
-	
+
 	return books
 
 
@@ -29,9 +29,9 @@ func round_dispensed() -> void:
 
 
 func _get_special_round() -> Array:
-	if current_round == 0: 
+	if current_round == 0:
 		return scripted_rounds[TUTORIAL_1].map(map_scripted_book)
-	elif current_round == 1: 
+	elif current_round == 1:
 		return scripted_rounds[TUTORIAL_2].map(map_scripted_book)
 	elif current_round == 4:
 		return _generate_single_genre(BookRes.GENRE.BESTSELLERS)

@@ -9,7 +9,7 @@ var playing_payload := []
 
 func _ready() -> void:
 	visible = false
-		
+
 func play(payload_in: Array[DialogPacket]) -> void:
 	visible = settings.subtitles_enabled()
 	playing_payload = payload_in
@@ -18,7 +18,7 @@ func play(payload_in: Array[DialogPacket]) -> void:
 		dialogue_player.stream = packet.audio
 		dialogue_label.text = packet.text
 		dialogue_player.play()
-		
+
 	# play each line one at a time, printing the subtitle
 
 
