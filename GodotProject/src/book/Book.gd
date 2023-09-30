@@ -49,8 +49,19 @@ var in_rack: bool = false
 
 func setup(book_res_in: BookRes) -> void:
 	book_res = book_res_in
-	var rand_book = [classic_books.pick_random(), scifi_books.pick_random(), best_books.pick_random()]
-	book_mesh.get_surface_override_material(0).set_shader_parameter("book_texture", rand_book.pick_random())
+	var book_texture: CompressedTexture2D
+	match book_res.genre:
+		BookRes.GENRE.BESTSELLERS:
+			book_texture = best_books.pick_random()
+		BookRes.GENRE.SCIFI:
+			book_texture = scifi_books.pick_random()
+		BookRes.GENRE.CLASSICS:
+			book_texture = classic_books.pick_random()
+	book_mesh.get_surface_override_material(0).set_shader_parameter("book_texture", book_texture)
+	var book_name = book_texture.load_path
+	book_name = book_name.rsplit(".png")[0]
+	book_name = book_name.rsplit("/")[-1]
+	book_res.name = book_name
 
 	match book_res.sort:
 		BookRes.SORT.TOP:

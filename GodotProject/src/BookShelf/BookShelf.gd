@@ -20,6 +20,7 @@ func _ready() -> void:
 		rack.genre = genre
 
 
+
 func _on_rack_full(rack: BookRack, score: int) -> void:
 	if finished_racks.has(rack): return
 	finished_racks.append(rack)

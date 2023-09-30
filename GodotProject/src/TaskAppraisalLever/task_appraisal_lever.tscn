@@ -303,7 +303,7 @@ transparency = 1.0
 mesh = SubResource("ArrayMesh_7h118")
 
 [node name="Cylinder" type="MeshInstance3D" parent="lever"]
-transform = Transform3D(-3.58335e-09, 0.2, -5.89745e-10, -0.0791543, -8.64986e-09, 0.0116015, 0.0116015, 2.75791e-09, 0.0791543, 0, 0, 0)
+transform = Transform3D(-2.89686e-07, 0.2, -5.89745e-10, -0.0791543, -7.16345e-07, 0.0116015, 0.0116015, 1.06483e-07, 0.0791543, 0, 0, 0)
 mesh = SubResource("ArrayMesh_edrv7")
 skeleton = NodePath("")
 

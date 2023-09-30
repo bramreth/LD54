@@ -60,6 +60,7 @@ func _calculate_book_offset() -> Vector3:
 func _calculate_score() -> int:
 	var score = 0
 	for book_res in books:
+		score += 1
 		score += int(book_res.sort == sort)
 		score += int(book_res.genre == genre)
 	return score
