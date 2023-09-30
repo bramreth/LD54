@@ -24,21 +24,6 @@ shape = SubResource("CapsuleShape3D_n7qlv")
 [node name="CameraDirection" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 
-[node name="Hands" type="Node3D" parent="CameraDirection"]
-script = ExtResource("2_re03u")
-
-[node name="HandTarget" type="Node3D" parent="CameraDirection/Hands"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.374214, -0.7)
-
-[node name="DebugHand" type="MeshInstance3D" parent="CameraDirection/Hands/HandTarget"]
-visible = false
-mesh = SubResource("SphereMesh_krod2")
-
-[node name="RayCast3D" type="RayCast3D" parent="CameraDirection/Hands"]
-target_position = Vector3(2.08165e-12, 2.08165e-12, -2)
-collision_mask = 4
-debug_shape_custom_color = Color(1, 0, 0, 1)
-
 [node name="CinematicCamera" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
 top_level = true
@@ -47,3 +32,20 @@ target = NodePath("../CameraDirection")
 speed = 22.0
 
 [node name="Camera3D" type="Camera3D" parent="CinematicCamera"]
+
+[node name="Hands" type="Node3D" parent="CinematicCamera"]
+script = ExtResource("2_re03u")
+grip_strength = 22.0
+
+[node name="HandTarget" type="Node3D" parent="CinematicCamera/Hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.374214, -0.7)
+
+[node name="DebugHand" type="MeshInstance3D" parent="CinematicCamera/Hands/HandTarget"]
+mesh = SubResource("SphereMesh_krod2")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CinematicCamera/Hands/HandTarget"]
+
+[node name="RayCast3D" type="RayCast3D" parent="CinematicCamera/Hands"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -2)
+collision_mask = 4
+debug_shape_custom_color = Color(1, 0, 0, 1)

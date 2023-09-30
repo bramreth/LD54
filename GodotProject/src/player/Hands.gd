@@ -4,13 +4,8 @@ extends Node3D
 
 @onready var raycast: RayCast3D = $RayCast3D
 @onready var hand_target: Node3D = $HandTarget
-
+@onready var remote := $HandTarget/RemoteTransform3D
 var current_book: Book = null
-
-func _process(delta: float) -> void:
-	if current_book:
-		current_book.global_transform = current_book.global_transform.interpolate_with(hand_target.global_transform, delta * grip_strength)
-		current_book.look_at(self.global_position)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -24,8 +19,10 @@ func _unhandled_input(event: InputEvent) -> void:
 func _pickup_book(book: Book) -> void:
 	book.pick_up()
 	current_book = book
+	remote.remote_path = remote.get_path_to(book)
 
 
 func _drop_book(book: Book) -> void:
+	remote.remote_path = NodePath()
 	book.drop(global_position.direction_to(book.global_position).normalized() * 2.5)
 	current_book = null
