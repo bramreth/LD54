@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=24 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
 [ext_resource type="PackedScene" uid="uid://b03u3q14ci8al" path="res://src/BookDeleter/book_deleter.tscn" id="3_63jtg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b4mrqfvtlycnc" path="res://addons/brambox/UserInterface/user_interface.tscn" id="8_qiqft"]
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="8_wflrt"]
 [ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="9_hslbt"]
+[ext_resource type="Texture2D" uid="uid://brif0bb1bh5vx" path="res://KenneyAssets/window_03.png" id="10_awm3o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,12 +22,21 @@ sky_material = SubResource("ProceduralSkyMaterial_43nii")
 background_mode = 2
 sky = SubResource("Sky_ci0af")
 tonemap_mode = 2
+ssao_enabled = true
+ssil_enabled = true
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
+volumetric_fog_length = 6.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tqjv2"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_00r1d"]
+noise = SubResource("FastNoiseLite_tqjv2")
 
 [sub_resource type="FogMaterial" id="FogMaterial_l5ofk"]
-density = 0.03
+density = 0.02
+density_texture = SubResource("NoiseTexture3D_00r1d")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u33nt"]
 albedo_color = Color(0.592157, 0.435294, 0.215686, 1)
@@ -80,7 +90,6 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 
 [node name="FogVolume" type="FogVolume" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.25, 2.08165e-12)
-visible = false
 size = Vector3(12, 4.5, 14)
 material = SubResource("FogMaterial_l5ofk")
 
@@ -113,6 +122,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.25,
 constant_linear_velocity = Vector3(-1, 2.08165e-12, 2.08165e-12)
 
 [node name="BookDeleter" parent="Conveyor" instance=ExtResource("3_63jtg")]
+collision_layer = 4
+collision_mask = 4
 
 [node name="BestSeller" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.125, -6.5)
@@ -169,3 +180,18 @@ shape = SubResource("ConcavePolygonShape3D_7grfp")
 [node name="UserInterface" parent="." instance=ExtResource("8_qiqft")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("9_hslbt")]
+
+[node name="HarshLight" type="Decal" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 7, 2.9, 0)
+size = Vector3(8, 5, 8)
+texture_emission = ExtResource("10_awm3o")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="HarshLight"]
+transform = Transform3D(1, -7.462e-08, -3.09086e-08, -7.462e-08, -0.707107, -0.707107, 3.09086e-08, 0.707107, -0.707107, 0, 0, 2.38419e-07)
+light_energy = 16.0
+light_volumetric_fog_energy = 50.0
+light_projector = ExtResource("10_awm3o")
+light_size = 0.5
+shadow_enabled = true
+spot_range = 20.0
+spot_angle = 55.0
