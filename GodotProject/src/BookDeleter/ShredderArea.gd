@@ -7,6 +7,10 @@ signal shredding()
 @onready var animation_player: AnimationPlayer = $"../CSGBox3D/AnimationPlayer"
 
 
+func _ready() -> void:
+	highlight.transparency = 1.0
+
+
 func toggle_highlight() -> void:
 	animation_player.stop()
 	animation_player.play("fade_out")
