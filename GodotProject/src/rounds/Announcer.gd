@@ -19,5 +19,5 @@ func play(packet: DialogPacket, priority: int = 0) -> void:
 
 
 func _on_audio_stream_player_3d_finished() -> void:
-	announcement_over.emit()
 	current_priority = -1
+	announcement_over.emit()
