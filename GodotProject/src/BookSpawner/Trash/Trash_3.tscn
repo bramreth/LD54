@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsnjngbw85y7c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_udm23"]
+bounce = 0.1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yfp2u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2nxkj"]
+seamless = true
+normalize = false
+noise = SubResource("FastNoiseLite_yfp2u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0k1hy"]
+albedo_color = Color(1, 0.8, 0.52549, 1)
+albedo_texture = SubResource("NoiseTexture2D_2nxkj")
+
+[sub_resource type="TorusMesh" id="TorusMesh_v5tag"]
+material = SubResource("StandardMaterial3D_0k1hy")
+inner_radius = 0.1
+outer_radius = 0.2
+rings = 16
+ring_segments = 8
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kpkml"]
+points = PackedVector3Array(0.0444295, 0.0547513, 0.152381, -0.0183262, -0.00225455, -0.195429, -0.0182652, 0.0038317, -0.194778, -0.195436, -0.00225466, 0.0182887, 0.106759, -0.049615, 0.106759, 0.114276, 0.0547513, -0.114276, -0.145977, 0.0547513, -0.0634821, 0.0585579, -0.0490098, -0.140649, -0.123868, -0.0375506, 0.129782, 0.195429, -0.00225455, 0.018288, -0.140618, -0.0490117, -0.0585969, -0.114276, 0.0547513, 0.114276, 0.0182887, -0.00225466, 0.195436, 0.129784, -0.0375511, -0.123869, 0.138755, 0.0339692, 0.12065, -0.138972, -0.00826721, -0.13901, -0.0634821, 0.0547513, -0.146017, 0.158705, 0.0547513, 0.0126487, 0.138556, 0.00982497, -0.138519, -0.0707769, -0.0375452, -0.165171, -0.0293076, -0.0490273, 0.146538, -0.133016, 0.00381205, 0.145139, 0.13901, -0.00826721, 0.138972, 0.177545, -0.0376718, 0.0117918, 0.181497, 0.00381374, -0.0786562, -0.0729998, 0.0342523, 0.170358, 0.0725853, 0.00986326, -0.181482, -0.175174, 0.0279748, 0.0664285, 0.0707769, -0.0375452, 0.165171, -0.182096, -0.00223641, -0.0789158, -0.0666354, -0.0264721, 0.175758, -0.17753, -0.0376686, 0.0118279)
+
+[node name="Trash_3" type="RigidBody3D"]
+collision_layer = 3
+collision_mask = 3
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_udm23")
+continuous_cd = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TorusMesh_v5tag")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_kpkml")

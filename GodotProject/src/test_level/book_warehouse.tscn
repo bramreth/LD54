@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cl4sw5xpkwrmb" path="res://poster1.PNG" id="21_fa7qm"]
 [ext_resource type="Texture2D" uid="uid://dpnqelist35c6" path="res://poster2.JPG" id="22_cbvax"]
 [ext_resource type="Texture2D" uid="uid://bfm2wtsswa5y5" path="res://poster4.PNG" id="23_1h427"]
+[ext_resource type="PackedScene" uid="uid://dae3nldyybmfa" path="res://src/BookDeleter/Shredder.tscn" id="19_i40ga"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -101,7 +102,7 @@ environment = SubResource("Environment_1l2ll")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_5yjj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -2.04667)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.375, 2.08165e-12)
@@ -464,6 +465,9 @@ material = SubResource("StandardMaterial3D_tw55b")
 
 [node name="TaskAppraisalLever" parent="." instance=ExtResource("15_l88m0")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1, 6.861)
+
+[node name="Shredder" parent="." instance=ExtResource("19_i40ga")]
+transform = Transform3D(1, -1.74393e-16, 3.02058e-16, 3.02058e-16, 0.866025, -0.5, -1.74393e-16, 0.5, 0.866025, 5.09563, 0.468838, -6.6162)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-0.0747146, 0.00653668, 6.53176e-09, 0.00653668, 0.0747146, -5.71455e-10, -6.55671e-09, 0, -0.075, 6.1, 2, 6.95)
