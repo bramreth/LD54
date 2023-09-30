@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=22 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
 [ext_resource type="PackedScene" uid="uid://b03u3q14ci8al" path="res://src/BookDeleter/book_deleter.tscn" id="3_63jtg"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark/material_13.tres" id="3_a43wp"]
+[ext_resource type="PackedScene" uid="uid://c6csr3870y21r" path="res://src/BookShelf/BookShelf.tscn" id="4_c6mja"]
 [ext_resource type="PackedScene" uid="uid://qog8enelwhx8" path="res://src/ConveyorBelt/conveyor.tscn" id="4_v6cgb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_yieme"]
 [ext_resource type="PackedScene" uid="uid://cqqvwy1c75xv7" path="res://src/BookSpawner/book_spawner.tscn" id="7_vwrja"]
@@ -28,24 +29,6 @@ glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_length = 6.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_tqjv2"]
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_00r1d"]
-noise = SubResource("FastNoiseLite_tqjv2")
-
-[sub_resource type="FogMaterial" id="FogMaterial_l5ofk"]
-density = 0.02
-density_texture = SubResource("NoiseTexture3D_00r1d")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u33nt"]
-albedo_color = Color(0.592157, 0.435294, 0.215686, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ka5gs"]
-albedo_color = Color(0.333333, 0.164706, 0.105882, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmq8v"]
-albedo_color = Color(0.34902, 0.439216, 0.447059, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_biv7u"]
 
@@ -80,6 +63,15 @@ shadow_mesh = SubResource("ArrayMesh_t4hph")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7grfp"]
 data = PackedVector3Array(7.5, 3, -7, -4.5, 3, 7, 7.5, 3, 7, 7.5, 3, -7, -4.5, 3, -7, -4.5, 3, 7, 7.5, -1, -7, 7.5, 3, 7, 7.5, -1, 7, 7.5, -1, -7, 7.5, 3, -7, 7.5, 3, 7, -4.5, -1, -7, 7.5, -1, 7, -4.5, -1, 7, -4.5, -1, -7, 7.5, -1, -7, 7.5, -1, 7, 7.5, 3, 7, -4.5, -1, 7, 7.5, -1, 7, 7.5, 3, 7, -4.5, 3, 7, -4.5, -1, 7, -4.5, -1, 7, -4.5, 3, -7, -4.5, -1, -7, -4.5, -1, 7, -4.5, 3, 7, -4.5, 3, -7, -4.5, -1, -7, 7.5, 3, -7, 7.5, -1, -7, -4.5, -1, -7, -4.5, 3, -7, 7.5, 3, -7)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_tqjv2"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_00r1d"]
+noise = SubResource("FastNoiseLite_tqjv2")
+
+[sub_resource type="FogMaterial" id="FogMaterial_l5ofk"]
+density = 0.01
+density_texture = SubResource("NoiseTexture3D_00r1d")
+
 [node name="BookWarehouse" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -87,61 +79,6 @@ environment = SubResource("Environment_1l2ll")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-
-[node name="FogVolume" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.25, 2.08165e-12)
-size = Vector3(12, 4.5, 14)
-material = SubResource("FogMaterial_l5ofk")
-
-[node name="Conveyor" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0.25, -3.72529e-08)
-material_override = ExtResource("3_a43wp")
-use_collision = true
-collision_layer = 3
-collision_mask = 3
-size = Vector3(1.5, 0.5, 14)
-
-[node name="Conveyor" parent="Conveyor" instance=ExtResource("4_v6cgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -4.5)
-constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
-
-[node name="Conveyor5" parent="Conveyor" instance=ExtResource("4_v6cgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -8.5)
-constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
-
-[node name="Conveyor2" parent="Conveyor" instance=ExtResource("4_v6cgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.5)
-constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
-
-[node name="Conveyor3" parent="Conveyor" instance=ExtResource("4_v6cgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3.5)
-constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
-
-[node name="Conveyor4" parent="Conveyor" instance=ExtResource("4_v6cgb")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.25, 0.4, 6.25)
-constant_linear_velocity = Vector3(-1, 2.08165e-12, 2.08165e-12)
-
-[node name="BookDeleter" parent="Conveyor" instance=ExtResource("3_63jtg")]
-collision_layer = 4
-collision_mask = 4
-
-[node name="BestSeller" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.125, -6.5)
-use_collision = true
-size = Vector3(7, 2.25, 1)
-material = SubResource("StandardMaterial3D_u33nt")
-
-[node name="Classics" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.125, 8.5)
-use_collision = true
-size = Vector3(7, 2.25, 1)
-material = SubResource("StandardMaterial3D_ka5gs")
-
-[node name="SciFi" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, 1.125, 2.08165e-12)
-use_collision = true
-size = Vector3(10, 2.25, 1)
-material = SubResource("StandardMaterial3D_kmq8v")
 
 [node name="Player" parent="." instance=ExtResource("3_5yjj6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -153,45 +90,258 @@ visible = false
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("4_yieme")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 2.08165e-12)
-light_energy = 2.0
-light_indirect_energy = 16.0
-omni_range = 8.0
-omni_attenuation = 0.5
-
 [node name="BookSpawner" parent="." instance=ExtResource("7_vwrja")]
 
-[node name="BaseBuilding" type="Node3D" parent="."]
+[node name="Bookshelves" type="Node3D" parent="."]
 
-[node name="Cube" type="MeshInstance3D" parent="BaseBuilding"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-material_override = ExtResource("8_wflrt")
-mesh = SubResource("ArrayMesh_4cqo7")
-skeleton = NodePath("")
+[node name="BookRow" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0, 7)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="BaseBuilding/Cube"]
-collision_layer = 3
-collision_mask = 3
+[node name="BookShelf" parent="Bookshelves/BookRow" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BaseBuilding/Cube/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_7grfp")
+[node name="BookShelf2" parent="Bookshelves/BookRow" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
 
-[node name="UserInterface" parent="." instance=ExtResource("8_qiqft")]
+[node name="BookShelf3" parent="Bookshelves/BookRow" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
 
-[node name="CanvasLayer" parent="." instance=ExtResource("9_hslbt")]
+[node name="BookRow2" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0, 2)
 
-[node name="HarshLight" type="Decal" parent="."]
+[node name="BookShelf" parent="Bookshelves/BookRow2" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+
+[node name="BookShelf2" parent="Bookshelves/BookRow2" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
+
+[node name="BookShelf3" parent="Bookshelves/BookRow2" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
+
+[node name="BookRow3" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.9, 0, 3)
+
+[node name="BookShelf" parent="Bookshelves/BookRow3" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+
+[node name="BookShelf2" parent="Bookshelves/BookRow3" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
+
+[node name="BookShelf3" parent="Bookshelves/BookRow3" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
+
+[node name="BookRow7" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999999, 0, 2)
+
+[node name="BookShelf" parent="Bookshelves/BookRow7" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+
+[node name="BookShelf2" parent="Bookshelves/BookRow7" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
+
+[node name="BookShelf3" parent="Bookshelves/BookRow7" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
+
+[node name="BookRow8" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0999999, 0, 3)
+
+[node name="BookShelf" parent="Bookshelves/BookRow8" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+
+[node name="BookShelf2" parent="Bookshelves/BookRow8" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
+
+[node name="BookShelf3" parent="Bookshelves/BookRow8" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
+
+[node name="BookRow4" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0, -3)
+
+[node name="BookShelf" parent="Bookshelves/BookRow4" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+
+[node name="BookShelf2" parent="Bookshelves/BookRow4" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
+
+[node name="BookShelf3" parent="Bookshelves/BookRow4" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
+
+[node name="BookRow6" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.9, 0, -2)
+
+[node name="BookShelf" parent="Bookshelves/BookRow6" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+
+[node name="BookShelf2" parent="Bookshelves/BookRow6" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
+
+[node name="BookShelf3" parent="Bookshelves/BookRow6" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
+
+[node name="BookRow9" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999999, 0, -3)
+
+[node name="BookShelf" parent="Bookshelves/BookRow9" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+
+[node name="BookShelf2" parent="Bookshelves/BookRow9" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
+
+[node name="BookShelf3" parent="Bookshelves/BookRow9" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
+
+[node name="BookRow10" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0999999, 0, -2)
+
+[node name="BookShelf" parent="Bookshelves/BookRow10" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+
+[node name="BookShelf2" parent="Bookshelves/BookRow10" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
+
+[node name="BookShelf3" parent="Bookshelves/BookRow10" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
+
+[node name="BookRow5" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.9, 0, -7)
+
+[node name="BookShelf" parent="Bookshelves/BookRow5" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+
+[node name="BookShelf2" parent="Bookshelves/BookRow5" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
+
+[node name="BookShelf3" parent="Bookshelves/BookRow5" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
+
+[node name="BookRow11" type="Node3D" parent="Bookshelves"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0999999, 0, -7)
+
+[node name="BookShelf" parent="Bookshelves/BookRow11" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+
+[node name="BookShelf2" parent="Bookshelves/BookRow11" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
+genre = 1
+
+[node name="BookShelf3" parent="Bookshelves/BookRow11" instance=ExtResource("4_c6mja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
+genre = 2
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="HarshLight" type="Decal" parent="Background"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 7, 2.9, 0)
 size = Vector3(8, 5, 8)
 texture_emission = ExtResource("10_awm3o")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="HarshLight"]
+[node name="SpotLight3D" type="SpotLight3D" parent="Background/HarshLight"]
 transform = Transform3D(1, -7.462e-08, -3.09086e-08, -7.462e-08, -0.707107, -0.707107, 3.09086e-08, 0.707107, -0.707107, 0, 0, 2.38419e-07)
 light_energy = 16.0
-light_volumetric_fog_energy = 50.0
+light_indirect_energy = 25.0
+light_volumetric_fog_energy = 100.0
 light_projector = ExtResource("10_awm3o")
 light_size = 0.5
 shadow_enabled = true
 spot_range = 20.0
 spot_angle = 55.0
+
+[node name="BaseBuilding" type="Node3D" parent="Background"]
+
+[node name="Cube" type="MeshInstance3D" parent="Background/BaseBuilding"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("8_wflrt")
+mesh = SubResource("ArrayMesh_4cqo7")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Background/BaseBuilding/Cube"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background/BaseBuilding/Cube/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_7grfp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 2.08165e-12)
+visible = false
+light_energy = 4.0
+light_volumetric_fog_energy = 0.0
+omni_range = 8.0
+omni_attenuation = 0.5
+
+[node name="FogVolume" type="FogVolume" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2.25, 2.08165e-12)
+size = Vector3(12, 4.5, 14)
+material = SubResource("FogMaterial_l5ofk")
+
+[node name="Conveyor" type="CSGBox3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0.25, -3.72529e-08)
+material_override = ExtResource("3_a43wp")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(1.5, 0.5, 14)
+
+[node name="Conveyor" parent="Background/Conveyor" instance=ExtResource("4_v6cgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -4.5)
+constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
+
+[node name="Conveyor5" parent="Background/Conveyor" instance=ExtResource("4_v6cgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -8.5)
+constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
+
+[node name="Conveyor2" parent="Background/Conveyor" instance=ExtResource("4_v6cgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.5)
+constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
+
+[node name="Conveyor3" parent="Background/Conveyor" instance=ExtResource("4_v6cgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3.5)
+constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
+
+[node name="Conveyor4" parent="Background/Conveyor" instance=ExtResource("4_v6cgb")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.25, 0.4, 6.25)
+constant_linear_velocity = Vector3(-1, 2.08165e-12, 2.08165e-12)
+
+[node name="BookDeleter" parent="Background/Conveyor" instance=ExtResource("3_63jtg")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="UserInterface" parent="." instance=ExtResource("8_qiqft")]
+
+[node name="CanvasLayer" parent="." instance=ExtResource("9_hslbt")]
+
+[node name="LongShelf" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.25, 2.5)
+material_override = ExtResource("8_wflrt")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(6.5, 2.5, 1)
+
+[node name="LongShelf2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.25, -2.5)
+material_override = ExtResource("8_wflrt")
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(6.5, 2.5, 1)
