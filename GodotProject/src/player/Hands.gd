@@ -25,7 +25,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif collider is BookRack: _add_book_to_rack(collider)
 		elif collider is TaskAppraisalLever: collider.pull()
 	if event.is_action_pressed("throw"):
-		if current_book: _drop_book(current_book)
+		if is_instance_valid(current_book): _drop_book(current_book)
 
 
 func _add_book_to_rack(rack: BookRack) -> void:
@@ -39,7 +39,7 @@ func _add_book_to_rack(rack: BookRack) -> void:
 var hand_tween: Tween
 
 func _pickup_book(book: Book) -> void:
-	if current_book:
+	if current_book and is_instance_valid(current_book):
 		_drop_book(current_book)
 	book.pick_up()
 	current_book = book

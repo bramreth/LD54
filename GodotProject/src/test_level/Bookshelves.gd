@@ -23,5 +23,9 @@ func show_tutorial_shelf() -> void:
 
 
 func show_first_area() -> void:
-	for shelf in starting_area_shelves:
-		shelf.reset_all()
+	for row in starting_area_shelves:
+		if starting_area_shelves.front() == row:
+			row.get_shelf_for_genre(BookRes.GENRE.SCIFI).reset()
+			row.get_shelf_for_genre(BookRes.GENRE.BESTSELLERS).reset()
+		else:
+			row.reset_all()

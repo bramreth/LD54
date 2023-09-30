@@ -87,6 +87,7 @@ albedo_color = Color(0.321569, 0.235294, 0.152941, 1)
 
 [node name="BookWarehouse" type="Node3D"]
 script = ExtResource("1_bbmif")
+fast_intro = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1l2ll")

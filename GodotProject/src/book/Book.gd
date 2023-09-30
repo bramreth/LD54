@@ -50,7 +50,8 @@ var in_rack: bool = false
 func setup(book_res_in: BookRes) -> void:
 	book_res = book_res_in
 	var rand_book = [classic_books.pick_random(), scifi_books.pick_random(), best_books.pick_random()]
-	book_mesh.get("surface_material_override/0").albedo_texture = rand_book.pick_random()
+	book_mesh.get_surface_override_material(0).set_shader_parameter("book_texture", rand_book.pick_random())
+
 	match book_res.sort:
 		BookRes.SORT.TOP:
 			label_1.text = "T"
@@ -82,3 +83,7 @@ func drop(impulse: Vector3 = Vector3.ZERO) -> void:
 func seperate_mesh() -> MeshInstance3D:
 	remove_child(book_mesh)
 	return book_mesh
+
+
+func destroy() -> void:
+	animation_player.play("destroy")
