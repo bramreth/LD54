@@ -457,4 +457,4 @@ material = SubResource("StandardMaterial3D_tw55b")
 [node name="BookSpawner" parent="." instance=ExtResource("7_vwrja")]
 
 [node name="TaskAppraisalLever" parent="." instance=ExtResource("15_l88m0")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.5, 6.961)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1, 6.961)

@@ -2,6 +2,7 @@ extends StaticBody3D
 class_name TaskAppraisalLever
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var lever_animator: AnimationPlayer = $LeverAnimator
 
 func toggle_highlight() -> void:
 	animation_player.stop()
@@ -9,4 +10,5 @@ func toggle_highlight() -> void:
 
 
 func pull() -> void:
+	lever_animator.play("Pull")
 	RoundManager.evalutae()
