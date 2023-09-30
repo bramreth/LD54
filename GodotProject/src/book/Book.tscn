@@ -4,6 +4,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7xxy"]
 resource_local_to_scene = true
+diffuse_mode = 3
+specular_mode = 1
 vertex_color_is_srgb = true
 uv1_triplanar = true
 uv1_world_triplanar = true
@@ -19,6 +21,7 @@ size = Vector3(0.35, 0.15, 0.55)
 collision_layer = 6
 collision_mask = 6
 mass = 0.3
+continuous_cd = true
 can_sleep = false
 script = ExtResource("1_o02ga")
 

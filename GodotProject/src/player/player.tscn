@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhmpponvjvir2"]
+[gd_scene load_steps=7 format=3 uid="uid://bhmpponvjvir2"]
 
 [ext_resource type="Script" path="res://src/player/StandardFPSPlayer.gd" id="1_5qj23"]
 [ext_resource type="Script" path="res://src/player/CinematicCamera.gd" id="2_caykb"]
 [ext_resource type="Script" path="res://src/player/Hands.gd" id="2_re03u"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_ecfyq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5ktr2"]
 
@@ -32,6 +31,7 @@ script = ExtResource("2_re03u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.374214, -0.7)
 
 [node name="DebugHand" type="MeshInstance3D" parent="CameraDirection/Hands/HandTarget"]
+visible = false
 mesh = SubResource("SphereMesh_krod2")
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraDirection/Hands"]
@@ -46,12 +46,4 @@ script = ExtResource("2_caykb")
 target = NodePath("../CameraDirection")
 speed = 22.0
 
-[node name="PhantomCamera3D" type="Node3D" parent="CinematicCamera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
-script = ExtResource("3_ecfyq")
-priority = 1
-follow_mode = 0
-look_at_mode = 0
-tween_parameters = null
-tween_on_load = false
-inactive_update_mode = 0
+[node name="Camera3D" type="Camera3D" parent="CinematicCamera"]
