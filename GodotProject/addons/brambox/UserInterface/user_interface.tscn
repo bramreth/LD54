@@ -59,8 +59,7 @@ stretch_mode = 5
 [node name="SubtitleHandler" parent="HUD" instance=ExtResource("3_tu702")]
 layout_mode = 1
 
-[node name="Evaluation" type="CenterContainer" parent="."]
-visible = false
+[node name="Evaluation" type="CenterContainer" parent="." groups=["evaluation"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -91,6 +90,16 @@ text = "Below expectations.
 Out of 100 Gremlins, 84 performed better.
 c-"
 horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score: "
+horizontal_alignment = 1
+
+[node name="ProceedButton" type="Button" parent="Evaluation/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Resume tasks"
 
 [node name="PauseScreen" type="Control" parent="."]
 process_mode = 3

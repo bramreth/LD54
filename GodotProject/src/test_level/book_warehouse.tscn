@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=36 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
@@ -18,6 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://bsuxb2bp6rdm6" path="res://BackgroundTrash/air_vent.tscn" id="11_vcjia"]
 [ext_resource type="PackedScene" uid="uid://dun8fkdwh2uho" path="res://src/Speaker/announcer_speaker.tscn" id="14_cejp5"]
 [ext_resource type="PackedScene" uid="uid://85xoiweu8jls" path="res://src/TaskAppraisalLever/task_appraisal_lever.tscn" id="15_l88m0"]
+[ext_resource type="Texture2D" uid="uid://dwdau7ep0mub" path="res://poster5.PNG" id="19_bnsod"]
+[ext_resource type="Texture2D" uid="uid://g6qx4e2jr5dr" path="res://poster3.PNG" id="20_nab4m"]
+[ext_resource type="Texture2D" uid="uid://cl4sw5xpkwrmb" path="res://poster1.PNG" id="21_fa7qm"]
+[ext_resource type="Texture2D" uid="uid://dpnqelist35c6" path="res://poster2.JPG" id="22_cbvax"]
+[ext_resource type="Texture2D" uid="uid://bfm2wtsswa5y5" path="res://poster4.PNG" id="23_1h427"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -458,4 +463,24 @@ material = SubResource("StandardMaterial3D_tw55b")
 [node name="BookSpawner" parent="." instance=ExtResource("7_vwrja")]
 
 [node name="TaskAppraisalLever" parent="." instance=ExtResource("15_l88m0")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1, 6.961)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1, 6.861)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0747146, 0.00653668, 6.53176e-09, 0.00653668, 0.0747146, -5.71455e-10, -6.55671e-09, 0, -0.075, 6.1, 2, 6.95)
+texture = ExtResource("19_bnsod")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0738606, -0.0130236, 6.45709e-09, -0.0130236, 0.0738606, 1.13856e-09, -6.55671e-09, -5.97179e-17, -0.075, 4.5, 2.5, 6.85)
+texture = ExtResource("20_nab4m")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(-2.6127e-09, 2.28582e-10, 0.06, 0.00522934, 0.0597717, -2.09272e-17, -0.0597717, 0.00522934, -2.62268e-09, -4.45, 1.5, 4.5)
+texture = ExtResource("21_fa7qm")
+
+[node name="Sprite3D5" type="Sprite3D" parent="."]
+transform = Transform3D(6.01685e-09, -5.26406e-10, -0.08, 0.00697246, 0.0796956, 9.15931e-17, 0.0796956, -0.00697246, 6.03983e-09, 7.45, 2.3, -4.2)
+texture = ExtResource("22_cbvax")
+
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(-1.7418e-09, 1.52388e-10, 0.04, -0.00694593, 0.0393923, -4.52534e-10, -0.0393923, -0.00694593, -1.68888e-09, -4.45, 1.2, 5.9)
+texture = ExtResource("23_1h427")

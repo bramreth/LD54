@@ -13,7 +13,7 @@ func play_intro() -> void:
 		Announcer.queue(DialogPacketDb.get_intro_dialog())
 		await Announcer.announcement_over
 	RoundManager.start_game()
-	task_appraisal_lever.locked = false
+#	task_appraisal_lever.locked = false
 
 
 func round_started(round: int, _books: Array) -> void:

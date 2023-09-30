@@ -24,7 +24,9 @@ func get_round_books() -> Array:
 
 
 func evalutae() -> void:
-	next_round()
+	var evaluator = get_tree().get_first_node_in_group("evaluation")
+	evaluator.proceed.connect(next_round)
+	evaluator.evaluate()
 
 func next_round() -> void:
 	round_started.emit(current_round, get_round_books())
