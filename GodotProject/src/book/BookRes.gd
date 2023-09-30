@@ -27,6 +27,15 @@ static func create_random() -> BookRes:
 	book.sort = SORT.values().pick_random()
 	return book
 
+
+static func map_color(genre: GENRE) -> Color:
+	match(genre):
+		GENRE.BESTSELLERS: return best_color
+		GENRE.SCIFI: return scifi_color
+		GENRE.CLASSICS: return classic_color
+		_: return best_color
+
+
 func get_color() -> Color:
 	var color_map := {
 		GENRE.BESTSELLERS: best_color,

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_odm80"]
 [ext_resource type="PackedScene" uid="uid://c8yli7labwl3f" path="res://src/book/Book.tscn" id="3_n3ncw"]
 [ext_resource type="Script" path="res://src/book/BookRes.gd" id="5_0y61w"]
-[ext_resource type="PackedScene" uid="uid://b4cgt5eppq4su" path="res://src/BookShelf/BookShelf.tscn" id="5_ghk5y"]
+[ext_resource type="PackedScene" uid="uid://c6csr3870y21r" path="res://src/BookShelf/BookShelf.tscn" id="5_ghk5y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_igvsh"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -85,4 +85,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.206422, 2.11748, -1.13758)
 book_res = SubResource("Resource_m1mid")
 
 [node name="BookShelf" parent="." instance=ExtResource("5_ghk5y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02032, 0.375, -5.37829)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02032, 1.125, -5.37829)
