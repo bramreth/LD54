@@ -1,11 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=29 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
 [ext_resource type="PackedScene" uid="uid://b03u3q14ci8al" path="res://src/BookDeleter/book_deleter.tscn" id="3_63jtg"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark/material_13.tres" id="3_a43wp"]
+[ext_resource type="Script" path="res://src/test_level/Bookshelves.gd" id="4_065el"]
 [ext_resource type="PackedScene" uid="uid://c6csr3870y21r" path="res://src/BookShelf/BookShelf.tscn" id="4_c6mja"]
 [ext_resource type="PackedScene" uid="uid://qog8enelwhx8" path="res://src/ConveyorBelt/conveyor.tscn" id="4_v6cgb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_yieme"]
+[ext_resource type="Script" path="res://src/test_level/BookShelfRow.gd" id="5_d2klj"]
 [ext_resource type="PackedScene" uid="uid://cqqvwy1c75xv7" path="res://src/BookSpawner/book_spawner.tscn" id="7_vwrja"]
 [ext_resource type="PackedScene" uid="uid://b4mrqfvtlycnc" path="res://addons/brambox/UserInterface/user_interface.tscn" id="8_qiqft"]
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="8_wflrt"]
@@ -102,23 +104,29 @@ script = ExtResource("4_yieme")
 [node name="AnnouncerSpeaker" parent="." instance=ExtResource("14_cejp5")]
 
 [node name="Bookshelves" type="Node3D" parent="."]
+script = ExtResource("4_065el")
 
 [node name="BookRow" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0, 7)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+active_onready = false
 
 [node name="BookShelf2" parent="Bookshelves/BookRow" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
 genre = 1
+active_onready = false
 
 [node name="BookShelf3" parent="Bookshelves/BookRow" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
 genre = 2
+active_onready = false
 
 [node name="BookRow2" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0, 2)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow2" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
@@ -133,20 +141,25 @@ genre = 2
 
 [node name="BookRow3" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.9, 0, 3)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow3" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+active_onready = false
 
 [node name="BookShelf2" parent="Bookshelves/BookRow3" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
 genre = 1
+active_onready = false
 
 [node name="BookShelf3" parent="Bookshelves/BookRow3" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
 genre = 2
+active_onready = false
 
 [node name="BookRow7" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999999, 0, 2)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow7" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
@@ -161,20 +174,25 @@ genre = 2
 
 [node name="BookRow8" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0999999, 0, 3)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow8" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
+active_onready = false
 
 [node name="BookShelf2" parent="Bookshelves/BookRow8" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
 genre = 1
+active_onready = false
 
 [node name="BookShelf3" parent="Bookshelves/BookRow8" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
 genre = 2
+active_onready = false
 
 [node name="BookRow4" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0, -3)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow4" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
@@ -189,6 +207,7 @@ genre = 2
 
 [node name="BookRow6" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.9, 0, -2)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow6" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
@@ -203,6 +222,7 @@ genre = 2
 
 [node name="BookRow9" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999999, 0, -3)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow9" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
@@ -217,6 +237,7 @@ genre = 2
 
 [node name="BookRow10" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0999999, 0, -2)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow10" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
@@ -231,6 +252,7 @@ genre = 2
 
 [node name="BookRow5" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.9, 0, -7)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow5" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
@@ -245,6 +267,7 @@ genre = 2
 
 [node name="BookRow11" type="Node3D" parent="Bookshelves"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0999999, 0, -7)
+script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow11" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
