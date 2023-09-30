@@ -9,8 +9,6 @@ var one_color_chance: int = 0
 
 
 func start_game() -> void:
-	print("starting")
-	Announcer.play(load("res://src/Audio/res/Alarm.tres"), 1)
 	current_round = 0
 	one_color_chance = 0
 	timer.start(1.0)
