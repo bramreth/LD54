@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://q06b8fbnkkbp"]
 
 [ext_resource type="Script" path="res://src/UI/Score.gd" id="1_q526n"]
-[ext_resource type="Texture2D" uid="uid://dkrivdd5fhy60" path="res://addons/kenney_crosshair-pack/PNG/Outline Retina/crosshair001.png" id="2_sts4v"]
+[ext_resource type="Texture2D" uid="uid://c4utpoaej00ru" path="res://addons/kenney_crosshair-pack/PNG/Outline Retina/crosshair001.png" id="2_sts4v"]
 
 [node name="UI" type="CanvasLayer"]
 

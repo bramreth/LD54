@@ -1,11 +1,10 @@
 extends Node3D
 class_name BookShelf
 
-signal shelf_finished()
-
 @onready var shelf_mesh: MeshInstance3D = $MeshInstance3D
-@onready var racks: Node3D = $Racks
+@onready var racks: Node3D = $MeshInstance3D/Racks
 @onready var reset_timer: Timer = $ResetTimer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var genre: BookRes.GENRE = BookRes.GENRE.BESTSELLERS
 
@@ -26,7 +25,7 @@ func _on_rack_full(rack: BookRack, score: int) -> void:
 
 	if finished_racks.size() >= 3:
 		UiEventBus.score_changed.emit(total_score)
-		shelf_finished.emit()
+		animation_player. play("filled")
 		reset_timer.start(5.0)
 
 

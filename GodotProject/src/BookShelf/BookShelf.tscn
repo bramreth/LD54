@@ -1,15 +1,102 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6csr3870y21r"]
+[gd_scene load_steps=13 format=3 uid="uid://c6csr3870y21r"]
 
 [ext_resource type="Script" path="res://src/BookShelf/BookShelf.gd" id="1_8gquf"]
 [ext_resource type="PackedScene" uid="uid://b4cgt5eppq4su" path="res://src/BookShelf/BookRack.tscn" id="2_15cuu"]
+[ext_resource type="Texture2D" uid="uid://uq4mi1qbmxj2" path="res://KenneyAssets/smoke_01.png" id="3_3ugye"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fconc"]
+resource_local_to_scene = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_fj1h1"]
 size = Vector3(0.8, 2.25, 0.5)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2ki4o"]
 data = PackedVector3Array(-0.4, 1.125, 0.25, 0.4, 1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, -0.25, 0.4, -1.125, -0.25, -0.4, 1.125, -0.25, -0.4, -1.125, -0.25, 0.4, -1.125, -0.25, 0.4, 1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, -0.25, 0.4, -1.125, 0.25, -0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, 1.125, 0.25, -0.4, 1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, 1.125, -0.25, 0.4, 1.125, -0.25, -0.4, -1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, -1.125, 0.25, 0.4, -1.125, -0.25, -0.4, -1.125, -0.25)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4a6j7"]
+emission_shape = 3
+emission_box_extents = Vector3(0.8, 0.1, 0.5)
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+spread = 30.0
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+damping_min = 1.0
+damping_max = 2.0
+angle_min = 3.9968e-14
+angle_max = 180.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvkcr"]
+transparency = 1
+albedo_texture = ExtResource("3_3ugye")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_poxds"]
+material = SubResource("StandardMaterial3D_fvkcr")
+
+[sub_resource type="Animation" id="Animation_qe0t1"]
+resource_name = "filled"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.08165e-12, -3, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_17sde"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6y15q"]
+_data = {
+"RESET": SubResource("Animation_17sde"),
+"filled": SubResource("Animation_qe0t1")
+}
 
 [node name="BookShelf" type="Node3D"]
 script = ExtResource("1_8gquf")
@@ -25,22 +112,35 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2ki4o")
 
-[node name="Racks" type="Node3D" parent="."]
+[node name="Racks" type="Node3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10528)
 
-[node name="TopRack" parent="Racks" instance=ExtResource("2_15cuu")]
+[node name="TopRack" parent="MeshInstance3D/Racks" instance=ExtResource("2_15cuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
 
-[node name="MiddleRack" parent="Racks" instance=ExtResource("2_15cuu")]
+[node name="MiddleRack" parent="MeshInstance3D/Racks" instance=ExtResource("2_15cuu")]
 sort = 1
 
-[node name="BottomRack" parent="Racks" instance=ExtResource("2_15cuu")]
+[node name="BottomRack" parent="MeshInstance3D/Racks" instance=ExtResource("2_15cuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.75, 2.08165e-12)
 sort = 2
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -1.1, 2.08165e-12)
+emitting = false
+amount = 50
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4a6j7")
+draw_pass_1 = SubResource("QuadMesh_poxds")
+
 [node name="ResetTimer" type="Timer" parent="."]
 
-[connection signal="full" from="Racks/TopRack" to="." method="_on_rack_full"]
-[connection signal="full" from="Racks/MiddleRack" to="." method="_on_rack_full"]
-[connection signal="full" from="Racks/BottomRack" to="." method="_on_rack_full"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6y15q")
+}
+
+[connection signal="full" from="MeshInstance3D/Racks/TopRack" to="." method="_on_rack_full"]
+[connection signal="full" from="MeshInstance3D/Racks/MiddleRack" to="." method="_on_rack_full"]
+[connection signal="full" from="MeshInstance3D/Racks/BottomRack" to="." method="_on_rack_full"]
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

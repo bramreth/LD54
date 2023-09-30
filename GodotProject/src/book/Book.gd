@@ -5,8 +5,8 @@ class_name Book
 
 @onready var collision_shape: CollisionShape3D = $CollisionShape3D
 @onready var book_mesh := $BookMesh
-@onready var label_1 := $TempLabel
-@onready var label_2 := $TempLabel2
+@onready var label_1: Label3D = $BookMesh/TempLabel
+@onready var label_2: Label3D = $BookMesh/TempLabel2
 @onready var highlight := $BookMesh/Highlight
 @onready var animation_player: AnimationPlayer = $BookMesh/Highlight/AnimationPlayer
 
@@ -42,3 +42,8 @@ func drop(impulse: Vector3 = Vector3.ZERO) -> void:
 	freeze = false
 	collision_shape.disabled = false
 	apply_central_impulse(impulse)
+
+
+func seperate_mesh() -> MeshInstance3D: 
+	remove_child(book_mesh)
+	return book_mesh
