@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=38 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
@@ -19,11 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://dun8fkdwh2uho" path="res://src/Speaker/announcer_speaker.tscn" id="14_cejp5"]
 [ext_resource type="PackedScene" uid="uid://85xoiweu8jls" path="res://src/TaskAppraisalLever/task_appraisal_lever.tscn" id="15_l88m0"]
 [ext_resource type="Texture2D" uid="uid://dwdau7ep0mub" path="res://poster5.PNG" id="19_bnsod"]
+[ext_resource type="PackedScene" path="res://src/BookDeleter/Shredder.tscn" id="19_i40ga"]
 [ext_resource type="Texture2D" uid="uid://g6qx4e2jr5dr" path="res://poster3.PNG" id="20_nab4m"]
 [ext_resource type="Texture2D" uid="uid://cl4sw5xpkwrmb" path="res://poster1.PNG" id="21_fa7qm"]
 [ext_resource type="Texture2D" uid="uid://dpnqelist35c6" path="res://poster2.JPG" id="22_cbvax"]
 [ext_resource type="Texture2D" uid="uid://bfm2wtsswa5y5" path="res://poster4.PNG" id="23_1h427"]
-[ext_resource type="PackedScene" uid="uid://dae3nldyybmfa" path="res://src/BookDeleter/Shredder.tscn" id="19_i40ga"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -90,6 +90,9 @@ size = Vector3(1, 4, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tw55b"]
 albedo_color = Color(0.321569, 0.235294, 0.152941, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0wob"]
+albedo_color = Color(0.309804, 0.309804, 0.309804, 1)
 
 [node name="BookWarehouse" type="Node3D"]
 script = ExtResource("1_bbmif")
@@ -488,3 +491,17 @@ texture = ExtResource("22_cbvax")
 [node name="Sprite3D4" type="Sprite3D" parent="."]
 transform = Transform3D(-1.7418e-09, 1.52388e-10, 0.04, -0.00694593, 0.0393923, -4.52534e-10, -0.0393923, -0.00694593, -1.68888e-09, -4.45, 1.2, 5.9)
 texture = ExtResource("23_1h427")
+
+[node name="Hoop" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 2.2, -6.1)
+use_collision = true
+collision_layer = 6
+collision_mask = 6
+inner_radius = 0.6
+outer_radius = 0.7
+sides = 16
+material = SubResource("StandardMaterial3D_a0wob")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Hoop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
+size = Vector3(0.2, 0.2, 0.4)
