@@ -26,6 +26,6 @@ func _pickup_book(book: Book) -> void:
 	current_book = book
 
 
-func _drop_book(book: Book) -> void: 
+func _drop_book(book: Book) -> void:
 	book.drop(global_position.direction_to(book.global_position).normalized())
 	current_book = null
