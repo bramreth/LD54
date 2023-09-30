@@ -14,7 +14,7 @@ signal full(rack: BookRack, score: int)
 var genre: BookRes.GENRE
 var books := []
 
-func toggle_highlight(is_highlighted: bool) -> void:
+func toggle_highlight() -> void:
 	animation_player.stop()
 	animation_player.play("fade_out")
 
@@ -42,6 +42,6 @@ func _calculate_score() -> int:
 	var score = 0
 	for book in books:
 		var book_res: BookRes = book.book_res
-		score += book_res.sort == sort
-		score += book_res.genre == genre
+		score += int(book_res.sort == sort)
+		score += int(book_res.genre == genre)
 	return score

@@ -10,28 +10,13 @@ extends Node3D
 
 
 var current_book: Book = null
-var last_highlighted: Book = null
 
 
 func _process(delta: float) -> void:
-	_highlight_books()
-
-
-func _highlight_books() -> void:
 	var collider: Object = raycast.get_collider()
-	if not collider:
-		if last_highlighted:
-			last_highlighted.toggle_highlight(false)
-			last_highlighted = null
+	if collider and collider.is_in_group("highlightable"):
+		collider.toggle_highlight()
 
-	if collider and collider is Book:
-		if last_highlighted != collider and last_highlighted:
-			last_highlighted.toggle_highlight(false)
-			last_highlighted = collider
-			last_highlighted.toggle_highlight(true)
-		else:
-			last_highlighted = collider
-			last_highlighted.toggle_highlight(true)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
