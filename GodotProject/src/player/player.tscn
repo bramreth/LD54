@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhmpponvjvir2"]
+[gd_scene load_steps=12 format=3 uid="uid://bhmpponvjvir2"]
 
 [ext_resource type="Script" path="res://src/player/StandardFPSPlayer.gd" id="1_5qj23"]
 [ext_resource type="Script" path="res://src/player/CinematicCamera.gd" id="2_caykb"]
@@ -10,6 +10,11 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5ktr2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n7qlv"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_udpxe"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 6.0
+dof_blur_far_transition = 6.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_krod2"]
 radius = 0.05
@@ -38,6 +43,7 @@ target = NodePath("../CameraDirection")
 speed = 22.0
 
 [node name="Camera3D" type="Camera3D" parent="CinematicCamera"]
+attributes = SubResource("CameraAttributesPractical_udpxe")
 current = true
 
 [node name="Hands" type="Node3D" parent="CinematicCamera" node_paths=PackedStringArray("player")]
