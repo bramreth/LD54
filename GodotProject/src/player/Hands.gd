@@ -24,6 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if collider is Book: _pickup_book(collider)
 		elif collider is BookRack: _add_book_to_rack(collider)
 		elif collider is TaskAppraisalLever: collider.pull()
+		elif collider is BookShredderArea: if is_instance_valid(current_book): collider.use(current_book)
 	if event.is_action_pressed("throw"):
 		if is_instance_valid(current_book): _drop_book(current_book)
 
