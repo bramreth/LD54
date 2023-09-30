@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=21 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
 [ext_resource type="PackedScene" uid="uid://b03u3q14ci8al" path="res://src/BookDeleter/book_deleter.tscn" id="3_63jtg"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://qog8enelwhx8" path="res://src/ConveyorBelt/conveyor.tscn" id="4_v6cgb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_yieme"]
 [ext_resource type="PackedScene" uid="uid://cqqvwy1c75xv7" path="res://src/BookSpawner/book_spawner.tscn" id="7_vwrja"]
-[ext_resource type="PackedScene" uid="uid://b4mrqfvtlycnc" path="res://addons/brambox/UserInterface/user_interface.tscn" id="8_qiqft"]
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="8_wflrt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
@@ -95,6 +94,8 @@ material = SubResource("FogMaterial_l5ofk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75, 0.25, 1)
 material_override = ExtResource("3_a43wp")
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 size = Vector3(1.5, 0.5, 16)
 
 [node name="Conveyor" parent="Conveyor" instance=ExtResource("4_v6cgb")]
@@ -153,8 +154,8 @@ mesh = SubResource("ArrayMesh_27o6t")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="BaseBuilding/Cube"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BaseBuilding/Cube/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_36h47")
-
-[node name="UserInterface" parent="." instance=ExtResource("8_qiqft")]
