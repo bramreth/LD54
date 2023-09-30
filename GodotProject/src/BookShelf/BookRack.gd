@@ -1,7 +1,7 @@
 extends Area3D
 class_name BookRack
 
-signal full(rack: BookRack)
+signal full(rack: BookRack, score: int)
 
 @export var sort: BookRes.SORT = BookRes.SORT.TOP
 @export var max_books: int = 3
@@ -9,8 +9,14 @@ signal full(rack: BookRack)
 @onready var books_root: Node3D = $Books
 @onready var particles: GPUParticles3D = $GPUParticles3D
 @onready var book_offset: float = $CollisionShape3D.shape.size.x / max_books
+@onready var animation_player: AnimationPlayer = $Highlight/AnimationPlayer
 
+var genre: BookRes.GENRE
 var books := []
+
+func toggle_highlight(is_highlighted: bool) -> void:
+	animation_player.stop()
+	animation_player.play("fade_out")
 
 
 func _on_body_entered(body: Node3D) -> void:
@@ -21,7 +27,6 @@ func _on_body_entered(body: Node3D) -> void:
 func try_add_book(book: Book) -> void:
 	if books.size() >= max_books: return
 	if not book.book_res: return
-#	if book.book_res.genre == genre and book.book_res.sort == sort:
 	book.call_deferred("pick_up")
 	book.global_transform = books_root.global_transform
 	book.rotate_y(PI/2)
@@ -29,5 +34,14 @@ func try_add_book(book: Book) -> void:
 	book.position.x += (book_offset / 2) + ((books.size() - 1) * book_offset)
 	
 	if books.size() == max_books: 
-		full.emit(self)
+		full.emit(self, _calculate_score())
 		particles.emitting = true
+
+
+func _calculate_score() -> int:
+	var score = 0
+	for book in books:
+		var book_res: BookRes = book.book_res
+		score += book_res.sort == sort
+		score += book_res.genre == genre
+	return score
