@@ -33,6 +33,7 @@ target = NodePath("../CameraDirection")
 speed = 22.0
 
 [node name="Camera3D" type="Camera3D" parent="CinematicCamera"]
+current = true
 
 [node name="Hands" type="Node3D" parent="CinematicCamera" node_paths=PackedStringArray("player")]
 script = ExtResource("2_re03u")
