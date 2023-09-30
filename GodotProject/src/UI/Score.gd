@@ -18,4 +18,4 @@ func score_set(new_score: int) -> void:
 
 
 func update_text() -> void:
-	text = "Score: " + str(score) 
+	text = "Score: " + str(score)

@@ -60,4 +60,5 @@ collision_mask = 4
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
-[node name="UI" parent="." instance=ExtResource("5_csro7")]
+[node name="UI" parent="." node_paths=PackedStringArray("hands") instance=ExtResource("5_csro7")]
+hands = NodePath("../CinematicCamera/Hands")

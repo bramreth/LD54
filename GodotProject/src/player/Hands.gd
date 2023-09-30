@@ -57,5 +57,5 @@ func _drop_book(book: Book) -> void:
 	if not book:
 		return
 	remote.remote_path = NodePath()
-	book.drop(global_position.direction_to(book.global_position).normalized() * 2.5)
+	book.drop(global_position.direction_to(book.global_position).normalized() + Vector3(0.0, 0.5, 0.0) * 2.5)
 	current_book = null

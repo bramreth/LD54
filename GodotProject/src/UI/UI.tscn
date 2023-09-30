@@ -1,9 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://q06b8fbnkkbp"]
+[gd_scene load_steps=11 format=3 uid="uid://q06b8fbnkkbp"]
 
+[ext_resource type="Script" path="res://src/UI/UI.gd" id="1_52o6w"]
 [ext_resource type="Script" path="res://src/UI/Score.gd" id="1_q526n"]
 [ext_resource type="Texture2D" uid="uid://c4utpoaej00ru" path="res://addons/kenney_crosshair-pack/PNG/Outline Retina/crosshair001.png" id="2_sts4v"]
+[ext_resource type="FontFile" uid="uid://ij353qf6fdpf" path="res://addons/brambox/UserInterface/Font/Staatliches-Regular.ttf" id="4_iuw4r"]
+
+[sub_resource type="Animation" id="Animation_ybq8w"]
+resource_name = "Inspect"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inspector:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(0.25, 0.25, 0.25),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_78nid"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Inspector:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fs4ed"]
+_data = {
+"Inspect": SubResource("Animation_ybq8w"),
+"RESET": SubResource("Animation_78nid")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60j0c"]
+content_margin_left = 8.0
+content_margin_top = 12.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.117647, 0.133333, 0.156863, 0.607843)
+border_width_left = 4
+border_width_top = 8
+border_width_right = 4
+border_width_bottom = 4
+shadow_size = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_y34co"]
+font = ExtResource("4_iuw4r")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_fpl3g"]
+font = ExtResource("4_iuw4r")
+font_size = 32
 
 [node name="UI" type="CanvasLayer"]
+script = ExtResource("1_52o6w")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -36,3 +96,48 @@ offset_bottom = 72.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_sts4v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_fs4ed")
+}
+
+[node name="Inspector" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="InspectorPanel" type="PanelContainer" parent="Inspector"]
+custom_minimum_size = Vector2(256, 192)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_60j0c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inspector/InspectorPanel"]
+layout_mode = 2
+
+[node name="BookName" type="Label" parent="Inspector/InspectorPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Bride and Breadujice "
+label_settings = SubResource("LabelSettings_y34co")
+
+[node name="ShelfLabel" type="Label" parent="Inspector/InspectorPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Top Shelf"
+label_settings = SubResource("LabelSettings_fpl3g")
+
+[node name="ColorLabel" type="Label" parent="Inspector/InspectorPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Red Shelf"
+label_settings = SubResource("LabelSettings_fpl3g")
