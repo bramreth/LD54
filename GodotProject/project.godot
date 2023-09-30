@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 UiEventBus="*res://src/UI/UIEventBus.gd"
 RoundManager="*res://src/rounds/RoundManager.tscn"
+Announcer="*res://src/rounds/Announcer.tscn"
 
 [display]
 
@@ -28,7 +29,7 @@ window/size/viewport_height=1080
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/taubert_tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/brambox/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/taubert_tools/plugin.cfg")
 
 [input]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=27 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
 [ext_resource type="PackedScene" uid="uid://b03u3q14ci8al" path="res://src/BookDeleter/book_deleter.tscn" id="3_63jtg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://brif0bb1bh5vx" path="res://KenneyAssets/window_03.png" id="10_awm3o"]
 [ext_resource type="PackedScene" uid="uid://b2yx8u68xoo4e" path="res://BackgroundTrash/clock.tscn" id="10_jav2w"]
 [ext_resource type="PackedScene" uid="uid://bsuxb2bp6rdm6" path="res://BackgroundTrash/air_vent.tscn" id="11_vcjia"]
+[ext_resource type="PackedScene" uid="uid://dun8fkdwh2uho" path="res://src/Speaker/announcer_speaker.tscn" id="14_cejp5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -98,7 +99,7 @@ visible = false
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("4_yieme")
 
-[node name="BookSpawner" parent="." instance=ExtResource("7_vwrja")]
+[node name="AnnouncerSpeaker" parent="." instance=ExtResource("14_cejp5")]
 
 [node name="Bookshelves" type="Node3D" parent="."]
 
@@ -426,3 +427,5 @@ material = SubResource("StandardMaterial3D_tw55b")
 transform = Transform3D(1, 0, 0, 0, 1, -2.03547e-08, 0, 2.589e-08, 1, 0, 0.482963, -0.12941)
 size = Vector3(0.2, 0.2, 5)
 material = SubResource("StandardMaterial3D_tw55b")
+
+[node name="BookSpawner" parent="." instance=ExtResource("7_vwrja")]
