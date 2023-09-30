@@ -30,18 +30,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10528)
 
 [node name="TopRack" parent="Racks" instance=ExtResource("2_15cuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
-sort = 0
-max_books = 3
 
 [node name="MiddleRack" parent="Racks" instance=ExtResource("2_15cuu")]
 sort = 1
-max_books = 3
 
 [node name="BottomRack" parent="Racks" instance=ExtResource("2_15cuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.75, 2.08165e-12)
 sort = 2
-max_books = 3
+
+[node name="ResetTimer" type="Timer" parent="."]
 
 [connection signal="full" from="Racks/TopRack" to="." method="_on_rack_full"]
 [connection signal="full" from="Racks/MiddleRack" to="." method="_on_rack_full"]
 [connection signal="full" from="Racks/BottomRack" to="." method="_on_rack_full"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]

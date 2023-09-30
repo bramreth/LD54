@@ -5,7 +5,7 @@ signal shelf_finished()
 
 @onready var shelf_mesh: MeshInstance3D = $MeshInstance3D
 @onready var racks: Node3D = $Racks
-
+@onready var reset_timer: Timer = $ResetTimer
 
 @export var genre: BookRes.GENRE = BookRes.GENRE.BESTSELLERS
 
@@ -27,3 +27,15 @@ func _on_rack_full(rack: BookRack, score: int) -> void:
 	if finished_racks.size() >= 3:
 		UiEventBus.score_changed.emit(total_score)
 		shelf_finished.emit()
+		reset_timer.start(5.0)
+
+
+func reset() -> void:
+	total_score = 0
+	finished_racks.clear()
+	for rack in racks.get_children():
+		rack.reset()
+
+
+func _on_reset_timer_timeout() -> void:
+	reset()

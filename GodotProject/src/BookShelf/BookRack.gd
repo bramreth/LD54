@@ -34,11 +34,15 @@ func try_add_book(book: Book) -> void:
 	book.global_transform = books_root.global_transform
 	book.rotate_y(PI/2)
 	books.append(book)
-	book.position.x += (book_offset / 2) + ((books.size() - 1) * book_offset)
+	book.global_position += _calculate_book_offset()
 	
 	if books.size() == max_books: 
 		full.emit(self, _calculate_score())
 		particles.emitting = true
+
+
+func _calculate_book_offset() -> Vector3:
+	return books_root.global_transform.basis.x * ((book_offset / 2) + ((books.size() - 1) * book_offset))
 
 
 func _calculate_score() -> int:
@@ -48,3 +52,8 @@ func _calculate_score() -> int:
 		score += int(book_res.sort == sort)
 		score += int(book_res.genre == genre)
 	return score
+
+
+func reset() -> void:
+	for book in books: book.queue_free()
+	books.clear()
