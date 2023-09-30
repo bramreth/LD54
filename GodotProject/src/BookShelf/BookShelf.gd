@@ -5,6 +5,7 @@ class_name BookShelf
 @onready var racks: Node3D = $MeshInstance3D/Racks
 @onready var reset_timer: Timer = $ResetTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sparleticles: GPUParticles3D = $Sparleticles
 
 @export var genre: BookRes.GENRE = BookRes.GENRE.BESTSELLERS
 @export var active_onready: bool = true
@@ -27,6 +28,7 @@ func _on_rack_full(rack: BookRack, score: int) -> void:
 
 	if finished_racks.size() >= 3:
 		UiEventBus.score_changed.emit(total_score)
+		sparleticles.emitting = true
 #		reset_anim()
 
 func reset_anim() -> void:

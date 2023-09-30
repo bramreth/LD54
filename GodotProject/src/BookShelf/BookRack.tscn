@@ -1,6 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4cgt5eppq4su"]
+[gd_scene load_steps=16 format=3 uid="uid://b4cgt5eppq4su"]
 
 [ext_resource type="Script" path="res://src/BookShelf/BookRack.gd" id="1_mjvdr"]
+[ext_resource type="Texture2D" uid="uid://ce35vcvf3vryk" path="res://KenneyAssets/star_06.png" id="2_lv4eo"]
+[ext_resource type="Texture2D" uid="uid://cfxw4ccuyfcke" path="res://KenneyAssets/star_08.png" id="3_45gev"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mulr1"]
 size = Vector3(0.65, 0.7, 0.5)
@@ -60,16 +62,47 @@ _data = {
 "fade_out": SubResource("Animation_irlwo")
 }
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qn6yr"]
-direction = Vector3(2.08165e-12, 1, 1)
-spread = 90.0
-flatness = 1.0
-initial_velocity_max = 5.0
-radial_accel_max = 15.9
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_hixsw"]
+frames = 2
+frame_0/texture = ExtResource("2_lv4eo")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("3_45gev")
+frame_1/duration = 0.25
 
-[sub_resource type="SphereMesh" id="SphereMesh_d2bx8"]
-radius = 0.1
-height = 0.2
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72yua"]
+transparency = 1
+blend_mode = 1
+albedo_texture = SubResource("AnimatedTexture_hixsw")
+emission_enabled = true
+emission_energy_multiplier = 3.0
+emission_texture = SubResource("AnimatedTexture_hixsw")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_43fxm"]
+_data = [Vector2(0, 1), 0.0, 2.01012, 0, 0, Vector2(1, 0), -1.71635, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_66cel"]
+curve = SubResource("Curve_43fxm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qn6yr"]
+direction = Vector3(2.08165e-12, 2.08165e-12, 1)
+spread = 50.0
+flatness = 0.49
+gravity = Vector3(2.08165e-12, 2, 2.08165e-12)
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+damping_min = 1.0
+damping_max = 3.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_66cel")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rioxq"]
+size = Vector2(0.5, 0.5)
 
 [node name="BookRack" type="Area3D" groups=["highlightable"]]
 collision_layer = 4
@@ -95,11 +128,13 @@ libraries = {
 transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.325, 2.08165e-12, 2.08165e-12)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_72yua")
 emitting = false
-amount = 25
+amount = 12
+lifetime = 2.0
 one_shot = true
-explosiveness = 1.0
+explosiveness = 0.6
 process_material = SubResource("ParticleProcessMaterial_qn6yr")
-draw_pass_1 = SubResource("SphereMesh_d2bx8")
+draw_pass_1 = SubResource("QuadMesh_rioxq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

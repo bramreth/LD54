@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6csr3870y21r"]
+[gd_scene load_steps=15 format=3 uid="uid://c6csr3870y21r"]
 
 [ext_resource type="Script" path="res://src/BookShelf/BookShelf.gd" id="1_8gquf"]
 [ext_resource type="PackedScene" uid="uid://b4cgt5eppq4su" path="res://src/BookShelf/BookRack.tscn" id="2_15cuu"]
 [ext_resource type="Texture2D" uid="uid://cwxudruyd13ne" path="res://KenneyAssets/smoke_01.png" id="3_3ugye"]
+[ext_resource type="PackedScene" uid="uid://cdnfpaw1e54nx" path="res://src/Particles/sparleticles.tscn" id="4_bvt2t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fconc"]
 resource_local_to_scene = true
@@ -157,6 +158,11 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_6y15q")
 }
+
+[node name="Sparleticles" parent="." instance=ExtResource("4_bvt2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
+emitting = false
+amount = 4
 
 [connection signal="full" from="MeshInstance3D/Racks/TopRack" to="." method="_on_rack_full"]
 [connection signal="full" from="MeshInstance3D/Racks/MiddleRack" to="." method="_on_rack_full"]
