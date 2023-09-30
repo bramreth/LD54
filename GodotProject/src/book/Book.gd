@@ -12,7 +12,8 @@ class_name Book
 
 var in_rack: bool = false
 
-func setup(book_res: BookRes) -> void:
+func setup(book_res_in: BookRes) -> void:
+	book_res = book_res_in
 	book_mesh.material_override.albedo_color = book_res.get_color()
 	match book_res.sort:
 		BookRes.SORT.TOP:
