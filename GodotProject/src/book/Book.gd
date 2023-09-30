@@ -7,6 +7,7 @@ class_name Book
 @onready var book_mesh := $BookMesh
 @onready var label_1 := $TempLabel
 @onready var label_2 := $TempLabel2
+@onready var highlight := $BookMesh/Highlight
 
 func _ready() -> void:
 	setup()
@@ -24,6 +25,10 @@ func setup() -> void:
 		BookRes.SORT.BOTTOM:
 			label_1.text = "B"
 			label_2.text = "B"
+
+
+func toggle_highlight(is_highlighted: bool) -> void:
+	highlight.visible = is_highlighted
 
 
 func pick_up() -> void:
