@@ -18,7 +18,7 @@ var last_book: Book = null:
 			inspector_panel.get("theme_override_styles/panel").border_color = BookRes.map_color(last_book.book_res.genre)
 
 func _process(delta: float) -> void:
-	if hands.current_book:
+	if hands.current_book and is_instance_valid(hands.current_book):
 		animation_player.stop()
 		animation_player.play("Inspect")
 		last_book = hands.current_book

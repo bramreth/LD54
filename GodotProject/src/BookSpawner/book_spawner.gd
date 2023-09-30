@@ -11,6 +11,7 @@ func _ready() -> void:
 
 
 func round_started(round: int, items: Array) -> void:
+	cull_existing_books()
 	for item in items:
 		await get_tree().create_timer(randf() + 0.1).timeout
 		if item is BookRes:
@@ -22,3 +23,8 @@ func spawn_book(book_res: BookRes) -> void:
 	spawn_point.add_child(new_book)
 	new_book.apply_torque_impulse(Vector3(randf(), randf(), randf()) * 3.0)
 	new_book.setup(book_res)
+
+
+func cull_existing_books() -> void:
+	for book in get_tree().get_nodes_in_group("book"):
+		book.destroy()

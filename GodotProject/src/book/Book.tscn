@@ -1,7 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8yli7labwl3f"]
+[gd_scene load_steps=18 format=3 uid="uid://c8yli7labwl3f"]
 
 [ext_resource type="Script" path="res://src/book/Book.gd" id="1_o02ga"]
+[ext_resource type="Shader" uid="uid://dlj07njpitotq" path="res://src/book/BookFire.tres" id="3_4ngdi"]
 [ext_resource type="Material" uid="uid://jyvg3ym6j4p2" path="res://Bram's 3D Hellscape/Book/Material.001.tres" id="3_onyfv"]
+[ext_resource type="Texture2D" uid="uid://qvr3hty4ykwx" path="res://MashaAssets/Borris's Web.png" id="4_rw3mr"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bgs4a"]
 bounce = 0.3
@@ -63,6 +65,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7yqdt")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eu7yl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_4ngdi")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/book_texture = ExtResource("4_rw3mr")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spy8t"]
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
@@ -98,6 +107,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:surface_material_override/0:shader_parameter/dissolve_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ng4nl"]
 resource_name = "fade_out"
@@ -116,16 +137,48 @@ tracks/0/keys = {
 "values": [0.0, 1.0]
 }
 
+[sub_resource type="Animation" id="Animation_hm657"]
+resource_name = "destroy"
+length = 0.15
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:surface_material_override/0:shader_parameter/dissolve_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_umh1c"]
 _data = {
 "RESET": SubResource("Animation_iawst"),
+"destroy": SubResource("Animation_hm657"),
 "fade_out": SubResource("Animation_ng4nl")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uqjfi"]
 size = Vector3(0.35, 0.15, 0.55)
 
-[node name="Book" type="RigidBody3D" groups=["highlightable"]]
+[node name="Book" type="RigidBody3D" groups=["book", "highlightable"]]
 collision_layer = 6
 collision_mask = 6
 mass = 0.3
@@ -136,14 +189,16 @@ script = ExtResource("1_o02ga")
 
 [node name="BookMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_0u8jn")
-surface_material_override/0 = ExtResource("3_onyfv")
+surface_material_override/0 = SubResource("ShaderMaterial_eu7yl")
 
 [node name="TempLabel" type="Label3D" parent="BookMesh"]
 transform = Transform3D(-2.29224e-15, -1, -4.37114e-08, 5.26926e-08, 4.37114e-08, -1, 1, -6.42678e-15, 6.35638e-08, 2.08165e-12, 0.076, -3.32415e-09)
+visible = false
 text = "⬛"
 
 [node name="TempLabel2" type="Label3D" parent="BookMesh"]
 transform = Transform3D(-2.29224e-15, -1, -4.37114e-08, 5.26926e-08, 4.37114e-08, -1, 1, -6.42678e-15, 6.35638e-08, 2.08165e-12, -0.076, 3.31998e-09)
+visible = false
 text = "⬛"
 
 [node name="Highlight" type="MeshInstance3D" parent="BookMesh"]
