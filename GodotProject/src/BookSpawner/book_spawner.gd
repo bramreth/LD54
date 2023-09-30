@@ -4,18 +4,24 @@ var current_wave := 0
 var book = preload("res://src/book/Book.tscn")
 var trash = []
 
+var items_to_spawn := []
+
 @onready var spawn_point := $Tube/BookSpawnPoint
 
 func _ready() -> void:
 	RoundManager.round_started.connect(round_started)
 
 
+func _process(delta: float) -> void:
+	if items_to_spawn.is_empty(): return
+	var item = items_to_spawn.pop_back()
+	if item is BookRes:
+			spawn_book(item)
+
 func round_started(round: int, items: Array) -> void:
 	cull_existing_books()
-	for item in items:
-		await get_tree().create_timer(randf() + 0.1).timeout
-		if item is BookRes:
-			spawn_book(item)
+	items_to_spawn.clear()
+	items_to_spawn += items
 
 
 func spawn_book(book_res: BookRes) -> void:
