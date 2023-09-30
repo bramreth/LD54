@@ -20,6 +20,11 @@ func get_round_books() -> Array:
 	return books
 
 
+func round_dispensed() -> void:
+	print("timer started")
+	timer.start(5.0)
+
+
 func _get_special_round() -> Array:
 	if current_round == 0: 
 		return scripted_rounds[TUTORIAL_1].map(map_scripted_book)
@@ -44,7 +49,6 @@ func _generate_random_books() -> Array:
 func _on_timer_timeout() -> void:
 	round_started.emit(current_round, get_round_books())
 	current_round += 1
-	timer.start(10.0)
 
 
 const TUTORIAL_1 := "tutorial_1"
