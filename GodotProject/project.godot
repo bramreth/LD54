@@ -21,6 +21,7 @@ DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 UiEventBus="*res://src/UI/UIEventBus.gd"
 RoundManager="*res://src/rounds/RoundManager.tscn"
 Announcer="*res://src/rounds/Announcer.tscn"
+DialogPacketDb="*res://src/Audio/DialogPacketDB.gd"
 
 [display]
 
