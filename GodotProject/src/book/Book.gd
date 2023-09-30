@@ -10,6 +10,8 @@ class_name Book
 @onready var highlight := $BookMesh/Highlight
 @onready var animation_player: AnimationPlayer = $BookMesh/Highlight/AnimationPlayer
 
+var in_rack: bool = false
+
 func _ready() -> void:
 	setup()
 

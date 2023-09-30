@@ -31,6 +31,8 @@ func is_full() -> bool: return books.size() >= max_books
 func try_add_book(book: Book) -> void:
 	if is_full(): return
 	if not book.book_res: return
+	if book.in_rack: return
+	book.in_rack = true
 	var mesh = book.seperate_mesh()
 	books.append(book.book_res)
 	books_root.add_child(mesh)
@@ -58,4 +60,6 @@ func _calculate_score() -> int:
 
 
 func reset() -> void:
+	for mesh in books_root.get_children():
+		mesh.queue_free()
 	books.clear()
