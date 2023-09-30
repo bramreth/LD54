@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://uq4mi1qbmxj2" path="res://KenneyAssets/smoke_01.png" id="3_3ugye"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fconc"]
+resource_local_to_scene = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_fj1h1"]
 size = Vector3(0.8, 2.25, 0.5)
