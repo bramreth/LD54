@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var fast_intro: bool = false
 @onready var task_appraisal_lever: StaticBody3D = $TaskAppraisalLever
 
 func _ready() -> void:
@@ -8,8 +9,9 @@ func _ready() -> void:
 
 
 func play_intro() -> void:
-	Announcer.queue(DialogPacketDb.get_intro_dialog())
-	await Announcer.announcement_over
+	if not fast_intro:
+		Announcer.queue(DialogPacketDb.get_intro_dialog())
+		await Announcer.announcement_over
 	RoundManager.start_game()
 	task_appraisal_lever.locked = false
 
