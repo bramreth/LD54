@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dun8fkdwh2uho" path="res://src/Speaker/announcer_speaker.tscn" id="14_cejp5"]
 [ext_resource type="PackedScene" uid="uid://85xoiweu8jls" path="res://src/TaskAppraisalLever/task_appraisal_lever.tscn" id="15_l88m0"]
 [ext_resource type="Texture2D" uid="uid://dwdau7ep0mub" path="res://poster5.PNG" id="19_bnsod"]
-[ext_resource type="PackedScene" path="res://src/BookDeleter/Shredder.tscn" id="19_i40ga"]
+[ext_resource type="PackedScene" uid="uid://dae3nldyybmfa" path="res://src/BookDeleter/Shredder.tscn" id="19_i40ga"]
 [ext_resource type="Texture2D" uid="uid://g6qx4e2jr5dr" path="res://poster3.PNG" id="20_nab4m"]
 [ext_resource type="Texture2D" uid="uid://cl4sw5xpkwrmb" path="res://poster1.PNG" id="21_fa7qm"]
 [ext_resource type="Texture2D" uid="uid://dpnqelist35c6" path="res://poster2.JPG" id="22_cbvax"]
@@ -493,7 +493,7 @@ transform = Transform3D(-1.7418e-09, 1.52388e-10, 0.04, -0.00694593, 0.0393923, 
 texture = ExtResource("23_1h427")
 
 [node name="Hoop" type="CSGTorus3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 2.2, -6.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 2.5, -6.1)
 use_collision = true
 collision_layer = 6
 collision_mask = 6

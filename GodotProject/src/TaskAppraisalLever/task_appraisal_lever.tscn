@@ -566,7 +566,7 @@ material_override = SubResource("StandardMaterial3D_smqun")
 mesh = SubResource("PrismMesh_mcbpo")
 
 [node name="RightDoor" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, -1.50996e-07, -1.74846e-07, 1.50996e-07, -1, 7.64274e-15, -1.74846e-07, -1.87582e-14, 1, 0, 0.8, 0)
+transform = Transform3D(-1, -1.50996e-07, -1.74846e-07, 1.50996e-07, -1, 7.64285e-15, -1.74846e-07, -1.87582e-14, 1, 0, 0.8, 0)
 material_override = SubResource("StandardMaterial3D_smqun")
 mesh = SubResource("PrismMesh_mcbpo")
 

@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	var item = items_to_spawn.pop_back()
 	if item is BookRes:
 			spawn_book(item)
-	if item is int: 
+	if item is int:
 		spawn_trash(item)
 
 func round_started(round: int, items: Array) -> void:
