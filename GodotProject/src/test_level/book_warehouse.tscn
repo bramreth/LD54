@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=32 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bsuxb2bp6rdm6" path="res://BackgroundTrash/air_vent.tscn" id="11_vcjia"]
 [ext_resource type="PackedScene" uid="uid://dun8fkdwh2uho" path="res://src/Speaker/announcer_speaker.tscn" id="14_cejp5"]
 [ext_resource type="PackedScene" uid="uid://85xoiweu8jls" path="res://src/TaskAppraisalLever/task_appraisal_lever.tscn" id="15_l88m0"]
+[ext_resource type="PackedScene" uid="uid://dae3nldyybmfa" path="res://src/BookDeleter/Shredder.tscn" id="19_i40ga"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -96,7 +97,7 @@ environment = SubResource("Environment_1l2ll")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_5yjj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -2.04667)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.375, 2.08165e-12)
@@ -459,3 +460,6 @@ material = SubResource("StandardMaterial3D_tw55b")
 
 [node name="TaskAppraisalLever" parent="." instance=ExtResource("15_l88m0")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1, 6.961)
+
+[node name="Shredder" parent="." instance=ExtResource("19_i40ga")]
+transform = Transform3D(1, -1.74393e-16, 3.02058e-16, 3.02058e-16, 0.866025, -0.5, -1.74393e-16, 0.5, 0.866025, 5.09563, 0.468838, -6.6162)
