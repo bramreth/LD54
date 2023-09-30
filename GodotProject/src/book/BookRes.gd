@@ -28,6 +28,13 @@ static func create_random() -> BookRes:
 	return book
 
 
+static func create_from_genre(genre_in: GENRE) -> BookRes:
+	var book = BookRes.new()
+	book.genre = genre_in
+	book.sort = SORT.values().pick_random()
+	return book
+
+
 static func create_from(name_in: String, genre_in: GENRE, sort_in: SORT) -> BookRes:
 	var book = BookRes.new()
 	book.name = name_in
