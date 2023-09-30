@@ -28,8 +28,8 @@ static func create_random() -> BookRes:
 	return book
 
 
-static func map_color(genre: GENRE) -> Color:
-	match(genre):
+static func map_color(genre_in: GENRE) -> Color:
+	match(genre_in):
 		GENRE.BESTSELLERS: return best_color
 		GENRE.SCIFI: return scifi_color
 		GENRE.CLASSICS: return classic_color

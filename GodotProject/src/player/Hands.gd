@@ -12,7 +12,7 @@ extends Node3D
 var current_book: Book = null
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var collider: Object = raycast.get_collider()
 	if collider and collider.is_in_group("highlightable"):
 		collider.toggle_highlight()
@@ -30,7 +30,6 @@ var hand_tween: Tween
 func _pickup_book(book: Book) -> void:
 	if current_book:
 		_drop_book(current_book)
-	var book_position = book.global_position
 	book.pick_up()
 	current_book = book
 	if is_instance_valid(hand_tween) and hand_tween.is_running():
@@ -39,11 +38,9 @@ func _pickup_book(book: Book) -> void:
 	hand_tween.tween_method(
 		tween_position.bind(book.global_position), 0.0, 1.0, 0.5
 	)
-#	hand_tween.tween_property(debug_hand, "global_position", hand_target.global_position, 0.2).from(book.global_position)
 	remote.remote_path = remote.get_path_to(book)
 
 func tween_position(weight: float, book_pos: Vector3) -> void:
-#	printt(weight, book)˚
 	debug_hand.global_position = lerp(book_pos, hand_target.global_position, weight)
 
 func _drop_book(book: Book) -> void:
