@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://q06b8fbnkkbp"]
+
+[ext_resource type="Script" path="res://src/UI/Score.gd" id="1_q526n"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Score" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 48
+text = "Score: 10"
+script = ExtResource("1_q526n")
