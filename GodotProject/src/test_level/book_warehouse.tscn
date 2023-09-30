@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=24 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
 [ext_resource type="PackedScene" uid="uid://b03u3q14ci8al" path="res://src/BookDeleter/book_deleter.tscn" id="3_63jtg"]
@@ -11,6 +11,8 @@
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="8_wflrt"]
 [ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="9_hslbt"]
 [ext_resource type="Texture2D" uid="uid://brif0bb1bh5vx" path="res://KenneyAssets/window_03.png" id="10_awm3o"]
+[ext_resource type="PackedScene" uid="uid://b2yx8u68xoo4e" path="res://BackgroundTrash/clock.tscn" id="10_jav2w"]
+[ext_resource type="PackedScene" uid="uid://bsuxb2bp6rdm6" path="res://BackgroundTrash/air_vent.tscn" id="11_vcjia"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -325,6 +327,11 @@ constant_linear_velocity = Vector3(-1, 2.08165e-12, 2.08165e-12)
 [node name="BookDeleter" parent="Background/Conveyor" instance=ExtResource("3_63jtg")]
 collision_layer = 4
 collision_mask = 4
+
+[node name="Clock" parent="Background" instance=ExtResource("10_jav2w")]
+
+[node name="AirVent" parent="Background" instance=ExtResource("11_vcjia")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0, -1)
 
 [node name="UserInterface" parent="." instance=ExtResource("8_qiqft")]
 
