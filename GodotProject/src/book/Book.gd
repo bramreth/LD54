@@ -44,6 +44,6 @@ func drop(impulse: Vector3 = Vector3.ZERO) -> void:
 	apply_central_impulse(impulse)
 
 
-func seperate_mesh() -> MeshInstance3D: 
+func seperate_mesh() -> MeshInstance3D:
 	remove_child(book_mesh)
 	return book_mesh

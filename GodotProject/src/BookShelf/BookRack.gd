@@ -16,7 +16,7 @@ var genre: BookRes.GENRE
 var books := []
 
 func toggle_highlight() -> void:
-	if books.size() < max_books: 
+	if books.size() < max_books:
 		animation_player.stop()
 		animation_player.play("fade_out")
 
@@ -37,10 +37,10 @@ func try_add_book(book: Book) -> void:
 	book.queue_free()
 	mesh.global_transform = books_root.global_transform
 	mesh.rotate_z(PI/2)
-	
+
 	mesh.global_position += _calculate_book_offset()
-	
-	if books.size() == max_books: 
+
+	if books.size() == max_books:
 		full.emit(self, _calculate_score())
 		particles.emitting = true
 

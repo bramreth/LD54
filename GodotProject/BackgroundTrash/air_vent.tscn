@@ -46,6 +46,21 @@ sections = 15
 section_length = 0.5
 curve = SubResource("Curve_y3xf4")
 
+[sub_resource type="Animation" id="Animation_77vqc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.2, 2.5, 6.75)]
+}
+
 [sub_resource type="Animation" id="Animation_o5vvj"]
 resource_name = "Shake"
 length = 1.2
@@ -61,21 +76,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-5, -5, -5, -5, -5, -5, -5, -5),
 "update": 0,
 "values": [Vector3(6.2, 2.5, 6.75), Vector3(6.2, 2.525, 6.75), Vector3(6.225, 2.5, 6.75), Vector3(6.2, 2.5, 6.75), Vector3(6.2, 2.525, 6.75), Vector3(6.225, 2.5, 6.75), Vector3(6.2, 2.5, 6.725), Vector3(6.2, 2.5, 6.75)]
-}
-
-[sub_resource type="Animation" id="Animation_77vqc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(6.2, 2.5, 6.75)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w8b51"]

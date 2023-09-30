@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhmpponvjvir2"]
+[gd_scene load_steps=9 format=3 uid="uid://bhmpponvjvir2"]
 
 [ext_resource type="Script" path="res://src/player/StandardFPSPlayer.gd" id="1_5qj23"]
 [ext_resource type="Script" path="res://src/player/CinematicCamera.gd" id="2_caykb"]
 [ext_resource type="Script" path="res://src/player/Hands.gd" id="2_re03u"]
 [ext_resource type="Script" path="res://src/player/FloatingRemote.gd" id="4_ismb8"]
+[ext_resource type="PackedScene" uid="uid://q06b8fbnkkbp" path="res://src/UI/UI.tscn" id="5_csro7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5ktr2"]
 
@@ -58,3 +59,5 @@ target_position = Vector3(2.08165e-12, 2.08165e-12, -2)
 collision_mask = 4
 collide_with_areas = true
 debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="UI" parent="." instance=ExtResource("5_csro7")]

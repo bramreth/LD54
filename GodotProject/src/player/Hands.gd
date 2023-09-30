@@ -29,6 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _add_book_to_rack(rack: BookRack) -> void:
 	if rack.is_full(): return
+	if not current_book: return
 	var book := current_book
 	_drop_book(book)
 	rack.try_add_book(book)
@@ -53,6 +54,8 @@ func tween_position(weight: float, book_pos: Vector3) -> void:
 	debug_hand.global_position = lerp(book_pos, hand_target.global_position, weight)
 
 func _drop_book(book: Book) -> void:
+	if not book:
+		return
 	remote.remote_path = NodePath()
 	book.drop(global_position.direction_to(book.global_position).normalized() * 2.5)
 	current_book = null
