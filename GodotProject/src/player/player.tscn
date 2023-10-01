@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/player/FloatingRemote.gd" id="4_ismb8"]
 [ext_resource type="PackedScene" uid="uid://q06b8fbnkkbp" path="res://src/UI/UI.tscn" id="5_csro7"]
 [ext_resource type="Script" path="res://src/player/Feet.gd" id="6_2tatt"]
-[ext_resource type="AudioStream" uid="uid://dfdg5r50sko61" path="res://MashaAssets/audio/step5.mp3" id="7_dsngb"]
+[ext_resource type="AudioStream" uid="uid://xwsrdbr24hcf" path="res://MashaAssets/audio/step5.mp3" id="7_dsngb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5ktr2"]
 
@@ -111,7 +111,7 @@ shape = SubResource("SphereShape3D_j7ybi")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.968096, 0)
 stream = ExtResource("7_dsngb")
-volume_db = -2.0
+volume_db = -10.0
 unit_size = 2.0
 bus = &"SFX"
 
