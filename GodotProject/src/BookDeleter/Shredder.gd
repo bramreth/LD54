@@ -33,13 +33,12 @@ func _process(delta: float) -> void:
 func _on_shredding() -> void:
 	animation_player.play("shred", -1, 2.0)
 	face_animation_player.play("shred")
-	face.texture = happy_face
-	callout(nomnom)
+	callout(nomnom, happy_face)
 	
 
 
-func callout(stream = quotes.pick_random()) -> void:
-	face.texture = hungry_face
+func callout(stream = quotes.pick_random(), face_texture = hungry_face) -> void:
+	face.texture = face_texture
 	voice.stream = stream
 	voice.play()
 
@@ -56,5 +55,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_timer_timeout() -> void:
-	callout()
+	if not voice.playing:
+		callout()
 	timer.wait_time = randf_range(4.0, 15.0)

@@ -1,11 +1,11 @@
 extends Node3D
 class_name BookShelf
 
-@onready var shelf_mesh: MeshInstance3D = $MeshInstance3D
-@onready var racks: Node3D = $MeshInstance3D/Racks
+@onready var racks: Node3D = $CSGBox3D/Racks
 @onready var reset_timer: Timer = $ResetTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sparleticles: GPUParticles3D = $Sparleticles
+@onready var shelf_mesh: CSGBox3D = $CSGBox3D
 
 @export var genre: BookRes.GENRE = BookRes.GENRE.BESTSELLERS
 @export var active_onready: bool = true
@@ -15,7 +15,7 @@ var total_score: int = 0
 
 func _ready() -> void:
 	if not active_onready: shelf_mesh.global_position = Vector3(0, -3, 0)
-	shelf_mesh.material_override.albedo_color = BookRes.map_color(genre)
+	shelf_mesh.material.albedo_color = BookRes.map_color(genre)
 	for rack in racks.get_children():
 		rack.genre = genre
 
