@@ -1,6 +1,7 @@
-[gd_scene load_steps=91 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=94 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
+[ext_resource type="Texture2D" uid="uid://c7mcmdtwy5nci" path="res://KenneyAssets/boiler_room_1k.hdr" id="2_goj4e"]
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
 [ext_resource type="PackedScene" uid="uid://b03u3q14ci8al" path="res://src/BookDeleter/book_deleter.tscn" id="3_63jtg"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark/material_13.tres" id="3_a43wp"]
@@ -15,13 +16,13 @@
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="8_wflrt"]
 [ext_resource type="Texture2D" uid="uid://bpm46y6hwxpl4" path="res://MashaAssets/bh_square.png" id="9_0omro"]
 [ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="9_hslbt"]
-[ext_resource type="Material" path="res://Bram's 3D Hellscape/FloorEdge.tres" id="9_o76vd"]
+[ext_resource type="Material" uid="uid://c0ax3rbf5vtbq" path="res://Bram's 3D Hellscape/FloorEdge.tres" id="9_o76vd"]
 [ext_resource type="Texture2D" uid="uid://brif0bb1bh5vx" path="res://KenneyAssets/window_03.png" id="10_awm3o"]
 [ext_resource type="Texture2D" uid="uid://oyqi4k53mda5" path="res://MashaAssets/mt_tri.png" id="10_dflxv"]
-[ext_resource type="Material" path="res://Bram's 3D Hellscape/Carpet.tres" id="10_eputv"]
+[ext_resource type="Material" uid="uid://ceban57y1up7g" path="res://Bram's 3D Hellscape/Carpet.tres" id="10_eputv"]
 [ext_resource type="PackedScene" uid="uid://b2yx8u68xoo4e" path="res://BackgroundTrash/clock.tscn" id="10_jav2w"]
 [ext_resource type="Texture2D" uid="uid://cybxlwww457gf" path="res://MashaAssets/art_circle.png" id="11_6q0tx"]
-[ext_resource type="Material" path="res://Bram's 3D Hellscape/Walls.tres" id="11_27d8o"]
+[ext_resource type="Material" uid="uid://d1i355156omih" path="res://Bram's 3D Hellscape/Walls.tres" id="11_27d8o"]
 [ext_resource type="PackedScene" uid="uid://bsuxb2bp6rdm6" path="res://BackgroundTrash/air_vent.tscn" id="11_vcjia"]
 [ext_resource type="Texture2D" uid="uid://cjdeqmwa5o6mw" path="res://Bram's 3D Hellscape/4K-cloth_3_Dif.jpg" id="12_rtb5g"]
 [ext_resource type="Texture2D" uid="uid://cfm1bun428jxq" path="res://addons/kenney_prototype_tools/textures/dark/texture_09.png" id="12_xhbwa"]
@@ -55,12 +56,11 @@ colors = PackedColorArray(0, 0, 0, 1, 0.0745098, 0.0745098, 0.0862745, 1, 0.9490
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_5uj7l"]
 gradient = SubResource("Gradient_qlo87")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_akau0"]
+panorama = ExtResource("2_goj4e")
 
 [sub_resource type="Sky" id="Sky_ci0af"]
-sky_material = SubResource("ProceduralSkyMaterial_43nii")
+sky_material = SubResource("PanoramaSkyMaterial_akau0")
 
 [sub_resource type="Environment" id="Environment_1l2ll"]
 background_mode = 2
@@ -454,6 +454,17 @@ default_font = ExtResource("29_bcrpl")
 font = ExtResource("29_bcrpl")
 font_size = 32
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7wjg"]
+transparency = 1
+albedo_color = Color(0.317647, 0.72549, 0.796078, 0.0980392)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.13
+
+[sub_resource type="BoxMesh" id="BoxMesh_3ogq1"]
+material = SubResource("StandardMaterial3D_u7wjg")
+size = Vector3(0.1, 2.5, 4)
+
 [node name="BookWarehouse" type="Node3D"]
 script = ExtResource("1_bbmif")
 
@@ -561,21 +572,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.1
 genre = 2
 active_onready = false
 
-[node name="BookRow4" type="Node3D" parent="Bookshelves" groups=["zone_3_bookrow"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0, -3)
-script = ExtResource("5_d2klj")
-
-[node name="BookShelf" parent="Bookshelves/BookRow4" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
-
-[node name="BookShelf2" parent="Bookshelves/BookRow4" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
-genre = 1
-
-[node name="BookShelf3" parent="Bookshelves/BookRow4" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
-genre = 2
-
 [node name="BookRow6" type="Node3D" parent="Bookshelves" groups=["zone_2_bookrow"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.9, 0, -2)
 script = ExtResource("5_d2klj")
@@ -587,21 +583,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
 genre = 1
 
-[node name="BookRow9" type="Node3D" parent="Bookshelves" groups=["zone_3_bookrow"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999999, 0, -3)
-script = ExtResource("5_d2klj")
-
-[node name="BookShelf" parent="Bookshelves/BookRow9" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
-
-[node name="BookShelf2" parent="Bookshelves/BookRow9" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
-genre = 1
-
-[node name="BookShelf3" parent="Bookshelves/BookRow9" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
-genre = 2
-
 [node name="BookRow10" type="Node3D" parent="Bookshelves" groups=["zone_2_bookrow"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0999999, 0, -2)
 script = ExtResource("5_d2klj")
@@ -610,36 +591,6 @@ script = ExtResource("5_d2klj")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
 
 [node name="BookShelf3" parent="Bookshelves/BookRow10" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
-genre = 2
-
-[node name="BookRow5" type="Node3D" parent="Bookshelves" groups=["zone_3_bookrow"]]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.9, 0, -7)
-script = ExtResource("5_d2klj")
-
-[node name="BookShelf" parent="Bookshelves/BookRow5" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
-
-[node name="BookShelf2" parent="Bookshelves/BookRow5" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
-genre = 1
-
-[node name="BookShelf3" parent="Bookshelves/BookRow5" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
-genre = 2
-
-[node name="BookRow11" type="Node3D" parent="Bookshelves" groups=["zone_3_bookrow"]]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0999999, 0, -7)
-script = ExtResource("5_d2klj")
-
-[node name="BookShelf" parent="Bookshelves/BookRow11" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
-
-[node name="BookShelf2" parent="Bookshelves/BookRow11" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
-genre = 1
-
-[node name="BookShelf3" parent="Bookshelves/BookRow11" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
 genre = 2
 
@@ -856,8 +807,74 @@ trail_lifetime = 0.1
 process_material = SubResource("ParticleProcessMaterial_g5m4r")
 draw_pass_1 = SubResource("ArrayMesh_t8kao")
 
+[node name="BlankTube2" parent="Background/BlankTube" instance=ExtResource("34_4hgnu")]
+transform = Transform3D(1, -3.48787e-16, -3.48787e-16, -3.48787e-16, -1, 8.74228e-08, -3.48787e-16, -8.74228e-08, -1, 0, -4.23042, 0)
+
 [node name="BlankTube2" parent="Background" instance=ExtResource("34_4hgnu")]
-transform = Transform3D(1, -3.48787e-16, -3.48787e-16, -3.48787e-16, -1, 8.74228e-08, -3.48787e-16, -8.74228e-08, -1, -3, -0.430138, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 3.80028, -5)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Background/BlankTube2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0517194, 0)
+amount = 10
+explosiveness = 0.2
+visibility_aabb = AABB(-0.75557, -4, -0.814818, 1.51114, 8, 1.62964)
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_g5m4r")
+draw_pass_1 = SubResource("ArrayMesh_0326n")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Background/BlankTube2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0517194, 0)
+amount = 10
+explosiveness = 0.2
+visibility_aabb = AABB(-0.75557, -4, -0.814818, 1.51114, 8, 1.62964)
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_g5m4r")
+draw_pass_1 = SubResource("ArrayMesh_b3mse")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Background/BlankTube2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0517194, 0)
+amount = 10
+explosiveness = 0.2
+visibility_aabb = AABB(-0.75557, -4, -0.814818, 1.51114, 8, 1.62964)
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_g5m4r")
+draw_pass_1 = SubResource("ArrayMesh_t8kao")
+
+[node name="BlankTube2" parent="Background/BlankTube2" instance=ExtResource("34_4hgnu")]
+transform = Transform3D(1, -3.48787e-16, -3.48787e-16, -3.48787e-16, -1, 8.74228e-08, -3.48787e-16, -8.74228e-08, -1, 0, -4.23042, 0)
+
+[node name="BlankTube3" parent="Background" instance=ExtResource("34_4hgnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 3.80028, -5)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Background/BlankTube3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0517194, 0)
+amount = 10
+explosiveness = 0.2
+visibility_aabb = AABB(-0.75557, -4, -0.814818, 1.51114, 8, 1.62964)
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_g5m4r")
+draw_pass_1 = SubResource("ArrayMesh_0326n")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Background/BlankTube3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0517194, 0)
+amount = 10
+explosiveness = 0.2
+visibility_aabb = AABB(-0.75557, -4, -0.814818, 1.51114, 8, 1.62964)
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_g5m4r")
+draw_pass_1 = SubResource("ArrayMesh_b3mse")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="Background/BlankTube3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0517194, 0)
+amount = 10
+explosiveness = 0.2
+visibility_aabb = AABB(-0.75557, -4, -0.814818, 1.51114, 8, 1.62964)
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_g5m4r")
+draw_pass_1 = SubResource("ArrayMesh_t8kao")
+
+[node name="BlankTube2" parent="Background/BlankTube3" instance=ExtResource("34_4hgnu")]
+transform = Transform3D(1, -3.48787e-16, -3.48787e-16, -3.48787e-16, -1, 8.74228e-08, -3.48787e-16, -8.74228e-08, -1, 0, -4.23042, 0)
 
 [node name="UserInterface" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_qiqft")]
 player = NodePath("../Player")
@@ -866,14 +883,6 @@ player = NodePath("../Player")
 
 [node name="LongShelf" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.25, 2.5)
-material_override = ExtResource("8_wflrt")
-use_collision = true
-collision_layer = 3
-collision_mask = 3
-size = Vector3(6.5, 2.5, 1)
-
-[node name="LongShelf2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.25, -2.5)
 material_override = ExtResource("8_wflrt")
 use_collision = true
 collision_layer = 3
@@ -910,40 +919,6 @@ size = Vector3(0.2, 0.2, 5)
 material = SubResource("StandardMaterial3D_tw55b")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="BlockedArea/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, -2.03547e-08, 0, 2.589e-08, 1, 0, 0.482963, -0.12941)
-size = Vector3(0.2, 0.2, 5)
-material = SubResource("StandardMaterial3D_tw55b")
-
-[node name="BlockedArea2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 1.25, -7.1)
-collision_layer = 7
-collision_mask = 7
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlockedArea2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2.5)
-shape = SubResource("BoxShape3D_odcu5")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="BlockedArea2"]
-transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926, 3.25, 0.15, 2.5)
-size = Vector3(0.2, 0.2, 5)
-material = SubResource("StandardMaterial3D_tw55b")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="BlockedArea2/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
-size = Vector3(0.2, 0.2, 5)
-material = SubResource("StandardMaterial3D_tw55b")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="BlockedArea2/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
-size = Vector3(0.2, 0.2, 5)
-material = SubResource("StandardMaterial3D_tw55b")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="BlockedArea2/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 0.939692, 0.34202, 0, -0.34202, 0.939693, 0, 0.869333, -0.232937)
-size = Vector3(0.2, 0.2, 5)
-material = SubResource("StandardMaterial3D_tw55b")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="BlockedArea2/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -2.03547e-08, 0, 2.589e-08, 1, 0, 0.482963, -0.12941)
 size = Vector3(0.2, 0.2, 5)
 material = SubResource("StandardMaterial3D_tw55b")
@@ -1039,6 +1014,38 @@ F to throw."
 label_settings = SubResource("LabelSettings_w6vbo")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Secret" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 2, -5)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(7, 4, 6)
+material = ExtResource("8_wflrt")
+
+[node name="Secret2" type="CSGBox3D" parent="Secret"]
+operation = 2
+size = Vector3(7, 4, 4)
+material = ExtResource("8_wflrt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Secret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.375, -1.625, 2.08165e-12)
+size = Vector3(0.25, 0.75, 4)
+material = ExtResource("8_wflrt")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Secret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175, -2.025, 0)
+size = Vector3(6.16, 0.1, 4)
+material = ExtResource("8_wflrt")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Secret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.375, 1.625, 2.08165e-12)
+size = Vector3(0.25, 0.75, 4)
+material = ExtResource("8_wflrt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Secret"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 0, 0)
+mesh = SubResource("BoxMesh_3ogq1")
 
 [connection signal="clear_books" from="BookSpawner" to="Player" method="_on_book_spawner_clear_books"]
 [connection signal="toggled" from="StartGameCamera/StartCanvas/MarginContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]

@@ -1,8 +1,16 @@
-[gd_resource type="AudioBusLayout" load_steps=8 format=3 uid="uid://f4ehatnlsbo6"]
+[gd_resource type="AudioBusLayout" load_steps=10 format=3 uid="uid://f4ehatnlsbo6"]
+
+[sub_resource type="AudioEffectBandLimitFilter" id="AudioEffectBandLimitFilter_eytr4"]
+resource_name = "BandLimitFilter"
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_duqjb"]
 resource_name = "Reverb"
 wet = 0.1
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_kwxs0"]
+resource_name = "LowPassFilter"
+cutoff_hz = 2500.0
+db = 1
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_0xo06"]
 resource_name = "Reverb"
@@ -31,6 +39,8 @@ db = 1
 resource_name = "LowPassFilter"
 
 [resource]
+bus/0/effect/0/effect = SubResource("AudioEffectBandLimitFilter_eytr4")
+bus/0/effect/0/enabled = true
 bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
@@ -45,6 +55,8 @@ bus/2/volume_db = 0.0
 bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectReverb_duqjb")
 bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectLowPassFilter_kwxs0")
+bus/2/effect/1/enabled = true
 bus/3/name = &"Dialogue"
 bus/3/solo = false
 bus/3/mute = false
