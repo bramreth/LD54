@@ -42,7 +42,8 @@ var quips := {
 	],
 	"good_job": [
 		
-	]
+	],
+	"too_slow": [preload("res://src/Audio/res/ProductionSpeedBad.tres")]
 }
 
 

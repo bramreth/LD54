@@ -21,8 +21,6 @@ func queue(packets: Array, priority: int = 0) -> void:
 
 
 func play(packet: DialogPacket) -> void:
-#	if priority <= current_priority: return
-#	current_priority = priority
 	player.stream = packet.audio
 	player.play()
 	announcement.emit(packet)

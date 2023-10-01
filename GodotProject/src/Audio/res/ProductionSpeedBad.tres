@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://dyklaf48kjki0"]
+
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="1_lifmt"]
+[ext_resource type="AudioStream" uid="uid://bnwswnrxbl4bp" path="res://MashaAssets/audio/Production speed inad.mp3" id="1_yal5i"]
+
+[resource]
+script = ExtResource("1_lifmt")
+text = "Production speed inadequate. 4 Hours™ added to shift"
+audio = ExtResource("1_yal5i")
