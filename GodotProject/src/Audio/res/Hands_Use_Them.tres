@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://clgqhgossa7iw"]
+
+[ext_resource type="AudioStream" uid="uid://vjye0mfojfy8" path="res://src/Audio/files/debug.mp3" id="1_dlny8"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_7ipsr"]
+
+[resource]
+script = ExtResource("2_7ipsr")
+text = "Is there a particular reason you're not using both your Hands™?"
+audio = ExtResource("1_dlny8")

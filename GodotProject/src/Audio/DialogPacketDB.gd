@@ -23,6 +23,25 @@ var dialog_packets := {
 
 		func():
 			UiEventBus.lock_lever.emit(false),
+	],
+	"unlock_hands": [
+		preload("res://src/Audio/res/Hands_Use_Them.tres"),
+		preload("res://src/Audio/res/Hands.tres"), 
+		func(): RoundManager.unlock_full_hands.emit()
+	],
+	"zone_unlocked": [
+		preload("res://src/Audio/res/Zone_Unlocked.tres"), 
+		preload("res://src/Audio/res/Zone_Unlocked_Part2.tres")
+	],
+	
+}
+
+var quips := {
+	"bad_job": [
+		
+	],
+	"good_job": [
+		
 	]
 }
 

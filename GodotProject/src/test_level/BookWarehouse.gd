@@ -17,7 +17,6 @@ func play_intro() -> void:
 		Announcer.queue(DialogPacketDb.get_intro_dialog())
 		await Announcer.announcement_over
 	RoundManager.start_game()
-#	task_appraisal_lever.locked = false
 
 
 func round_started(round: int, _books: Array) -> void:
@@ -25,8 +24,10 @@ func round_started(round: int, _books: Array) -> void:
 		RoundManager.TUTORIAL_ROUND_1: Announcer.queue(DialogPacketDb.get_tutorial_dialog(1))
 		RoundManager.TUTORIAL_ROUND_2: Announcer.queue(DialogPacketDb.get_tutorial_dialog(2))
 		RoundManager.FIRST_ALL_ONE_GENRE_ROUND: pass
-		RoundManager.BLOCKED_AREA_UNVEILED: blocked_area.queue_free()
-
+		3: Announcer.queue(DialogPacketDb.dialog_packets.unlock_hands)
+		RoundManager.BLOCKED_AREA_UNVEILED: 
+			Announcer.queue(DialogPacketDb.dialog_packets.zone_unlocked)
+			blocked_area.queue_free()
 
 func _on_check_button_toggled(button_pressed: bool) -> void:
 	fast_intro = button_pressed
