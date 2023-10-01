@@ -30,6 +30,10 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
+"Material": {
+"use_external/enabled": true,
+"use_external/path": "res://Bram's 3D Hellscape/Book/Material.tres"
+},
 "Material.001": {
 "use_external/enabled": true,
 "use_external/path": "res://Bram's 3D Hellscape/Book/Material.001.tres"

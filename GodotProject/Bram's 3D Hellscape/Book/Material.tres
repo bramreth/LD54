@@ -1,11 +1,10 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ot2p01nrmc0p"]
 
-[ext_resource type="Texture2D" uid="uid://b53e07spl4lup" path="res://Bram's 3D Hellscape/Book/book_Untitled_Artwork-12.png" id="1_hbhlh"]
+[ext_resource type="Texture2D" uid="uid://d0kc2spou3m8r" path="res://Bram's 3D Hellscape/Book/book_Windy Wendy Leaves Her Pan.png" id="1_xi1rx"]
 
 [resource]
-resource_local_to_scene = true
 resource_name = "Material"
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_hbhlh")
+albedo_texture = ExtResource("1_xi1rx")
 roughness = 0.5
