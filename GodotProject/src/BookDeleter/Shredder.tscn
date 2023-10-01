@@ -3,9 +3,24 @@
 [ext_resource type="Script" path="res://src/BookDeleter/Shredder.gd" id="1_bjdrf"]
 [ext_resource type="Material" uid="uid://cr0ci4e0gwmn7" path="res://addons/kenney_prototype_tools/materials/red/material_10.tres" id="1_xjp6f"]
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="2_eddva"]
-[ext_resource type="Texture2D" uid="uid://dvhmcsijkn5hc" path="res://MashaAssets/hungry-face/Untitled_Artwork-1 3.png" id="3_r0uy1"]
-[ext_resource type="Texture2D" uid="uid://l4vnuglcu0gd" path="res://MashaAssets/hungry-face/Untitled_Artwork-3 3.png" id="4_s3v7p"]
+[ext_resource type="Texture2D" uid="uid://bhy2xkbsnxkq0" path="res://MashaAssets/hungry-face/Untitled_Artwork-1 3.png" id="3_r0uy1"]
+[ext_resource type="Texture2D" uid="uid://8tlxg2y2xrt1" path="res://MashaAssets/hungry-face/Untitled_Artwork-3 3.png" id="4_s3v7p"]
 [ext_resource type="Script" path="res://src/BookDeleter/ShredderArea.gd" id="5_su6tx"]
+
+[sub_resource type="Animation" id="Animation_twlmv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.08165e-12, -0.004, 0.025)]
+}
 
 [sub_resource type="Animation" id="Animation_ew1oi"]
 resource_name = "idle"
@@ -22,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
 "update": 0,
 "values": [Vector3(2.08165e-12, -0.004, 0.025), Vector3(-0.071, -0.004, 0.025), Vector3(0.054, -0.004, 0.025), Vector3(-0.06, -0.004, 0.025), Vector3(2.08165e-12, -0.004, 0.025)]
-}
-
-[sub_resource type="Animation" id="Animation_twlmv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Face:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2.08165e-12, -0.004, 0.025)]
 }
 
 [sub_resource type="Animation" id="Animation_ad6p2"]
