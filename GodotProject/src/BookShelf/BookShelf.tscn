@@ -223,8 +223,6 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2ki4o")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
 [connection signal="full" from="CSGBox3D/Racks/TopRack" to="." method="_on_rack_full"]
 [connection signal="full" from="CSGBox3D/Racks/MiddleRack" to="." method="_on_rack_full"]

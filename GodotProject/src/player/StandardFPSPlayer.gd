@@ -29,6 +29,7 @@ var _look: Vector2
 var _grounded := false
 
 var _vertical_velocity := 0.0
+var movement_input := Vector2.ZERO
 
 var _fall_timeout := 0.0
 var _jump_timeout := 0.0
@@ -105,7 +106,7 @@ func grounded_check() -> void:
 
 func horizontal_movement(delta: float) -> void:
 	_target_speed = sprint_speed if is_sprinting() else move_speed
-	var movement_input := Vector2.ZERO
+	movement_input = Vector2.ZERO
 	movement_input.x = Input.get_axis("move_left", "move_right")
 	movement_input.y = Input.get_axis("move_forward", "move_back")
 
@@ -135,7 +136,7 @@ func horizontal_movement(delta: float) -> void:
 
 
 func should_play_steps() -> bool:
-	return not audio_stream_player_3d.playing and velocity.length_squared() > 0.05 and is_on_floor()
+	return not audio_stream_player_3d.playing and movement_input.length_squared() > 0.05 and is_on_floor()
 
 
 func camera_rotation() -> void:

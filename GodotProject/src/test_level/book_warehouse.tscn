@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=78 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
@@ -10,16 +10,21 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_yieme"]
 [ext_resource type="Script" path="res://src/test_level/BookShelfRow.gd" id="5_d2klj"]
 [ext_resource type="PackedScene" uid="uid://cqqvwy1c75xv7" path="res://src/BookSpawner/book_spawner.tscn" id="7_vwrja"]
+[ext_resource type="Script" path="res://src/test_level/DecorativeShelf.gd" id="8_5elcg"]
 [ext_resource type="PackedScene" uid="uid://b4mrqfvtlycnc" path="res://addons/brambox/UserInterface/user_interface.tscn" id="8_qiqft"]
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="8_wflrt"]
+[ext_resource type="Texture2D" uid="uid://bpm46y6hwxpl4" path="res://MashaAssets/bh_square.png" id="9_0omro"]
 [ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="9_hslbt"]
-[ext_resource type="Material" uid="uid://c0ax3rbf5vtbq" path="res://Bram's 3D Hellscape/FloorEdge.tres" id="9_o76vd"]
+[ext_resource type="Material" path="res://Bram's 3D Hellscape/FloorEdge.tres" id="9_o76vd"]
 [ext_resource type="Texture2D" uid="uid://brif0bb1bh5vx" path="res://KenneyAssets/window_03.png" id="10_awm3o"]
-[ext_resource type="Material" uid="uid://ceban57y1up7g" path="res://Bram's 3D Hellscape/Carpet.tres" id="10_eputv"]
+[ext_resource type="Texture2D" uid="uid://oyqi4k53mda5" path="res://MashaAssets/mt_tri.png" id="10_dflxv"]
+[ext_resource type="Material" path="res://Bram's 3D Hellscape/Carpet.tres" id="10_eputv"]
 [ext_resource type="PackedScene" uid="uid://b2yx8u68xoo4e" path="res://BackgroundTrash/clock.tscn" id="10_jav2w"]
-[ext_resource type="Material" uid="uid://d1i355156omih" path="res://Bram's 3D Hellscape/Walls.tres" id="11_27d8o"]
+[ext_resource type="Texture2D" uid="uid://cybxlwww457gf" path="res://MashaAssets/art_circle.png" id="11_6q0tx"]
+[ext_resource type="Material" path="res://Bram's 3D Hellscape/Walls.tres" id="11_27d8o"]
 [ext_resource type="PackedScene" uid="uid://bsuxb2bp6rdm6" path="res://BackgroundTrash/air_vent.tscn" id="11_vcjia"]
 [ext_resource type="Texture2D" uid="uid://cjdeqmwa5o6mw" path="res://Bram's 3D Hellscape/4K-cloth_3_Dif.jpg" id="12_rtb5g"]
+[ext_resource type="Texture2D" uid="uid://cfm1bun428jxq" path="res://addons/kenney_prototype_tools/textures/dark/texture_09.png" id="12_xhbwa"]
 [ext_resource type="Texture2D" uid="uid://br2mi1khom4wn" path="res://Bram's 3D Hellscape/4K-cloth_3_AO.jpg" id="13_oxveh"]
 [ext_resource type="PackedScene" uid="uid://dun8fkdwh2uho" path="res://src/Speaker/announcer_speaker.tscn" id="14_cejp5"]
 [ext_resource type="Texture2D" uid="uid://d0d1g6lsh84jc" path="res://Bram's 3D Hellscape/4K-cloth_3_Dis.jpg" id="14_xki38"]
@@ -67,6 +72,15 @@ volumetric_fog_density = 0.0
 volumetric_fog_length = 6.0
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_5uj7l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28p30"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5e65"]
+albedo_texture = ExtResource("12_xhbwa")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2ki4o"]
+data = PackedVector3Array(-0.4, 1.125, 0.25, 0.4, 1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, -0.25, 0.4, -1.125, -0.25, -0.4, 1.125, -0.25, -0.4, -1.125, -0.25, 0.4, -1.125, -0.25, 0.4, 1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, -0.25, 0.4, -1.125, 0.25, -0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, 1.125, 0.25, -0.4, 1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, 1.125, -0.25, 0.4, 1.125, -0.25, -0.4, -1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, -1.125, 0.25, 0.4, -1.125, -0.25, -0.4, -1.125, -0.25)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e8cvt"]
 _surfaces = [{
@@ -338,9 +352,6 @@ active_onready = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9, 0, 2)
 script = ExtResource("5_d2klj")
 
-[node name="BookShelf" parent="Bookshelves/BookRow2" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
-
 [node name="BookShelf2" parent="Bookshelves/BookRow2" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
 genre = 1
@@ -426,10 +437,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
 genre = 1
 
-[node name="BookShelf3" parent="Bookshelves/BookRow6" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
-genre = 2
-
 [node name="BookRow9" type="Node3D" parent="Bookshelves" groups=["zone_3_bookrow"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999999, 0, -3)
 script = ExtResource("5_d2klj")
@@ -451,10 +458,6 @@ script = ExtResource("5_d2klj")
 
 [node name="BookShelf" parent="Bookshelves/BookRow10" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1, 1.125, -0.25)
-
-[node name="BookShelf2" parent="Bookshelves/BookRow10" instance=ExtResource("4_c6mja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.125, -0.25)
-genre = 1
 
 [node name="BookShelf3" parent="Bookshelves/BookRow10" instance=ExtResource("4_c6mja")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.125, -0.25)
@@ -491,6 +494,68 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1.1
 genre = 2
 
 [node name="Background" type="Node3D" parent="."]
+
+[node name="DecorativeShelf" type="Node3D" parent="Background"]
+transform = Transform3D(0.983609, -0.180312, -0.000512798, 1.74865e-07, 0.00284488, -0.999996, 0.180313, 0.983605, 0.00279828, -0.0672054, 0.25321, -0.492365)
+script = ExtResource("8_5elcg")
+genre = 1
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Background/DecorativeShelf"]
+operation = 2
+size = Vector3(0.8, 2.25, 0.5)
+material = SubResource("StandardMaterial3D_28p30")
+
+[node name="Racks" type="Node3D" parent="Background/DecorativeShelf/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10528)
+
+[node name="Sort" type="Sprite3D" parent="Background/DecorativeShelf/CSGBox3D/Racks"]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.315, 0.75, -0.05)
+texture = ExtResource("9_0omro")
+
+[node name="Sort2" type="Sprite3D" parent="Background/DecorativeShelf/CSGBox3D/Racks"]
+transform = Transform3D(-8.74228e-09, -6.97574e-17, -0.2, 6.97574e-17, 0.2, -6.97574e-17, 0.2, -6.97574e-17, -8.74228e-09, 0.315, 0.75, -0.05)
+texture = ExtResource("9_0omro")
+
+[node name="Sort3" type="Sprite3D" parent="Background/DecorativeShelf/CSGBox3D/Racks"]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.315, 0, -0.05)
+texture = ExtResource("10_dflxv")
+
+[node name="Sort4" type="Sprite3D" parent="Background/DecorativeShelf/CSGBox3D/Racks"]
+transform = Transform3D(-8.74228e-09, -6.97574e-17, -0.2, 6.97574e-17, 0.2, -6.97574e-17, 0.2, -6.97574e-17, -8.74228e-09, 0.315, 0, -0.05)
+texture = ExtResource("10_dflxv")
+
+[node name="Sort5" type="Sprite3D" parent="Background/DecorativeShelf/CSGBox3D/Racks"]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.315, -0.75, -0.05)
+texture = ExtResource("11_6q0tx")
+
+[node name="Sort6" type="Sprite3D" parent="Background/DecorativeShelf/CSGBox3D/Racks"]
+transform = Transform3D(-8.74228e-09, -6.97574e-17, -0.2, 6.97574e-17, 0.2, -6.97574e-17, 0.2, -6.97574e-17, -8.74228e-09, 0.315, -0.75, -0.05)
+texture = ExtResource("11_6q0tx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Background/DecorativeShelf/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0718091)
+operation = 2
+size = Vector3(0.65, 0.7, 0.5)
+material = SubResource("StandardMaterial3D_i5e65")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Background/DecorativeShelf/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 0.072)
+operation = 2
+size = Vector3(0.65, 0.7, 0.5)
+material = SubResource("StandardMaterial3D_i5e65")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Background/DecorativeShelf/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.75, 0.072)
+operation = 2
+size = Vector3(0.65, 0.7, 0.5)
+material = SubResource("StandardMaterial3D_i5e65")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Background/DecorativeShelf/CSGBox3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background/DecorativeShelf/CSGBox3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2ki4o")
 
 [node name="HarshLight" type="Decal" parent="Background"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 7, 2.9, 0)

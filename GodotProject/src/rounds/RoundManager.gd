@@ -26,8 +26,8 @@ func next_round() -> void:
 	one_color_chance = clamp(one_color_chance + 1, 0, 10)
 
 
-#Zone 1 - 81 Books
-#Zone 2/3 - 108 Books each
+#Zone 1/2 - 81 Books each
+#Zone 3 - 108 Books
 func get_round_books() -> Array:
 	match(current_round):
 		0: return _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.TOP)
@@ -38,6 +38,8 @@ func get_round_books() -> Array:
 		5: return _generate_random_books(20)
 		6: return _generate_random_books(27) + [5]  #Zone 1 is fillable
 		7: return _generate_random_books(30) + [30]
+		8: return _generate_single_genre(null, 30, null) + [5]
+		9: return _generate_random_books(30) + [8]
 		_: return _generate_random_books(_get_round_size())
 
 
