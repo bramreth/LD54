@@ -2,7 +2,7 @@ extends Node3D
 class_name Hands
 
 @export var grip_strength := 10.0
-@export var hand_size := 3
+@export var hand_size := 1
 @export var player: CharacterBody3D
 
 @onready var raycast: RayCast3D = $RayCast3D
@@ -17,6 +17,10 @@ class_name Hands
 
 var current_book: Book = null
 var books := []
+
+func _ready() -> void:
+	RoundManager.unlock_full_hands.connect(func(): hand_size = 3)
+
 
 func clear_books() -> void:
 	books.clear()

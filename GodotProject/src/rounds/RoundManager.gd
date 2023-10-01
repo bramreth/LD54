@@ -1,6 +1,7 @@
 extends Node
 
 signal round_started(round: int, books: Array)
+signal unlock_full_hands()
 
 @onready var timer: Timer = $Timer
 
@@ -12,15 +13,6 @@ func start_game() -> void:
 	current_round = 0
 	one_color_chance = 0
 	timer.start(1.0)
-
-
-func get_round_books() -> Array:
-	var books := _get_special_round()
-	if books.is_empty():
-		if randi_range(1, 30) <= one_color_chance: books = _generate_single_genre(null, _get_round_size(), null)
-		else: books = _generate_random_books(_get_round_size())
-
-	return books
 
 
 func evalutae() -> void:
@@ -36,12 +28,14 @@ func next_round() -> void:
 
 #Zone 1 - 81 Books
 #Zone 2/3 - 108 Books each
-func _get_special_round() -> Array:
+func get_round_books() -> Array:
 	match(current_round):
 		0: return _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.TOP)
 		1: return _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.MIDDLE) + _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.BOTTOM)
 		2: return [7] + _generate_single_genre(BookRes.GENRE.BESTSELLERS, 1, null)
-		3: return _generate_single_genre(BookRes.GENRE.CLASSICS, 7, null) + _generate_single_genre(BookRes.GENRE.BESTSELLERS, 4, null)
+		3: 
+			unlock_full_hands.emit()
+			return _generate_single_genre(BookRes.GENRE.CLASSICS, 7, null) + _generate_single_genre(BookRes.GENRE.BESTSELLERS, 4, null)
 		4: return _generate_single_genre(BookRes.GENRE.SCIFI, 15, null)
 		5: return _generate_random_books(20)
 		6: return _generate_random_books(27)  #Zone 1 is fillable
