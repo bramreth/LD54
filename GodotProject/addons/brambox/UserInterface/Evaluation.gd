@@ -75,37 +75,12 @@ func evaluate() -> void:
 func handle_mistakes(mistakes_in: int) -> void:
 	well_done = false
 	var score = inverse_lerp(max_mistakes, 0, mistakes_in)
-	if score <= 0.59:
-		flavour_label.text = "F"
-	elif score <= 0.62:
-		flavour_label.text = "D-"
-	elif score <= 0.66:
-		flavour_label.text = "D"
-	elif score <= 0.69:
-		flavour_label.text = "D+"
-	elif score <= 0.72:
-		flavour_label.text = "C-"
-	elif score <= 0.76:
-		flavour_label.text = "C"
-	elif score <= 0.79:
-		flavour_label.text = "C+"
-	elif score <= 0.82:
-		flavour_label.text = "B-"
-	elif score <= 0.86:
-		flavour_label.text = "B"
-	elif score <= 0.89:
-		flavour_label.text = "B+"
-	elif score <= 0.92:
-		well_done = true
-		flavour_label.text = "A-"
-	elif score <= 0.96:
-		well_done = true
-		flavour_label.text = "A"
-	else:
-		well_done = true
-		flavour_label.text = "A+"
+	flavour_label.text = RoundManager.calculate_letter_grade(score)
+	if score >= 0.92: well_done = true
 	flavour_label.label_settings.font_color = Color.ORANGE_RED.lerp(Color.GREEN, inverse_lerp(0.59, 1.0, score))
 	if well_done: Announcer.queue([DialogPacketDb.quips.good_job.pick_random()])
+	RoundManager.update_score(score)
+
 
 func return_control() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

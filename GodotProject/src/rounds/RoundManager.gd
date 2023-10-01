@@ -6,12 +6,13 @@ signal unlock_full_hands()
 @onready var timer: Timer = $Timer
 
 var current_round: int = 0
-var one_color_chance: int = 0
+
+var total_score := {}
 
 
 func start_game() -> void:
 	current_round = 0
-	one_color_chance = 0
+	total_score.clear()
 	timer.start(1.0)
 
 
@@ -20,10 +21,15 @@ func evalutae() -> void:
 	evaluator.proceed.connect(next_round)
 	evaluator.evaluate()
 
+
+func update_score(score: float) -> void:
+	total_score[current_round] = score
+	print(total_score)
+
+
 func next_round() -> void:
 	round_started.emit(current_round, get_round_books())
 	current_round += 1
-	one_color_chance = clamp(one_color_chance + 1, 0, 10)
 
 
 #Zone 1/2 - 81 Books each
@@ -64,6 +70,35 @@ func _generate_random_books(amount: int) -> Array:
 
 
 func _get_round_size() -> int: return (current_round + 1) * 2
+
+
+func calculate_letter_grade(score: float) -> String:
+	if score <= 0.59:
+		return "F"
+	elif score <= 0.62:
+		return "D-"
+	elif score <= 0.66:
+		return "D"
+	elif score <= 0.69:
+		return "D+"
+	elif score <= 0.72:
+		return "C-"
+	elif score <= 0.76:
+		return "C"
+	elif score <= 0.79:
+		return "C+"
+	elif score <= 0.82:
+		return "B-"
+	elif score <= 0.86:
+		return "B"
+	elif score <= 0.89:
+		return "B+"
+	elif score <= 0.92:
+		return "A-"
+	elif score <= 0.96:
+		return "A"
+	else:
+		return "A+"
 
 
 func _on_timer_timeout() -> void:
