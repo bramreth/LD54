@@ -8,13 +8,14 @@ extends Camera3D
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+	player.set_physics_process(false)
 	button.pressed.connect(
 		func():
 			var tween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 			tween.tween_callback(
 				func():
 					get_parent().play_intro()
-					player.set_physics_process(false)
 					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 					player.visible = false
 					coffee.apply_central_impulse(Vector3.UP * .1)
