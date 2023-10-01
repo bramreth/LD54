@@ -17,8 +17,8 @@ func start_game() -> void:
 func get_round_books() -> Array:
 	var books := _get_special_round()
 	if books.is_empty():
-		if randi_range(1, 30) <= one_color_chance: books = _generate_single_genre()
-		else: books = _generate_random_books()
+		if randi_range(1, 30) <= one_color_chance: books = _generate_single_genre(null, _get_round_size(), null)
+		else: books = _generate_random_books(_get_round_size())
 
 	return books
 
@@ -34,32 +34,36 @@ func next_round() -> void:
 	one_color_chance = clamp(one_color_chance + 1, 0, 10)
 
 
+#Zone 1 - 81 Books
+#Zone 2/3 - 108 Books each
 func _get_special_round() -> Array:
-	if current_round == TUTORIAL_ROUND_1:
-		return scripted_rounds[TUTORIAL_1].map(map_scripted_book)
-	elif current_round == TUTORIAL_ROUND_2:
-		return scripted_rounds[TUTORIAL_2].map(map_scripted_book)
-	elif current_round == TUTORIAL_ROUND_3:
-		return [7, BookRes.create_random()]
-	elif current_round == FIRST_ALL_ONE_GENRE_ROUND:
-		return _generate_single_genre(BookRes.GENRE.BESTSELLERS)
-	return []
+	match(current_round):
+		0: return _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.TOP)
+		1: return _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.MIDDLE) + _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.BOTTOM)
+		2: return [7] + _generate_single_genre(BookRes.GENRE.BESTSELLERS, 1, null)
+		3: return _generate_single_genre(BookRes.GENRE.CLASSICS, 7, null) + _generate_single_genre(BookRes.GENRE.BESTSELLERS, 4, null)
+		4: return _generate_single_genre(BookRes.GENRE.SCIFI, 15, null)
+		5: return _generate_random_books(20)
+		6: return _generate_random_books(27)  #Zone 1 is fillable
+		_: return _generate_random_books(_get_round_size())
 
 
-func map_scripted_book(book_info: Dictionary) -> BookRes:
-	return BookRes.create_from(book_info[BOOK_NAME], book_info[BOOK_GENRE], book_info[BOOK_SORT])
-
-
-func _generate_single_genre(genre: BookRes.GENRE = BookRes.GENRE.values().pick_random()) -> Array:
+func _generate_single_genre(
+	genre, 
+	amount: int,
+	sort
+) -> Array:
 	var books := []
-	for i in range(_get_round_size()):
-		books.append(BookRes.create_from_genre(genre))
+	for i in range(amount):
+		if not genre: BookRes.GENRE.values().pick_random()
+		if not sort: BookRes.SORT.values().pick_random()
+		books.append(BookRes.create_from_genre(genre, sort))
 	return books
 
 
-func _generate_random_books() -> Array:
+func _generate_random_books(amount: int) -> Array:
 	var books := []
-	for i in range(_get_round_size()):
+	for i in range(amount):
 		books.append(BookRes.create_random())
 	return books
 
@@ -77,22 +81,3 @@ const FIRST_ALL_ONE_GENRE_ROUND := 4
 
 const TUTORIAL_1 := "tutorial_1"
 const TUTORIAL_2 := "tutorial_2"
-const BOOK_NAME := "name"
-const BOOK_GENRE := "genre"
-const BOOK_SORT := "sort"
-
-const scripted_rounds: Dictionary = {
-	TUTORIAL_1: [
-		{BOOK_NAME: "Tutorial Book 1", BOOK_GENRE: BookRes.GENRE.CLASSICS, BOOK_SORT: BookRes.SORT.TOP},
-		{BOOK_NAME: "Tutorial Book 2", BOOK_GENRE: BookRes.GENRE.CLASSICS, BOOK_SORT: BookRes.SORT.TOP},
-		{BOOK_NAME: "Tutorial Book 3", BOOK_GENRE: BookRes.GENRE.CLASSICS, BOOK_SORT: BookRes.SORT.TOP}
-	],
-	TUTORIAL_2: [
-		{BOOK_NAME: "Tutorial Book 4", BOOK_GENRE: BookRes.GENRE.CLASSICS, BOOK_SORT: BookRes.SORT.MIDDLE},
-		{BOOK_NAME: "Tutorial Book 5", BOOK_GENRE: BookRes.GENRE.CLASSICS, BOOK_SORT: BookRes.SORT.MIDDLE},
-		{BOOK_NAME: "Tutorial Book 6", BOOK_GENRE: BookRes.GENRE.CLASSICS, BOOK_SORT: BookRes.SORT.MIDDLE},
-		{BOOK_NAME: "Tutorial Book 7", BOOK_GENRE: BookRes.GENRE.CLASSICS, BOOK_SORT: BookRes.SORT.BOTTOM},
-		{BOOK_NAME: "Tutorial Book 8", BOOK_GENRE: BookRes.GENRE.CLASSICS, BOOK_SORT: BookRes.SORT.BOTTOM},
-		{BOOK_NAME: "Tutorial Book 9", BOOK_GENRE: BookRes.GENRE.CLASSICS, BOOK_SORT: BookRes.SORT.BOTTOM}
-	]
-}

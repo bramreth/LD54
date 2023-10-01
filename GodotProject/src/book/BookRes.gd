@@ -30,11 +30,12 @@ static func create_random() -> BookRes:
 	return book
 
 
-static func create_from_genre(genre_in: GENRE) -> BookRes:
+static func create_from_genre(genre_in: GENRE, sort_in) -> BookRes:
 	var book = BookRes.new()
 	book.resource_local_to_scene = true
 	book.genre = genre_in
-	book.sort = SORT.values().pick_random()
+	if not sort_in: sort_in = SORT.values().pick_random()
+	book.sort = sort_in
 	return book
 
 
