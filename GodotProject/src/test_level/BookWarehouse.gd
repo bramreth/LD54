@@ -4,6 +4,7 @@ extends Node3D
 @onready var task_appraisal_lever: StaticBody3D = $TaskAppraisalLever
 @onready var blocked_area: StaticBody3D = $BlockedArea
 @onready var blocked_area_2: StaticBody3D = $BlockedArea2
+@onready var shredder: Node3D = $Shredder
 
 func _ready() -> void:
 	RoundManager.round_started.connect(round_started)
@@ -20,6 +21,7 @@ func play_intro() -> void:
 
 
 func round_started(round: int, _books: Array) -> void:
+	print("ROUND STARTED: " + str(round))
 	match(round):
 		RoundManager.TUTORIAL_ROUND_1: Announcer.queue(DialogPacketDb.get_tutorial_dialog(1))
 		RoundManager.TUTORIAL_ROUND_2: Announcer.queue(DialogPacketDb.get_tutorial_dialog(2))
@@ -28,6 +30,7 @@ func round_started(round: int, _books: Array) -> void:
 		RoundManager.BLOCKED_AREA_UNVEILED: 
 			Announcer.queue(DialogPacketDb.dialog_packets.zone_unlocked)
 			blocked_area.queue_free()
+			shredder.start()
 
 func _on_check_button_toggled(button_pressed: bool) -> void:
 	fast_intro = button_pressed
