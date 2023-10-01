@@ -21,7 +21,7 @@ var happy_face = preload("res://MashaAssets/hungry-face/Untitled_Artwork-4 3.png
 
 func _ready() -> void:
 	timer.wait_time = randf_range(4.0, 15.0)
-	timer.start()
+#	timer.start()
 
 
 
@@ -34,7 +34,7 @@ func _on_shredding() -> void:
 	animation_player.play("shred", -1, 2.0)
 	face_animation_player.play("shred")
 	callout(nomnom, happy_face)
-	
+
 
 
 func callout(stream = quotes.pick_random(), face_texture = hungry_face) -> void:

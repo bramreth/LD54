@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=59 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
@@ -27,6 +27,9 @@
 [ext_resource type="Texture2D" uid="uid://bfm2wtsswa5y5" path="res://poster4.PNG" id="23_1h427"]
 [ext_resource type="Texture2D" uid="uid://cdx7ahvgk8obm" path="res://KenneyAssets/circle_05.png" id="25_am1lw"]
 [ext_resource type="PackedScene" uid="uid://b30p107cytvc3" path="res://src/tutorial_src/tutorial.tscn" id="27_3kyj5"]
+[ext_resource type="PackedScene" uid="uid://jn4jo5ickom0" path="res://src/BookSpawner/Trash/Trash_4.tscn" id="28_bd6t3"]
+[ext_resource type="Script" path="res://src/test_level/StartGameCamera.gd" id="28_oc3g7"]
+[ext_resource type="FontFile" uid="uid://ij353qf6fdpf" path="res://addons/brambox/UserInterface/Font/Staatliches-Regular.ttf" id="29_bcrpl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -162,9 +165,50 @@ albedo_color = Color(0.321569, 0.235294, 0.152941, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0wob"]
 albedo_color = Color(0.309804, 0.309804, 0.309804, 1)
 
+[sub_resource type="Curve" id="Curve_t5oat"]
+_data = [Vector2(0, 0), 0.0, 4.00134, 0, 0, Vector2(0.508648, 1), 0.0, 0.0, 0, 0, Vector2(0.750899, 0), -2.86934, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vay1a"]
+curve = SubResource("Curve_t5oat")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w5ust"]
+emission_shape = 1
+emission_sphere_radius = 0.05
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+spread = 5.0
+gravity = Vector3(-0.05, 2.08165e-12, 2.08165e-12)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.3
+radial_accel_max = 0.2
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_vay1a")
+turbulence_noise_strength = 0.02
+turbulence_influence_min = 0.0
+
+[sub_resource type="Curve" id="Curve_y3xf4"]
+_data = [Vector2(0, 0), 0.0, 4.00134, 0, 0, Vector2(0.508648, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.86934, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ubnr"]
+shading_mode = 0
+use_particle_trails = true
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_n8sec"]
+material = SubResource("StandardMaterial3D_7ubnr")
+radius = 0.025
+radial_steps = 16
+sections = 30
+section_length = 0.5
+curve = SubResource("Curve_y3xf4")
+
+[sub_resource type="Theme" id="Theme_xjuk8"]
+default_base_scale = 96.0
+default_font = ExtResource("29_bcrpl")
+
 [node name="BookWarehouse" type="Node3D"]
 script = ExtResource("1_bbmif")
-fast_intro = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1l2ll")
@@ -173,7 +217,8 @@ environment = SubResource("Environment_1l2ll")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_5yjj6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -2.04667)
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 1, 1, 4.95333)
+visible = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.375, 2.08165e-12)
@@ -432,9 +477,8 @@ constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3.5)
 constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
 
-[node name="Conveyor4" parent="Background/Conveyor" instance=ExtResource("4_v6cgb")]
+[node name="Conveyor4" parent="Background/Conveyor" groups=["conveyor"] instance=ExtResource("4_v6cgb")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.25, 0.4, 6.25)
-constant_linear_velocity = Vector3(-1, 2.08165e-12, 2.08165e-12)
 
 [node name="BookDeleter" parent="Background/Conveyor" instance=ExtResource("3_63jtg")]
 collision_layer = 4
@@ -485,7 +529,8 @@ lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_mmms6")
 draw_pass_1 = SubResource("QuadMesh_760vm")
 
-[node name="UserInterface" parent="." instance=ExtResource("8_qiqft")]
+[node name="UserInterface" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_qiqft")]
+player = NodePath("../Player")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("9_hslbt")]
 
@@ -596,5 +641,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
 size = Vector3(0.2, 0.2, 0.4)
 
 [node name="Tutorial" parent="." instance=ExtResource("27_3kyj5")]
+
+[node name="Coffee" parent="." instance=ExtResource("28_bd6t3")]
+transform = Transform3D(0.965926, -4.27175e-16, -0.258819, 3.48787e-16, 1, -3.48787e-16, 0.258819, 2.4663e-16, 0.965926, 3.83176, 0.910714, 6.4285)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Coffee"]
+transform = Transform3D(1, -2.74202e-23, -3.06682e-08, -6.95888e-23, 1, 1.59643e-22, 7.4012e-09, -1.21183e-23, 1, 4.76837e-07, 0.1, 0)
+amount = 3
+lifetime = 6.0
+trail_enabled = true
+trail_lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_w5ust")
+draw_pass_1 = SubResource("TubeTrailMesh_n8sec")
+
+[node name="StartGameCamera" type="Camera3D" parent="." node_paths=PackedStringArray("player", "coffee")]
+transform = Transform3D(0.707107, -4.93259e-16, -0.707107, 3.48787e-16, 1, -3.48787e-16, 0.707107, 1.60554e-24, 0.707107, 2.758, 1, 6.678)
+current = true
+fov = 80.0
+script = ExtResource("28_oc3g7")
+player = NodePath("../Player")
+coffee = NodePath("../Coffee")
+
+[node name="StartCanvas" type="CanvasLayer" parent="StartGameCamera"]
+
+[node name="MarginContainer" type="MarginContainer" parent="StartGameCamera/StartCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_xjuk8")
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 256
+
+[node name="Button" type="Button" parent="StartGameCamera/StartCanvas/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+focus_mode = 0
+theme_override_font_sizes/font_size = 96
+text = "Begin your work day"
 
 [connection signal="clear_books" from="BookSpawner" to="Player" method="_on_book_spawner_clear_books"]

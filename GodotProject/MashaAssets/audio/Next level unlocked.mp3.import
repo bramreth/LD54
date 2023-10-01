@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0h0gqofp84fd"
+path="res://.godot/imported/Next level unlocked.mp3-8beb7483cc070f1a3b7f546cf5629942.mp3str"
+
+[deps]
+
+source_file="res://MashaAssets/audio/Next level unlocked.mp3"
+dest_files=["res://.godot/imported/Next level unlocked.mp3-8beb7483cc070f1a3b7f546cf5629942.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

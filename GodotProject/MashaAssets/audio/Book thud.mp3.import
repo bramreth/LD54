@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cuvpslwuy01es"
+path="res://.godot/imported/Book thud.mp3-1e8051cbaccef27f4fbf22a3f7c21c16.mp3str"
+
+[deps]
+
+source_file="res://MashaAssets/audio/Book thud.mp3"
+dest_files=["res://.godot/imported/Book thud.mp3-1e8051cbaccef27f4fbf22a3f7c21c16.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

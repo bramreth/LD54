@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://wu3g2ivimksc"]
+
+[node name="Coffee" type="CSGCylinder3D"]
+transform = Transform3D(0.5, 4.76452e-16, 0.866025, -1.27665e-16, 1, -4.76452e-16, -0.866025, 1.27665e-16, 0.5, 0, 0, 0)
+radius = 0.1
+height = 0.3
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 8.73104e-24, 2.50326e-08, 0, 1, 0, 2.50326e-08, 2.64698e-23, 1, 0, 0.025, 0)
+operation = 2
+radius = 0.075
+height = 0.3
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(0.5, -0.707107, -0.5, 0.707107, -4.37114e-08, 0.707107, -0.5, -0.707107, 0.5, -0.0707107, 0, 0.0707107)
+inner_radius = 0.05
+outer_radius = 0.1
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGTorus3D"]
+transform = Transform3D(0.5, 0.707107, -0.5, -0.707107, 3.55271e-15, -0.707107, -0.5, 0.707107, 0.5, 0.0883884, 0, -0.0530331)
+operation = 2
+radius = 0.075
+height = 0.3

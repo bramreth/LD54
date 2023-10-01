@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+@export var player: CharacterBody3D
 @onready var pause_screen: Control = $PauseScreen
 @onready var pause_container: CenterContainer = %PauseContainer
 @onready var settings_container: MarginContainer = %SettingsContainer
@@ -14,7 +15,10 @@ var paused := false:
 			resume_button.grab_focus()
 			get_tree().paused = true
 		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			if player.visible:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			else:
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 			get_tree().paused = false
 

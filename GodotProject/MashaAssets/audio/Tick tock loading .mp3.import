@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d4j3f2ewq30hs"
+path="res://.godot/imported/Tick tock loading .mp3-e7d11d55922f0f19abda53521cf66026.mp3str"
+
+[deps]
+
+source_file="res://MashaAssets/audio/Tick tock loading .mp3"
+dest_files=["res://.godot/imported/Tick tock loading .mp3-e7d11d55922f0f19abda53521cf66026.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

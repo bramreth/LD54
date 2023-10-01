@@ -22,17 +22,17 @@ func clear_books() -> void:
 	for book in books: _drop_book(book)
 
 
-func get_top_book(pop = false) -> Book: 
-	if not books.is_empty(): 
-		if pop: return books.pop_front() 
-		else: return books.front() 
+func get_top_book(pop = false) -> Book:
+	if not books.is_empty():
+		if pop: return books.pop_front()
+		else: return books.front()
 	else: return null
 
 
 func get_bottom_book(pop = false) -> Book:
-	if not books.is_empty(): 
-		if pop: return books.pop_back() 
-		else: return books.back() 
+	if not books.is_empty():
+		if pop: return books.pop_back()
+		else: return books.back()
 	else: return null
 
 

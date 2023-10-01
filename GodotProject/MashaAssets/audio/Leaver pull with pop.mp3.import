@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bkks0rbk0jxwg"
+path="res://.godot/imported/Leaver pull with pop.mp3-e9f2a4c4960d58a8637c1c4d6692fe07.mp3str"
+
+[deps]
+
+source_file="res://MashaAssets/audio/Leaver pull with pop.mp3"
+dest_files=["res://.godot/imported/Leaver pull with pop.mp3-e9f2a4c4960d58a8637c1c4d6692fe07.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

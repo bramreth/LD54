@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnwswnrxbl4bp"
+path="res://.godot/imported/Production speed inad.mp3-bb49d4d1394397bc0116961969a45ece.mp3str"
+
+[deps]
+
+source_file="res://MashaAssets/audio/Production speed inad.mp3"
+dest_files=["res://.godot/imported/Production speed inad.mp3-bb49d4d1394397bc0116961969a45ece.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

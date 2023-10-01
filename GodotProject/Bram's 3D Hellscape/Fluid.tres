@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://craj3onnlnw77"]
+
+[resource]
+resource_name = "Fluid"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.249995, 0.112996, 0.064165, 1)
+roughness = 0.5

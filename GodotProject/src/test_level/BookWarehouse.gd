@@ -5,10 +5,12 @@ extends Node3D
 
 func _ready() -> void:
 	RoundManager.round_started.connect(round_started)
-	play_intro()
 
 
 func play_intro() -> void:
+	get_tree().call_group("conveyor_animator", "play", "Idle")
+	get_tree().call_group("conveyor", "set_constant_linear_velocity", Vector3(-1,0,0))
+
 	if not fast_intro:
 		Announcer.queue(DialogPacketDb.get_intro_dialog())
 		await Announcer.announcement_over

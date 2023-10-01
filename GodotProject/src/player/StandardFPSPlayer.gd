@@ -12,6 +12,7 @@ extends CharacterBody3D
 
 @export var mouse_sensitivity: float = 0.001
 @export var stick_sensitivity: float = 6.0
+@onready var camera_3d: Camera3D = $CinematicCamera/Camera3D
 
 const JUMP_TIMEOUT := 0.1
 const TERMINAL_VELOCITY := 53.0

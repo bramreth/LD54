@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dphtphwc4ai1p"
+path="res://.godot/imported/high pppp sound notification airhorn attempt .mp3-7f0b7b151808c8c362ccced5a1838c34.mp3str"
+
+[deps]
+
+source_file="res://MashaAssets/audio/high pppp sound notification airhorn attempt .mp3"
+dest_files=["res://.godot/imported/high pppp sound notification airhorn attempt .mp3-7f0b7b151808c8c362ccced5a1838c34.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

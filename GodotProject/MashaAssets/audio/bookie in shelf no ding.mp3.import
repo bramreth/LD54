@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1l65v4ea8ght"
+path="res://.godot/imported/bookie in shelf no ding.mp3-e85437ac884ecf25e5084576834670cf.mp3str"
+
+[deps]
+
+source_file="res://MashaAssets/audio/bookie in shelf no ding.mp3"
+dest_files=["res://.godot/imported/bookie in shelf no ding.mp3-e85437ac884ecf25e5084576834670cf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
