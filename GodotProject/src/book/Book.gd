@@ -63,6 +63,7 @@ class_name Book
 @onready var label_2: Label3D = $BookMesh/TempLabel2
 @onready var highlight := $BookMesh/Highlight
 @onready var animation_player: AnimationPlayer = $BookMesh/Highlight/AnimationPlayer
+@onready var mesh_animation_player: AnimationPlayer = $BookMesh/AnimationPlayer
 
 var in_rack: bool = false
 
@@ -127,6 +128,7 @@ func drop(impulse: Vector3 = Vector3.ZERO) -> void:
 	freeze = false
 	collision_shape.disabled = false
 	apply_central_impulse(impulse)
+	stop_inspect()
 
 
 func seperate_mesh() -> MeshInstance3D:
@@ -136,3 +138,11 @@ func seperate_mesh() -> MeshInstance3D:
 
 func destroy() -> void:
 	animation_player.play("destroy")
+
+
+func inspect() -> void:
+	mesh_animation_player.play("inspect")
+
+
+func stop_inspect() -> void:
+	mesh_animation_player.play("RESET")

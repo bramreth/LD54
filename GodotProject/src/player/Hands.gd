@@ -51,6 +51,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif collider is BookShredderArea: if is_instance_valid(get_top_book()): collider.use(get_top_book(true)) #Probably needs to pop the book off the array
 	if event.is_action_pressed("throw"):
 		if is_instance_valid(get_top_book()): _drop_book(get_top_book(true))
+	if event.is_action_pressed("inspect"):
+		get_top_book().inspect()
 
 
 func _add_book_to_rack(rack: BookRack) -> void:
@@ -68,6 +70,7 @@ func _pickup_book(book: Book) -> void:
 		_drop_book(get_bottom_book(true))
 	book.pick_up()
 #	current_book = book
+	if not books.is_empty(): get_top_book().stop_inspect()
 	books.push_front(book)
 	update_remotes()
 
