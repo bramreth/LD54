@@ -13,7 +13,8 @@ size = Vector3(0.2, 0.2, 0.1)
 points = PackedVector3Array(-0.0985089, -0.0985089, -0.05, 0.0954305, 0.0954305, 0.05, 0.0954305, -0.0954305, 0.05, 0.0985089, 0.0985089, -0.05, -0.0954305, 0.0954305, 0.05, 0.0985089, -0.0985089, -0.05, -0.0985089, 0.0985089, -0.05, -0.0954305, -0.0954305, 0.05)
 
 [node name="Trash_2" type="RigidBody3D"]
-collision_layer = 3
+collision_layer = 2
+collision_mask = 2
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_udm23")
 continuous_cd = true

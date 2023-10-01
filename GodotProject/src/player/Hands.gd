@@ -2,9 +2,10 @@ extends Node3D
 class_name Hands
 
 @export var grip_strength := 10.0
-@export var hand_size := 3
+@export var hand_size := 1
 @export var player: CharacterBody3D
 
+@onready var camera_3d: Camera3D = $"../Camera3D"
 @onready var raycast: RayCast3D = $RayCast3D
 @onready var hand_target: Node3D = $HandTarget
 @onready var debug_hand: MeshInstance3D = $HandTarget/DebugHand
@@ -18,8 +19,12 @@ class_name Hands
 var current_book: Book = null
 var books := []
 
+func _ready() -> void:
+	RoundManager.unlock_full_hands.connect(func(): hand_size = 3)
+
+
 func clear_books() -> void:
-	for book in books: _drop_book(book)
+	books.clear()
 
 
 func get_top_book(pop = false) -> Book:
@@ -67,7 +72,7 @@ func _add_book_to_rack(rack: BookRack) -> void:
 
 func _pickup_book(book: Book) -> void:
 	if get_bottom_book() and is_instance_valid(get_bottom_book()) and books.size() >= hand_size:
-		_drop_book(get_bottom_book(true))
+		_drop_book(get_bottom_book(true), 0.01)
 	book.pick_up()
 #	current_book = book
 	if not books.is_empty(): get_top_book().stop_inspect()
@@ -96,9 +101,9 @@ func tween_position(weight: float, book_pos: Vector3, i: int) -> void:
 	pos += (i * direction.normalized() * 0.2) + (i * -global_transform.basis.x * 0.2)
 	remote_targets[i].global_position = lerp(book_pos, pos, weight)
 
-func _drop_book(book: Book) -> void:
+func _drop_book(book: Book, force: float = 2.5) -> void:
 	if not book:
 		return
 	books.erase(book)
 	update_remotes()
-	book.drop(-global_transform.basis.z.normalized() + Vector3(0.0, 0.5, 0.0) * 2.5)
+	book.drop((-camera_3d.global_transform.basis.z + camera_3d.global_transform.basis.z * 0.5).normalized() * force)
