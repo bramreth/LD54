@@ -7,7 +7,9 @@ signal unlock_full_hands()
 
 var current_round: int = 0
 
-var total_score := {}
+const SCORE := "score"
+const TIME := "time"
+var total_score: Dictionary = {}
 
 
 func start_game() -> void:
@@ -23,8 +25,26 @@ func evalutae() -> void:
 
 
 func update_score(score: float) -> void:
-	total_score[current_round] = score
-	print(total_score)
+	total_score[current_round][SCORE] = score
+
+
+func update_time(time: float) -> void:
+	total_score[current_round][TIME] = time
+
+
+func calculate_total_score() -> float:
+	var rounds = total_score.keys().size()
+	var total_score_value: float = 0.0
+	for key in total_score.keys():
+		total_score += total_score[key][SCORE]
+	return total_score_value / rounds
+
+
+func calculate_total_time() -> float:
+	var total_time: float = 0.0
+	for key in total_score.keys():
+		total_score += total_score[key][TIME]
+	return total_time
 
 
 func next_round() -> void:
