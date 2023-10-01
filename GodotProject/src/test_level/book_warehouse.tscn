@@ -596,3 +596,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
 size = Vector3(0.2, 0.2, 0.4)
 
 [node name="Tutorial" parent="." instance=ExtResource("27_3kyj5")]
+
+[connection signal="clear_books" from="BookSpawner" to="Player" method="_on_book_spawner_clear_books"]
