@@ -709,5 +709,8 @@ Left click to interact.
 F to throw."
 label_settings = SubResource("LabelSettings_w6vbo")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="clear_books" from="BookSpawner" to="Player" method="_on_book_spawner_clear_books"]
 [connection signal="toggled" from="StartGameCamera/StartCanvas/MarginContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

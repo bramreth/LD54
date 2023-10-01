@@ -5,6 +5,7 @@ extends Node3D
 @onready var blocked_area: StaticBody3D = $BlockedArea
 @onready var blocked_area_2: StaticBody3D = $BlockedArea2
 @onready var shredder: Node3D = $Shredder
+@onready var production_speed_timer: Timer = $Timer
 
 func _ready() -> void:
 	RoundManager.round_started.connect(round_started)
@@ -22,6 +23,7 @@ func play_intro() -> void:
 
 func round_started(round: int, _books: Array) -> void:
 	print("ROUND STARTED: " + str(round))
+	start_production_speed_timer()
 	match(round):
 		RoundManager.TUTORIAL_ROUND_1: Announcer.queue(DialogPacketDb.get_tutorial_dialog(1))
 		RoundManager.TUTORIAL_ROUND_2: Announcer.queue(DialogPacketDb.get_tutorial_dialog(2))
@@ -34,3 +36,12 @@ func round_started(round: int, _books: Array) -> void:
 
 func _on_check_button_toggled(button_pressed: bool) -> void:
 	fast_intro = button_pressed
+
+
+func start_production_speed_timer() -> void:
+	production_speed_timer.stop()
+	production_speed_timer.start(randf_range(30.0, 45.0))
+
+
+func _on_timer_timeout() -> void:
+	Announcer.queue(DialogPacketDb.quips.too_slow)

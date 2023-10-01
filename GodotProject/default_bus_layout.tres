@@ -1,4 +1,34 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://f4ehatnlsbo6"]
+[gd_resource type="AudioBusLayout" load_steps=8 format=3 uid="uid://f4ehatnlsbo6"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_duqjb"]
+resource_name = "Reverb"
+wet = 0.1
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_0xo06"]
+resource_name = "Reverb"
+wet = 0.1
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_r8103"]
+resource_name = "Delay"
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_drl2p"]
+resource_name = "Compressor"
+ratio = 18.5
+gain = 3.7
+attack_us = 40.0
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_oj4xb"]
+resource_name = "Phaser"
+range_max_hz = 614.193
+feedback = 0.9
+
+[sub_resource type="AudioEffectHighPassFilter" id="AudioEffectHighPassFilter_iks5o"]
+resource_name = "HighPassFilter"
+cutoff_hz = 500.0
+db = 1
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_y08qw"]
+resource_name = "LowPassFilter"
 
 [resource]
 bus/1/name = &"Music"
@@ -13,9 +43,35 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectReverb_duqjb")
+bus/2/effect/0/enabled = true
 bus/3/name = &"Dialogue"
 bus/3/solo = false
 bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_0xo06")
+bus/3/effect/0/enabled = true
+bus/4/name = &"Announcer"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Dialogue"
+bus/4/effect/0/effect = SubResource("AudioEffectDelay_r8103")
+bus/4/effect/0/enabled = true
+bus/5/name = &"Shredder"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"Dialogue"
+bus/5/effect/0/effect = SubResource("AudioEffectCompressor_drl2p")
+bus/5/effect/0/enabled = true
+bus/5/effect/1/effect = SubResource("AudioEffectPhaser_oj4xb")
+bus/5/effect/1/enabled = false
+bus/5/effect/2/effect = SubResource("AudioEffectHighPassFilter_iks5o")
+bus/5/effect/2/enabled = true
+bus/5/effect/3/effect = SubResource("AudioEffectLowPassFilter_y08qw")
+bus/5/effect/3/enabled = true

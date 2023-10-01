@@ -20,6 +20,7 @@ var happy_face = preload("res://MashaAssets/hungry-face/Untitled_Artwork-4 3.png
 
 
 func _ready() -> void:
+	voice.bus = &"Shredder"
 	timer.wait_time = randf_range(10.0, 30.0)
 
 

@@ -1,12 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://c65cq13he126k"]
+[gd_scene load_steps=3 format=3 uid="uid://c65cq13he126k"]
 
 [ext_resource type="Script" path="res://src/rounds/Announcer.gd" id="1_1r1sw"]
+[ext_resource type="AudioStream" uid="uid://chcf1v0rxcr8p" path="res://MashaAssets/audio/Shredder option 2.mp3" id="2_54wbd"]
 
 [node name="Announcer" type="Node"]
 script = ExtResource("1_1r1sw")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_54wbd")
 attenuation_model = 2
 volume_db = 1.0
+bus = &"Announcer"
 
 [connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
