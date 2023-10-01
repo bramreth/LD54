@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqqvwy1c75xv7"]
+[gd_scene load_steps=7 format=3 uid="uid://cqqvwy1c75xv7"]
 
 [ext_resource type="Script" path="res://src/BookSpawner/book_spawner.gd" id="1_2ucex"]
-[ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange/material_01.tres" id="1_vmtpy"]
+[ext_resource type="Texture2D" uid="uid://ca8fu70w03tpr" path="res://KenneyAssets/pattern2.png" id="2_xo3sj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mihge"]
+albedo_texture = ExtResource("2_xo3sj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avk1k"]
+albedo_color = Color(0.807843, 0.682353, 0.364706, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35wa1"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4haf"]
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="BookSpawner" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 2.08165e-12)
@@ -12,14 +24,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 1, -6.3)
 use_collision = true
 radius = 0.75
 sides = 16
-material = ExtResource("1_vmtpy")
+material = SubResource("StandardMaterial3D_mihge")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Tube"]
 operation = 2
 use_collision = true
 radius = 0.6
 sides = 16
-material = ExtResource("1_vmtpy")
+material = SubResource("StandardMaterial3D_avk1k")
 
 [node name="BookSpawnPoint" type="Node3D" parent="Tube"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.5, 2.08165e-12)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Tube"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
+radius = 0.8
+height = 0.4
+sides = 16
+material = SubResource("StandardMaterial3D_35wa1")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Tube/CSGCylinder3D"]
+operation = 2
+radius = 0.6
+height = 0.4
+sides = 16
+material = SubResource("StandardMaterial3D_s4haf")

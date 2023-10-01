@@ -27,7 +27,7 @@ func round_started(round: int, _books: Array) -> void:
 		RoundManager.TUTORIAL_ROUND_2: Announcer.queue(DialogPacketDb.get_tutorial_dialog(2))
 		RoundManager.FIRST_ALL_ONE_GENRE_ROUND: pass
 		3: Announcer.queue(DialogPacketDb.dialog_packets.unlock_hands)
-		RoundManager.BLOCKED_AREA_UNVEILED: 
+		RoundManager.BLOCKED_AREA_UNVEILED:
 			Announcer.queue(DialogPacketDb.dialog_packets.zone_unlocked)
 			blocked_area.queue_free()
 			shredder.start()
