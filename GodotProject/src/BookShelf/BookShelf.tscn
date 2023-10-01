@@ -1,19 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6csr3870y21r"]
+[gd_scene load_steps=16 format=3 uid="uid://c6csr3870y21r"]
 
 [ext_resource type="Script" path="res://src/BookShelf/BookShelf.gd" id="1_8gquf"]
 [ext_resource type="PackedScene" uid="uid://b4cgt5eppq4su" path="res://src/BookShelf/BookRack.tscn" id="2_15cuu"]
 [ext_resource type="Texture2D" uid="uid://cwxudruyd13ne" path="res://KenneyAssets/smoke_01.png" id="3_3ugye"]
 [ext_resource type="PackedScene" uid="uid://cdnfpaw1e54nx" path="res://src/Particles/sparleticles.tscn" id="4_bvt2t"]
 [ext_resource type="Texture2D" uid="uid://cfm1bun428jxq" path="res://addons/kenney_prototype_tools/textures/dark/texture_09.png" id="5_ex8nx"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2ki4o"]
-data = PackedVector3Array(-0.4, 1.125, 0.25, 0.4, 1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, -0.25, 0.4, -1.125, -0.25, -0.4, 1.125, -0.25, -0.4, -1.125, -0.25, 0.4, -1.125, -0.25, 0.4, 1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, -0.25, 0.4, -1.125, 0.25, -0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, 1.125, 0.25, -0.4, 1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, 1.125, -0.25, 0.4, 1.125, -0.25, -0.4, -1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, -1.125, 0.25, 0.4, -1.125, -0.25, -0.4, -1.125, -0.25)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fconc"]
-resource_local_to_scene = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_fj1h1"]
-size = Vector3(0.8, 2.25, 0.5)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4a6j7"]
 emission_shape = 3
@@ -44,26 +35,38 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/path = NodePath("GPUParticles3D:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles3D:emitting")
+tracks/1/path = NodePath("CSGBox3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGBox3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_qe0t1"]
@@ -72,22 +75,10 @@ length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.9),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(2.08165e-12, -3, 2.08165e-12)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GPUParticles3D:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -100,14 +91,26 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("CSGBox3D:position")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1.4),
-"transitions": PackedFloat32Array(0.5, -2, 1),
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(-2, 1),
 "update": 0,
-"values": [Vector3(2.08165e-12, -3, 2.08165e-12), Vector3(2.08165e-12, -0.5, 2.08165e-12), Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)]
+"values": [Vector3(2.08165e-12, -3, 2.08165e-12), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBox3D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.8, 1.3, 1), Vector3(1.2, 0.9, 1), Vector3(1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6y15q"]
@@ -123,20 +126,11 @@ resource_local_to_scene = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5e65"]
 albedo_texture = ExtResource("5_ex8nx")
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2ki4o"]
+data = PackedVector3Array(-0.4, 1.125, 0.25, 0.4, 1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, -0.25, 0.4, -1.125, -0.25, -0.4, 1.125, -0.25, -0.4, -1.125, -0.25, 0.4, -1.125, -0.25, 0.4, 1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, -0.25, 0.4, -1.125, 0.25, -0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, 1.125, 0.25, -0.4, 1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, 1.125, -0.25, 0.4, 1.125, -0.25, -0.4, -1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, -1.125, 0.25, 0.4, -1.125, -0.25, -0.4, -1.125, -0.25)
+
 [node name="BookShelf" type="Node3D"]
 script = ExtResource("1_8gquf")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_2ki4o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-material_override = SubResource("StandardMaterial3D_fconc")
-mesh = SubResource("BoxMesh_fj1h1")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -1.1, 2.08165e-12)
@@ -194,6 +188,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.75, 0.072)
 operation = 2
 size = Vector3(0.65, 0.7, 0.5)
 material = SubResource("StandardMaterial3D_i5e65")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2ki4o")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 
