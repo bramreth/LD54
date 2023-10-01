@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://di2rm7gpuigl5"]
+
+[ext_resource type="AudioStream" uid="uid://vjye0mfojfy8" path="res://src/Audio/files/debug.mp3" id="1_hl735"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_cnle3"]
+
+[resource]
+script = ExtResource("2_cnle3")
+text = "We're unlocking more Shelf Space™, stand by"
+audio = ExtResource("1_hl735")

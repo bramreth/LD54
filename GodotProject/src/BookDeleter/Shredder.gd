@@ -20,9 +20,11 @@ var happy_face = preload("res://MashaAssets/hungry-face/Untitled_Artwork-4 3.png
 
 
 func _ready() -> void:
-	timer.wait_time = randf_range(4.0, 15.0)
-#	timer.start()
+	timer.wait_time = randf_range(10.0, 30.0)
 
+
+func start() -> void:
+	timer.start()
 
 
 func _process(delta: float) -> void:
@@ -57,4 +59,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_timer_timeout() -> void:
 	if not voice.playing:
 		callout()
-	timer.wait_time = randf_range(4.0, 15.0)
+	timer.wait_time = randf_range(10.0, 30.0)
