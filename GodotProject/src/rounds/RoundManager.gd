@@ -33,7 +33,7 @@ func get_round_books() -> Array:
 		0: return _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.TOP)
 		1: return _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.MIDDLE) + _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.BOTTOM)
 		2: return [7] + _generate_single_genre(BookRes.GENRE.BESTSELLERS, 1, null)
-		3: 
+		3:
 			unlock_full_hands.emit()
 			return _generate_single_genre(BookRes.GENRE.CLASSICS, 7, null) + _generate_single_genre(BookRes.GENRE.BESTSELLERS, 4, null)
 		4: return _generate_single_genre(BookRes.GENRE.SCIFI, 15, null)
@@ -44,7 +44,7 @@ func get_round_books() -> Array:
 
 
 func _generate_single_genre(
-	genre, 
+	genre,
 	amount: int,
 	sort
 ) -> Array:

@@ -9,14 +9,13 @@ bounce = 0.1
 size = Vector3(0.15, 0.3, 0.15)
 
 [node name="Trash_4" type="RigidBody3D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 mass = 0.2
 physics_material_override = SubResource("PhysicsMaterial_udm23")
 continuous_cd = true
 
 [node name="coffee" parent="." instance=ExtResource("1_xjo1c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_knody")

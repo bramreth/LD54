@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=60 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
@@ -206,6 +206,10 @@ curve = SubResource("Curve_y3xf4")
 [sub_resource type="Theme" id="Theme_xjuk8"]
 default_base_scale = 96.0
 default_font = ExtResource("29_bcrpl")
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6vbo"]
+font = ExtResource("29_bcrpl")
+font_size = 32
 
 [node name="BookWarehouse" type="Node3D"]
 script = ExtResource("1_bbmif")
@@ -673,11 +677,23 @@ grow_vertical = 2
 mouse_filter = 2
 theme = SubResource("Theme_xjuk8")
 theme_override_constants/margin_left = 256
-theme_override_constants/margin_top = 256
+theme_override_constants/margin_top = 128
 theme_override_constants/margin_right = 256
 theme_override_constants/margin_bottom = 256
 
-[node name="Button" type="Button" parent="StartGameCamera/StartCanvas/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StartGameCamera/StartCanvas/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="CheckButton" type="CheckButton" parent="StartGameCamera/StartCanvas/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "Skip Tutorial"
+
+[node name="Button" type="Button" parent="StartGameCamera/StartCanvas/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -685,4 +701,15 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 96
 text = "Begin your work day"
 
+[node name="Label" type="Label" parent="StartGameCamera/StartCanvas/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "ESC to view settings.
+W, A, S, D to move.
+Left click to interact.
+F to throw."
+label_settings = SubResource("LabelSettings_w6vbo")
+
 [connection signal="clear_books" from="BookSpawner" to="Player" method="_on_book_spawner_clear_books"]
+[connection signal="toggled" from="StartGameCamera/StartCanvas/MarginContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]

@@ -26,3 +26,7 @@ func round_started(round: int, _books: Array) -> void:
 		RoundManager.TUTORIAL_ROUND_2: Announcer.queue(DialogPacketDb.get_tutorial_dialog(2))
 		RoundManager.FIRST_ALL_ONE_GENRE_ROUND: pass
 		RoundManager.BLOCKED_AREA_UNVEILED: blocked_area.queue_free()
+
+
+func _on_check_button_toggled(button_pressed: bool) -> void:
+	fast_intro = button_pressed

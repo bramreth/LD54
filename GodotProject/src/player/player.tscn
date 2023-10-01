@@ -23,7 +23,7 @@ height = 0.1
 [sub_resource type="SphereShape3D" id="SphereShape3D_j7ybi"]
 radius = 0.4
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_5qj23")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

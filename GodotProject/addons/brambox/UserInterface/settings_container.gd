@@ -79,18 +79,17 @@ func _on_fov_slider_value_changed(value: float) -> void:
 
 
 func _on_option_button_item_selected(index: int) -> void:
-	return
-#	match index:
-#		0:
-#			_player.mouse_sensitivity = very_low_sens
-#		1:
-#			_player.mouse_sensitivity = low_sens
-#		2:
-#			_player.mouse_sensitivity = medium_sens
-#		3:
-#			_player.mouse_sensitivity = high_sens
-#		4:
-#			_player.mouse_sensitivity = very_high_sens
+	match index:
+		0:
+			_player.mouse_sensitivity = very_low_sens
+		1:
+			_player.mouse_sensitivity = low_sens
+		2:
+			_player.mouse_sensitivity = medium_sens
+		3:
+			_player.mouse_sensitivity = high_sens
+		4:
+			_player.mouse_sensitivity = very_high_sens
 
 func _on_fullscreen_check_button_toggled(button_pressed: bool) -> void:
 	if button_pressed:
