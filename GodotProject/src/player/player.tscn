@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhmpponvjvir2"]
+[gd_scene load_steps=13 format=3 uid="uid://bhmpponvjvir2"]
 
 [ext_resource type="Script" path="res://src/player/StandardFPSPlayer.gd" id="1_5qj23"]
 [ext_resource type="Script" path="res://src/player/CinematicCamera.gd" id="2_caykb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/player/FloatingRemote.gd" id="4_ismb8"]
 [ext_resource type="PackedScene" uid="uid://q06b8fbnkkbp" path="res://src/UI/UI.tscn" id="5_csro7"]
 [ext_resource type="Script" path="res://src/player/Feet.gd" id="6_2tatt"]
+[ext_resource type="AudioStream" uid="uid://dfdg5r50sko61" path="res://MashaAssets/audio/step5.mp3" id="7_dsngb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_5ktr2"]
 
@@ -106,4 +107,12 @@ script = ExtResource("6_2tatt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0, 2.08165e-12)
 shape = SubResource("SphereShape3D_j7ybi")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.968096, 0)
+stream = ExtResource("7_dsngb")
+volume_db = -2.0
+unit_size = 2.0
+bus = &"SFX"
+
 [connection signal="body_entered" from="Feet" to="Feet" method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
