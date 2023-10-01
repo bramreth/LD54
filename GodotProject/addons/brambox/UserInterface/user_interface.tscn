@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b4mrqfvtlycnc"]
+[gd_scene load_steps=15 format=3 uid="uid://b4mrqfvtlycnc"]
 
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/user_interface.gd" id="1_k3peq"]
 [ext_resource type="Shader" uid="uid://wn6mnfchf1w7" path="res://addons/brambox/UserInterface/ScreenSpaceBlur.tres" id="2_b1378"]
@@ -15,6 +15,11 @@ default_font_size = 48
 [sub_resource type="LabelSettings" id="LabelSettings_saye0"]
 font = ExtResource("4_03sln")
 font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_6a4m3"]
+font = ExtResource("4_03sln")
+font_size = 48
+font_color = Color(1, 0.164706, 0.105882, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6vwxw"]
 shader = ExtResource("2_b1378")
@@ -85,10 +90,22 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="FlavourLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Below expectations.
 Out of 100 Gremlins, 84 performed better.
 c-"
+horizontal_alignment = 1
+
+[node name="RemnantsLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "You missed 3 books"
+label_settings = SubResource("LabelSettings_6a4m3")
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Completed time: "
 horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=49 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="PackedScene" uid="uid://bhmpponvjvir2" path="res://src/player/player.tscn" id="3_5yjj6"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dpnqelist35c6" path="res://poster2.JPG" id="22_cbvax"]
 [ext_resource type="Texture2D" uid="uid://bfm2wtsswa5y5" path="res://poster4.PNG" id="23_1h427"]
 [ext_resource type="Texture2D" uid="uid://cdx7ahvgk8obm" path="res://KenneyAssets/circle_05.png" id="25_am1lw"]
+[ext_resource type="PackedScene" uid="uid://b30p107cytvc3" path="res://src/tutorial_src/tutorial.tscn" id="27_3kyj5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_43nii"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -86,15 +87,6 @@ noise = SubResource("FastNoiseLite_tqjv2")
 [sub_resource type="FogMaterial" id="FogMaterial_l5ofk"]
 density = 0.01
 density_texture = SubResource("NoiseTexture3D_00r1d")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_odcu5"]
-size = Vector3(1, 4, 5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tw55b"]
-albedo_color = Color(0.321569, 0.235294, 0.152941, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0wob"]
-albedo_color = Color(0.309804, 0.309804, 0.309804, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cn1k"]
 transparency = 1
@@ -160,6 +152,15 @@ hue_variation_max = 0.11
 turbulence_enabled = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_760vm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_odcu5"]
+size = Vector3(1, 4, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tw55b"]
+albedo_color = Color(0.321569, 0.235294, 0.152941, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0wob"]
+albedo_color = Color(0.309804, 0.309804, 0.309804, 1)
 
 [node name="BookWarehouse" type="Node3D"]
 script = ExtResource("1_bbmif")
@@ -444,6 +445,46 @@ collision_mask = 4
 [node name="AirVent" parent="Background" instance=ExtResource("11_vcjia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0, -1)
 
+[node name="Sprite3D" type="Sprite3D" parent="Background"]
+transform = Transform3D(-0.0747146, 0.00653668, 6.53176e-09, 0.00653668, 0.0747146, -5.71455e-10, -6.55671e-09, 0, -0.075, 6.1, 2, 6.95)
+texture = ExtResource("19_bnsod")
+
+[node name="Sprite3D6" type="Sprite3D" parent="Background"]
+transform = Transform3D(0.075, -2.6159e-17, 2.6159e-17, 2.6159e-17, 0.075, -2.6159e-17, -2.6159e-17, 2.6159e-17, 0.075, 3.48, 1.44, -6.95)
+texture = ExtResource("21_7x1dp")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Background"]
+transform = Transform3D(-0.0738606, -0.0130236, 6.45709e-09, -0.0130236, 0.0738606, 1.13856e-09, -6.55671e-09, -5.97179e-17, -0.075, 4.5, 2.5, 6.85)
+texture = ExtResource("20_nab4m")
+
+[node name="Sprite3D3" type="Sprite3D" parent="Background"]
+transform = Transform3D(-2.6127e-09, 2.28582e-10, 0.06, 0.00522934, 0.0597717, -2.09272e-17, -0.0597717, 0.00522934, -2.62268e-09, -4.45, 1.5, 4.5)
+texture = ExtResource("21_fa7qm")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Background"]
+transform = Transform3D(6.01685e-09, -5.26406e-10, -0.08, 0.00697246, 0.0796956, 9.15931e-17, 0.0796956, -0.00697246, 6.03983e-09, 7.45, 2.3, -4.2)
+texture = ExtResource("22_cbvax")
+
+[node name="Sprite3D4" type="Sprite3D" parent="Background"]
+transform = Transform3D(-1.7418e-09, 1.52388e-10, 0.04, -0.00694593, 0.0393923, -4.52534e-10, -0.0393923, -0.00694593, -1.68888e-09, -4.45, 1.2, 5.9)
+texture = ExtResource("23_1h427")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = SubResource("StandardMaterial3D_0cn1k")
+amount = 128
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_sqlm8")
+draw_pass_1 = SubResource("QuadMesh_hi102")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, 0)
+material_override = SubResource("StandardMaterial3D_0tgpn")
+amount = 32
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_mmms6")
+draw_pass_1 = SubResource("QuadMesh_760vm")
+
 [node name="UserInterface" parent="." instance=ExtResource("8_qiqft")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("9_hslbt")]
@@ -538,34 +579,10 @@ material = SubResource("StandardMaterial3D_tw55b")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1, 6.861)
 
 [node name="Shredder" parent="." instance=ExtResource("19_i40ga")]
-transform = Transform3D(1, -1.74393e-16, 3.02058e-16, 3.02058e-16, 0.866025, -0.5, -1.74393e-16, 0.5, 0.866025, 5.09563, 0.468838, -6.6162)
+transform = Transform3D(1, -1.74393e-16, 3.02058e-16, 3.02058e-16, 0.866025, -0.5, -1.74393e-16, 0.5, 0.866025, 5.09563, 0.468838, -13.6162)
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-0.0747146, 0.00653668, 6.53176e-09, 0.00653668, 0.0747146, -5.71455e-10, -6.55671e-09, 0, -0.075, 6.1, 2, 6.95)
-texture = ExtResource("19_bnsod")
-
-[node name="Sprite3D6" type="Sprite3D" parent="."]
-transform = Transform3D(0.075, -2.6159e-17, 2.6159e-17, 2.6159e-17, 0.075, -2.6159e-17, -2.6159e-17, 2.6159e-17, 0.075, 3.48, 1.44, -6.95)
-texture = ExtResource("21_7x1dp")
-
-[node name="Sprite3D2" type="Sprite3D" parent="."]
-transform = Transform3D(-0.0738606, -0.0130236, 6.45709e-09, -0.0130236, 0.0738606, 1.13856e-09, -6.55671e-09, -5.97179e-17, -0.075, 4.5, 2.5, 6.85)
-texture = ExtResource("20_nab4m")
-
-[node name="Sprite3D3" type="Sprite3D" parent="."]
-transform = Transform3D(-2.6127e-09, 2.28582e-10, 0.06, 0.00522934, 0.0597717, -2.09272e-17, -0.0597717, 0.00522934, -2.62268e-09, -4.45, 1.5, 4.5)
-texture = ExtResource("21_fa7qm")
-
-[node name="Sprite3D5" type="Sprite3D" parent="."]
-transform = Transform3D(6.01685e-09, -5.26406e-10, -0.08, 0.00697246, 0.0796956, 9.15931e-17, 0.0796956, -0.00697246, 6.03983e-09, 7.45, 2.3, -4.2)
-texture = ExtResource("22_cbvax")
-
-[node name="Sprite3D4" type="Sprite3D" parent="."]
-transform = Transform3D(-1.7418e-09, 1.52388e-10, 0.04, -0.00694593, 0.0393923, -4.52534e-10, -0.0393923, -0.00694593, -1.68888e-09, -4.45, 1.2, 5.9)
-texture = ExtResource("23_1h427")
-
-[node name="Hoop" type="CSGTorus3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 2.5, -6.1)
+[node name="Hoop" type="CSGTorus3D" parent="Shredder"]
+transform = Transform3D(1, 3.02058e-16, -1.74393e-16, -1.74393e-16, 0.866026, 0.5, 3.02058e-16, -0.5, 0.866026, 0.00436974, 2.01714, -0.56854)
 use_collision = true
 collision_layer = 6
 collision_mask = 6
@@ -574,22 +591,8 @@ outer_radius = 0.7
 sides = 16
 material = SubResource("StandardMaterial3D_a0wob")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Hoop"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Shredder/Hoop"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
 size = Vector3(0.2, 0.2, 0.4)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-material_override = SubResource("StandardMaterial3D_0cn1k")
-amount = 128
-lifetime = 5.0
-process_material = SubResource("ParticleProcessMaterial_sqlm8")
-draw_pass_1 = SubResource("QuadMesh_hi102")
-
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 3, 0)
-material_override = SubResource("StandardMaterial3D_0tgpn")
-amount = 32
-lifetime = 5.0
-process_material = SubResource("ParticleProcessMaterial_mmms6")
-draw_pass_1 = SubResource("QuadMesh_760vm")
+[node name="Tutorial" parent="." instance=ExtResource("27_3kyj5")]

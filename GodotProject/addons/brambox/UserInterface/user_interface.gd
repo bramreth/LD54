@@ -24,8 +24,9 @@ func _ready() -> void:
 	settings_container.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		paused = true
+	if not $Evaluation.visible:
+		if event.is_action_pressed("ui_cancel"):
+			paused = true
 
 
 func _on_resume_button_pressed() -> void:

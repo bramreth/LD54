@@ -17,7 +17,14 @@ func queue(packets: Array, priority: int = 0) -> void:
 	current_priority = priority
 	current_queue.clear()
 	current_queue += packets
-	play(current_queue.pop_front())
+	var pack = current_queue.pop_front()
+	if pack is Callable:
+		pack.call()
+		_on_audio_stream_player_3d_finished()
+	elif pack == null:
+		pass
+	else:
+		play(pack)
 
 
 func play(packet: DialogPacket) -> void:
@@ -30,7 +37,14 @@ func play(packet: DialogPacket) -> void:
 
 func _on_audio_stream_player_3d_finished() -> void:
 	if not current_queue.is_empty():
-		play(current_queue.pop_front())
+		var pack = current_queue.pop_front()
+		if pack is Callable:
+			pack.call()
+			_on_audio_stream_player_3d_finished()
+		elif pack == null:
+			pass
+		else:
+			play(pack)
 	else:
 		current_priority = -1
 		announcement_over.emit()

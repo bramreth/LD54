@@ -24,7 +24,9 @@ class_name Book
 	preload("res://MashaAssets/The Hitcher's Guide to the Galaxy.png"),
 	preload("res://MashaAssets/The Martian.png"),
 	preload("res://MashaAssets/The Stand.png"),
-	preload("res://MashaAssets/The War of the Worlds.png")
+	preload("res://MashaAssets/The War of the Worlds.png"),
+	preload("res://MashaAssets/Gideon the Ninth.png")
+
 ]
 
 @export var best_books: Array[CompressedTexture2D] = [

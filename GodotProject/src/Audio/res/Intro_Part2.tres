@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://jedun433p4w7"]
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://f8a6ko02ra2v"]
 
-[ext_resource type="AudioStream" uid="uid://vjye0mfojfy8" path="res://src/Audio/files/debug.mp3" id="1_e7wmm"]
+[ext_resource type="AudioStream" uid="uid://b5agyirr3favi" path="res://src/Audio/files/debug.mp3" id="1_e7wmm"]
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_jlqp2"]
 
 [resource]
 script = ExtResource("2_jlqp2")
-text = "A warm welcome to you from the Books and Stuff™ Incorporated Family"
+text = "A warm welcome to you from  Books and Stuff™ Incorporated."
 audio = ExtResource("1_e7wmm")

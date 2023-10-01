@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://b30p107cytvc3"]
+
+[ext_resource type="Texture2D" uid="uid://bnc6s3ofbe184" path="res://KenneyAssets/circle_02.png" id="1_3tgpi"]
+[ext_resource type="Script" path="res://src/tutorial_src/tutorial.gd" id="1_u4olj"]
+[ext_resource type="Texture2D" uid="uid://cgudugnolhlbx" path="res://MashaAssets/Untitled_Artwork.png" id="2_0kadf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq3f0"]
+size = Vector3(3, 4, 3)
+
+[sub_resource type="Animation" id="Animation_toaob"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(1.25, 1.25, 1.25), Vector3(1.4, 1.4, 1.4), Vector3(1.25, 1.25, 1.25)]
+}
+
+[sub_resource type="Animation" id="Animation_4uaf8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.25, 1.25, 1.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fd4pi"]
+_data = {
+"Idle": SubResource("Animation_toaob"),
+"RESET": SubResource("Animation_4uaf8")
+}
+
+[node name="Tutorial" type="Node3D" groups=["tuturial_scenes"]]
+script = ExtResource("1_u4olj")
+
+[node name="BookDumpArea" type="Area3D" parent="."]
+transform = Transform3D(0.997243, 0, 0, 0, 0.997243, 0, 0, 0, 0.997243, 5.8, 0.1, -4.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BookDumpArea"]
+shape = SubResource("BoxShape3D_aq3f0")
+
+[node name="BookDumpArea" type="Sprite3D" parent="BookDumpArea"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+axis = 1
+texture = ExtResource("1_3tgpi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BookDumpArea/BookDumpArea"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_fd4pi")
+}
+
+[node name="Arrow" type="Sprite3D" parent="BookDumpArea/BookDumpArea"]
+transform = Transform3D(0.106361, 0, 0, 0, 0.106361, 0, 0, 0, 0.106361, 0, 1.44347, 0)
+billboard = 2
+texture = ExtResource("2_0kadf")
