@@ -58,10 +58,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.374214, -0.7)
 visible = false
 mesh = SubResource("SphereMesh_krod2")
 
+[node name="DebugHand2" type="MeshInstance3D" parent="CinematicCamera/Hands/HandTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.03, -0.161904)
+visible = false
+mesh = SubResource("SphereMesh_krod2")
+
+[node name="DebugHand3" type="MeshInstance3D" parent="CinematicCamera/Hands/HandTarget"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.06, -0.342452)
+visible = false
+mesh = SubResource("SphereMesh_krod2")
+
 [node name="FloatingRemote" type="RemoteTransform3D" parent="CinematicCamera/Hands/HandTarget" node_paths=PackedStringArray("target")]
 top_level = true
 script = ExtResource("4_ismb8")
 target = NodePath("../DebugHand")
+speed = 15.0
+
+[node name="FloatingRemote2" type="RemoteTransform3D" parent="CinematicCamera/Hands/HandTarget" node_paths=PackedStringArray("target")]
+top_level = true
+script = ExtResource("4_ismb8")
+target = NodePath("../DebugHand2")
+speed = 15.0
+
+[node name="FloatingRemote3" type="RemoteTransform3D" parent="CinematicCamera/Hands/HandTarget" node_paths=PackedStringArray("target")]
+top_level = true
+script = ExtResource("4_ismb8")
+target = NodePath("../DebugHand3")
 speed = 15.0
 
 [node name="RayCast3D" type="RayCast3D" parent="CinematicCamera/Hands"]

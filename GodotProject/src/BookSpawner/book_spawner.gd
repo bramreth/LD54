@@ -1,5 +1,7 @@
 extends Node3D
 
+signal clear_books()
+
 var current_wave := 0
 var book = preload("res://src/book/Book.tscn")
 var trash = [
@@ -44,5 +46,6 @@ func spawn_book(book_res: BookRes) -> void:
 
 
 func cull_existing_books() -> void:
+	clear_books.emit()
 	for book in get_tree().get_nodes_in_group("book"):
 		book.destroy()
