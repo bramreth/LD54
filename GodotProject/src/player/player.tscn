@@ -28,6 +28,7 @@ radius = 0.4
 script = ExtResource("1_5qj23")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_5ktr2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

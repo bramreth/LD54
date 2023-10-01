@@ -135,7 +135,7 @@ func horizontal_movement(delta: float) -> void:
 
 
 func should_play_steps() -> bool:
-	return not audio_stream_player_3d.playing and velocity.length_squared() and is_on_floor()
+	return not audio_stream_player_3d.playing and velocity.length_squared() > 0.1 and is_on_floor()
 
 
 func camera_rotation() -> void:
