@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4mrqfvtlycnc"]
+[gd_scene load_steps=17 format=3 uid="uid://b4mrqfvtlycnc"]
 
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/user_interface.gd" id="1_k3peq"]
 [ext_resource type="Shader" uid="uid://wn6mnfchf1w7" path="res://addons/brambox/UserInterface/ScreenSpaceBlur.tres" id="2_b1378"]
@@ -8,6 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://sbl4rscivr8g" path="res://addons/brambox/UserInterface/settings_container.tscn" id="5_c6uib"]
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/Evaluation.gd" id="5_xpvdi"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vwxw"]
+shader = ExtResource("2_b1378")
+shader_parameter/BlurAmount = 1.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dk3bb"]
+
 [sub_resource type="Theme" id="Theme_4oy2w"]
 default_font = ExtResource("4_03sln")
 default_font_size = 48
@@ -16,16 +22,20 @@ default_font_size = 48
 font = ExtResource("4_03sln")
 font_size = 64
 
+[sub_resource type="LabelSettings" id="LabelSettings_425cw"]
+font = ExtResource("4_03sln")
+font_size = 48
+font_color = Color(1, 0.164706, 0.105882, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_6a4m3"]
 font = ExtResource("4_03sln")
 font_size = 48
 font_color = Color(1, 0.164706, 0.105882, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6vwxw"]
-shader = ExtResource("2_b1378")
-shader_parameter/BlurAmount = 1.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dk3bb"]
+[sub_resource type="LabelSettings" id="LabelSettings_pbfno"]
+font = ExtResource("4_03sln")
+font_size = 48
+font_color = Color(1, 0.164706, 0.105882, 1)
 
 [sub_resource type="InputEventAction" id="InputEventAction_gbevd"]
 action = &"ui_cancel"
@@ -64,7 +74,16 @@ stretch_mode = 5
 [node name="SubtitleHandler" parent="HUD" instance=ExtResource("3_tu702")]
 layout_mode = 1
 
-[node name="Evaluation" type="CenterContainer" parent="." groups=["evaluation"]]
+[node name="BackgroundBlur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_6vwxw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_dk3bb")
+
+[node name="Evaluation" type="CenterContainer" parent="." node_paths=PackedStringArray("bg") groups=["evaluation"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -72,6 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_4oy2w")
 script = ExtResource("5_xpvdi")
+bg = NodePath("../BackgroundBlur")
 
 [node name="PanelContainer" type="PanelContainer" parent="Evaluation"]
 custom_minimum_size = Vector2(768, 512)
@@ -89,12 +109,10 @@ horizontal_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="Evaluation/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="FlavourLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
-visible = false
+[node name="MistakesLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Below expectations.
-Out of 100 Gremlins, 84 performed better.
-c-"
+text = "You missed 3 books"
+label_settings = SubResource("LabelSettings_425cw")
 horizontal_alignment = 1
 
 [node name="RemnantsLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
@@ -103,14 +121,33 @@ text = "You missed 3 books"
 label_settings = SubResource("LabelSettings_6a4m3")
 horizontal_alignment = 1
 
+[node name="GenreLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score: "
+label_settings = SubResource("LabelSettings_425cw")
+horizontal_alignment = 1
+
+[node name="SortLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Score: "
+label_settings = SubResource("LabelSettings_425cw")
+horizontal_alignment = 1
+
 [node name="TimeLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Completed time: "
 horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Score: "
+horizontal_alignment = 1
+
+[node name="FlavourLabel" type="Label" parent="Evaluation/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "c-"
+label_settings = SubResource("LabelSettings_pbfno")
 horizontal_alignment = 1
 
 [node name="ProceedButton" type="Button" parent="Evaluation/PanelContainer/VBoxContainer"]
