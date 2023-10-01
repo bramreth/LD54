@@ -1,18 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://c6csr3870y21r"]
+[gd_scene load_steps=18 format=3 uid="uid://c6csr3870y21r"]
 
 [ext_resource type="Script" path="res://src/BookShelf/BookShelf.gd" id="1_8gquf"]
 [ext_resource type="PackedScene" uid="uid://b4cgt5eppq4su" path="res://src/BookShelf/BookRack.tscn" id="2_15cuu"]
 [ext_resource type="Texture2D" uid="uid://cwxudruyd13ne" path="res://KenneyAssets/smoke_01.png" id="3_3ugye"]
 [ext_resource type="PackedScene" uid="uid://cdnfpaw1e54nx" path="res://src/Particles/sparleticles.tscn" id="4_bvt2t"]
+[ext_resource type="Texture2D" uid="uid://cfm1bun428jxq" path="res://addons/kenney_prototype_tools/textures/dark/texture_09.png" id="5_ex8nx"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2ki4o"]
+data = PackedVector3Array(-0.4, 1.125, 0.25, 0.4, 1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, -0.25, 0.4, -1.125, -0.25, -0.4, 1.125, -0.25, -0.4, -1.125, -0.25, 0.4, -1.125, -0.25, 0.4, 1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, -0.25, 0.4, -1.125, 0.25, -0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, 1.125, 0.25, -0.4, 1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, 1.125, -0.25, 0.4, 1.125, -0.25, -0.4, -1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, -1.125, 0.25, 0.4, -1.125, -0.25, -0.4, -1.125, -0.25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fconc"]
 resource_local_to_scene = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_fj1h1"]
 size = Vector3(0.8, 2.25, 0.5)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2ki4o"]
-data = PackedVector3Array(-0.4, 1.125, 0.25, 0.4, 1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, -0.25, 0.4, -1.125, -0.25, -0.4, 1.125, -0.25, -0.4, -1.125, -0.25, 0.4, -1.125, -0.25, 0.4, 1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, 0.25, 0.4, 1.125, -0.25, 0.4, -1.125, -0.25, 0.4, -1.125, 0.25, -0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, -0.25, -0.4, 1.125, 0.25, -0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, 1.125, 0.25, -0.4, 1.125, 0.25, 0.4, 1.125, -0.25, -0.4, 1.125, 0.25, -0.4, 1.125, -0.25, 0.4, 1.125, -0.25, -0.4, -1.125, 0.25, 0.4, -1.125, 0.25, -0.4, -1.125, -0.25, 0.4, -1.125, 0.25, 0.4, -1.125, -0.25, -0.4, -1.125, -0.25)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4a6j7"]
 emission_shape = 3
@@ -116,32 +117,26 @@ _data = {
 "reset": SubResource("Animation_1v6dd")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ehn2"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5e65"]
+albedo_texture = ExtResource("5_ex8nx")
+
 [node name="BookShelf" type="Node3D"]
 script = ExtResource("1_8gquf")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_fconc")
-mesh = SubResource("BoxMesh_fj1h1")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_2ki4o")
 
-[node name="Racks" type="Node3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10528)
-
-[node name="TopRack" parent="MeshInstance3D/Racks" instance=ExtResource("2_15cuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
-
-[node name="MiddleRack" parent="MeshInstance3D/Racks" instance=ExtResource("2_15cuu")]
-sort = 1
-
-[node name="BottomRack" parent="MeshInstance3D/Racks" instance=ExtResource("2_15cuu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.75, 2.08165e-12)
-sort = 2
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("StandardMaterial3D_fconc")
+mesh = SubResource("BoxMesh_fj1h1")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -1.1, 2.08165e-12)
@@ -164,7 +159,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.4)
 emitting = false
 amount = 4
 
-[connection signal="full" from="MeshInstance3D/Racks/TopRack" to="." method="_on_rack_full"]
-[connection signal="full" from="MeshInstance3D/Racks/MiddleRack" to="." method="_on_rack_full"]
-[connection signal="full" from="MeshInstance3D/Racks/BottomRack" to="." method="_on_rack_full"]
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+operation = 2
+size = Vector3(0.8, 2.25, 0.5)
+material = SubResource("StandardMaterial3D_4ehn2")
+
+[node name="Racks" type="Node3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10528)
+
+[node name="TopRack" parent="CSGBox3D/Racks" instance=ExtResource("2_15cuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
+
+[node name="MiddleRack" parent="CSGBox3D/Racks" instance=ExtResource("2_15cuu")]
+sort = 1
+
+[node name="BottomRack" parent="CSGBox3D/Racks" instance=ExtResource("2_15cuu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.75, 2.08165e-12)
+sort = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0718091)
+operation = 2
+size = Vector3(0.65, 0.7, 0.5)
+material = SubResource("StandardMaterial3D_i5e65")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 0.072)
+operation = 2
+size = Vector3(0.65, 0.7, 0.5)
+material = SubResource("StandardMaterial3D_i5e65")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.75, 0.072)
+operation = 2
+size = Vector3(0.65, 0.7, 0.5)
+material = SubResource("StandardMaterial3D_i5e65")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
 [connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
+[connection signal="full" from="CSGBox3D/Racks/TopRack" to="." method="_on_rack_full"]
+[connection signal="full" from="CSGBox3D/Racks/MiddleRack" to="." method="_on_rack_full"]
+[connection signal="full" from="CSGBox3D/Racks/BottomRack" to="." method="_on_rack_full"]
