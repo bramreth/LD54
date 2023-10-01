@@ -35,6 +35,11 @@ var _jump_timeout := 0.0
 
 @onready var camera_direction: Node3D = $CameraDirection
 
+var steps = [
+	preload("res://MashaAssets/audio/step1.mp3"), preload("res://MashaAssets/audio/step2.mp3"), preload("res://MashaAssets/audio/step3.mp3"), preload("res://MashaAssets/audio/step4.mp3"), preload("res://MashaAssets/audio/step5.mp3")
+]
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -125,7 +130,13 @@ func horizontal_movement(delta: float) -> void:
 
 #	// move the player
 	velocity = (input_direction.normalized() * _speed) + (Vector3.DOWN * _vertical_velocity)
+	if should_play_steps(): play_steps()
 	move_and_slide()
+
+
+func should_play_steps() -> bool:
+	return not audio_stream_player_3d.playing and velocity.length_squared() > 0.1 and is_on_floor()
+
 
 func camera_rotation() -> void:
 	if _look.length_squared() >= THRESHOLD:
@@ -152,3 +163,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_book_spawner_clear_books() -> void:
 	$CinematicCamera/Hands.clear_books()
+
+func play_steps() -> void:
+	var step = steps.pick_random()
+	audio_stream_player_3d.stream = step
+	audio_stream_player_3d.play()
+
+func _on_audio_stream_player_3d_finished() -> void:
+	if should_play_steps(): play_steps()
