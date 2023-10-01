@@ -18,6 +18,7 @@ var correct_sort := 0
 var incorrect_sort := 0
 var correct_genre := 0
 var incorrect_genre := 0
+var well_done: bool = false
 
 func _ready() -> void:
 	set_visiblity(false)
@@ -72,6 +73,7 @@ func evaluate() -> void:
 	incorrect_genre = 0
 
 func handle_mistakes(mistakes_in: int) -> void:
+	well_done = false
 	var score = inverse_lerp(max_mistakes, 0, mistakes_in)
 	if score <= 0.59:
 		flavour_label.text = "F"
@@ -94,12 +96,16 @@ func handle_mistakes(mistakes_in: int) -> void:
 	elif score <= 0.89:
 		flavour_label.text = "B+"
 	elif score <= 0.92:
+		well_done = true
 		flavour_label.text = "A-"
 	elif score <= 0.96:
+		well_done = true
 		flavour_label.text = "A"
 	else:
+		well_done = true
 		flavour_label.text = "A+"
 	flavour_label.label_settings.font_color = Color.ORANGE_RED.lerp(Color.GREEN, inverse_lerp(0.59, 1.0, score))
+	if well_done: Announcer.queue([DialogPacketDb.quips.good_job.pick_random()])
 
 func return_control() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -42,9 +42,7 @@ var quips := {
 	"bad_job": [
 
 	],
-	"good_job": [
-
-	],
+	"good_job": [preload("res://src/Audio/res/GoodJob1.tres")],
 	"too_slow": [preload("res://src/Audio/res/ProductionSpeedBad.tres")]
 }
 

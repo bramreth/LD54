@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://dsf6md82c3sjw"]
+
+[ext_resource type="AudioStream" uid="uid://dco5p5vw3pxbk" path="res://MashaAssets/audio/Welldonefordoing yourjobchopchop.mp3" id="1_0vn4l"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_g2gfq"]
+
+[resource]
+script = ExtResource("2_g2gfq")
+text = "Well done for doing your job. Now get back to work. CHOP CHOP"
+audio = ExtResource("1_0vn4l")
