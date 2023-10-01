@@ -1,10 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6csr3870y21r"]
+[gd_scene load_steps=19 format=3 uid="uid://c6csr3870y21r"]
 
 [ext_resource type="Script" path="res://src/BookShelf/BookShelf.gd" id="1_8gquf"]
 [ext_resource type="PackedScene" uid="uid://b4cgt5eppq4su" path="res://src/BookShelf/BookRack.tscn" id="2_15cuu"]
 [ext_resource type="Texture2D" uid="uid://cwxudruyd13ne" path="res://KenneyAssets/smoke_01.png" id="3_3ugye"]
 [ext_resource type="PackedScene" uid="uid://cdnfpaw1e54nx" path="res://src/Particles/sparleticles.tscn" id="4_bvt2t"]
+[ext_resource type="Texture2D" uid="uid://cybxlwww457gf" path="res://MashaAssets/art_circle.png" id="5_5rtfp"]
+[ext_resource type="Texture2D" uid="uid://bpm46y6hwxpl4" path="res://MashaAssets/bh_square.png" id="5_806k7"]
 [ext_resource type="Texture2D" uid="uid://cfm1bun428jxq" path="res://addons/kenney_prototype_tools/textures/dark/texture_09.png" id="5_ex8nx"]
+[ext_resource type="Texture2D" uid="uid://oyqi4k53mda5" path="res://MashaAssets/mt_tri.png" id="6_xb3x3"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4a6j7"]
 emission_shape = 3
@@ -164,12 +167,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10528)
 [node name="TopRack" parent="CSGBox3D/Racks" instance=ExtResource("2_15cuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 0.75, 2.08165e-12)
 
+[node name="Sort" type="Sprite3D" parent="CSGBox3D/Racks/TopRack"]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.315, 2.08165e-12, -0.05)
+texture = ExtResource("5_806k7")
+
+[node name="Sort2" type="Sprite3D" parent="CSGBox3D/Racks/TopRack"]
+transform = Transform3D(-8.74228e-09, -6.97574e-17, -0.2, 6.97574e-17, 0.2, -6.97574e-17, 0.2, -6.97574e-17, -8.74228e-09, 0.315, 2.08165e-12, -0.05)
+texture = ExtResource("5_806k7")
+
 [node name="MiddleRack" parent="CSGBox3D/Racks" instance=ExtResource("2_15cuu")]
 sort = 1
+
+[node name="Sort" type="Sprite3D" parent="CSGBox3D/Racks/MiddleRack"]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.315, 2.08165e-12, -0.05)
+texture = ExtResource("6_xb3x3")
+
+[node name="Sort2" type="Sprite3D" parent="CSGBox3D/Racks/MiddleRack"]
+transform = Transform3D(-8.74228e-09, -6.97574e-17, -0.2, 6.97574e-17, 0.2, -6.97574e-17, 0.2, -6.97574e-17, -8.74228e-09, 0.315, 2.08165e-12, -0.05)
+texture = ExtResource("6_xb3x3")
 
 [node name="BottomRack" parent="CSGBox3D/Racks" instance=ExtResource("2_15cuu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -0.75, 2.08165e-12)
 sort = 2
+
+[node name="Sort" type="Sprite3D" parent="CSGBox3D/Racks/BottomRack"]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.315, 2.08165e-12, -0.05)
+texture = ExtResource("5_5rtfp")
+
+[node name="Sort2" type="Sprite3D" parent="CSGBox3D/Racks/BottomRack"]
+transform = Transform3D(-8.74228e-09, -6.97574e-17, -0.2, 6.97574e-17, 0.2, -6.97574e-17, 0.2, -6.97574e-17, -8.74228e-09, 0.315, 2.08165e-12, -0.05)
+texture = ExtResource("5_5rtfp")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0718091)
