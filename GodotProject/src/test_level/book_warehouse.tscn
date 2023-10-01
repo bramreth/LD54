@@ -463,14 +463,10 @@ material_override = ExtResource("3_a43wp")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
-size = Vector3(1.5, 0.5, 14)
+size = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 
 [node name="Conveyor" parent="Background/Conveyor" instance=ExtResource("4_v6cgb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -4.5)
-constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
-
-[node name="Conveyor5" parent="Background/Conveyor" instance=ExtResource("4_v6cgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -8.5)
 constant_linear_velocity = Vector3(2.08165e-12, 2.08165e-12, 1)
 
 [node name="Conveyor2" parent="Background/Conveyor" instance=ExtResource("4_v6cgb")]
@@ -510,7 +506,7 @@ transform = Transform3D(-2.6127e-09, 2.28582e-10, 0.06, 0.00522934, 0.0597717, -
 texture = ExtResource("21_fa7qm")
 
 [node name="Sprite3D5" type="Sprite3D" parent="Background"]
-transform = Transform3D(6.01685e-09, -5.26406e-10, -0.08, 0.00697246, 0.0796956, 9.15931e-17, 0.0796956, -0.00697246, 6.03983e-09, 7.45, 2.3, -4.2)
+transform = Transform3D(5.26474e-09, -4.60605e-10, -0.07, 0.0061009, 0.0697336, 1.02533e-16, 0.0697336, -0.0061009, 5.28485e-09, 7.45, 1.9, -6)
 texture = ExtResource("22_cbvax")
 
 [node name="Sprite3D4" type="Sprite3D" parent="Background"]
@@ -623,6 +619,7 @@ size = Vector3(0.2, 0.2, 5)
 material = SubResource("StandardMaterial3D_tw55b")
 
 [node name="BookSpawner" parent="." instance=ExtResource("7_vwrja")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 2)
 
 [node name="TaskAppraisalLever" parent="." instance=ExtResource("15_l88m0")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1, 1, 6.861)

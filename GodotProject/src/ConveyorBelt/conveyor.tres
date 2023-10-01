@@ -1,0 +1,59 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://tydqb5s30d11"]
+
+[ext_resource type="Texture2D" uid="uid://d0x73ytsholn5" path="res://Bram's 3D Hellscape/conveyor_pattern.png" id="1_bicln"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8ya6h"]
+texture = ExtResource("1_bicln")
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_kjswo"]
+default_input_values = [1, Vector2(1, -0.1), 2, Vector2(0, 0)]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_mfb1n"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_abl4n"]
+op_type = 0
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// Input:4
+	float n_out4p0 = TIME;
+
+
+// VectorCompose:5
+	float n_in5p0 = 0.00000;
+	vec2 n_out5p0 = vec2(n_in5p0, n_out4p0);
+
+
+// UVFunc:3
+	vec2 n_in3p1 = vec2(1.00000, -0.10000);
+	vec2 n_out3p0 = n_out5p0 * n_in3p1 + UV;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, n_out3p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-895.219, 20.5583)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_8ya6h")
+nodes/fragment/2/position = Vector2(-500, 160)
+nodes/fragment/3/node = SubResource("VisualShaderNodeUVFunc_kjswo")
+nodes/fragment/3/position = Vector2(-1240, 400)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_mfb1n")
+nodes/fragment/4/position = Vector2(-2480, 580)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorCompose_abl4n")
+nodes/fragment/5/position = Vector2(-1706.92, 572.485)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 0, 3, 0, 2, 0, 4, 0, 5, 1, 5, 0, 3, 2)
