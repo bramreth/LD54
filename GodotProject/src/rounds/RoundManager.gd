@@ -38,7 +38,8 @@ func get_round_books() -> Array:
 			return _generate_single_genre(BookRes.GENRE.CLASSICS, 7, null) + _generate_single_genre(BookRes.GENRE.BESTSELLERS, 4, null)
 		4: return _generate_single_genre(BookRes.GENRE.SCIFI, 15, null)
 		5: return _generate_random_books(20)
-		6: return _generate_random_books(27)  #Zone 1 is fillable
+		6: return _generate_random_books(27) + [5]  #Zone 1 is fillable
+		7: return _generate_random_books(30) + [30]
 		_: return _generate_random_books(_get_round_size())
 
 
@@ -72,6 +73,7 @@ const TUTORIAL_ROUND_1 := 0
 const TUTORIAL_ROUND_2 := 1
 const TUTORIAL_ROUND_3 := 2
 const FIRST_ALL_ONE_GENRE_ROUND := 4
+const BLOCKED_AREA_UNVEILED := 7
 
 const TUTORIAL_1 := "tutorial_1"
 const TUTORIAL_2 := "tutorial_2"
