@@ -602,4 +602,4 @@ mesh = SubResource("ArrayMesh_67w3y")
 skeleton = NodePath("")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-bus = &"Dialogue"
+bus = &"SFX"

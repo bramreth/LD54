@@ -1,4 +1,8 @@
-[gd_resource type="AudioBusLayout" load_steps=7 format=3 uid="uid://f4ehatnlsbo6"]
+[gd_resource type="AudioBusLayout" load_steps=8 format=3 uid="uid://f4ehatnlsbo6"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_duqjb"]
+resource_name = "Reverb"
+wet = 0.1
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_0xo06"]
 resource_name = "Reverb"
@@ -39,6 +43,8 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectReverb_duqjb")
+bus/2/effect/0/enabled = true
 bus/3/name = &"Dialogue"
 bus/3/solo = false
 bus/3/mute = false
