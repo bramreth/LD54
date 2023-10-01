@@ -66,6 +66,7 @@ func evaluate() -> void:
 		remnants_label.label_settings.font_color = Color.ORANGE_RED
 		remnants_label.text = "%d books left out of shelves" % remaining_books.size()
 	time_label.text = "Completion time: %.1f seconds" % time
+	RoundManager.update_time(time)
 	handle_mistakes(mistakes)
 	correct_sort = 0
 	incorrect_sort = 0

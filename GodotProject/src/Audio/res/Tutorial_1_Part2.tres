@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://04scw53bayqf"]
 
-[ext_resource type="AudioStream" uid="uid://b5agyirr3favi" path="res://src/Audio/files/debug.mp3" id="1_o6xse"]
+[ext_resource type="AudioStream" uid="uid://vjye0mfojfy8" path="res://src/Audio/files/debug.mp3" id="1_o6xse"]
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_ov83h"]
 
 [resource]
