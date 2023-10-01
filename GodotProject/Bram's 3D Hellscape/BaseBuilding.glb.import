@@ -28,5 +28,20 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"materials": {
+"Carpet": {
+"use_external/enabled": true,
+"use_external/path": "res://Bram's 3D Hellscape/Carpet.tres"
+},
+"FloorEdge": {
+"use_external/enabled": true,
+"use_external/path": "res://Bram's 3D Hellscape/FloorEdge.tres"
+},
+"Walls": {
+"use_external/enabled": true,
+"use_external/path": "res://Bram's 3D Hellscape/Walls.tres"
+}
+}
+}
 gltf/embedded_image_handling=1
