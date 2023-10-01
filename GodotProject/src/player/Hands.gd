@@ -19,7 +19,7 @@ var current_book: Book = null
 var books := []
 
 func clear_books() -> void:
-	for book in books: _drop_book(book)
+	books.clear()
 
 
 func get_top_book(pop = false) -> Book: 
