@@ -50,8 +50,8 @@ func _generate_single_genre(
 ) -> Array:
 	var books := []
 	for i in range(amount):
-		if not genre: BookRes.GENRE.values().pick_random()
-		if not sort: BookRes.SORT.values().pick_random()
+		if genre == null: BookRes.GENRE.values().pick_random()
+		if sort == null: BookRes.SORT.values().pick_random()
 		books.append(BookRes.create_from_genre(genre, sort))
 	return books
 

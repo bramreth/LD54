@@ -34,8 +34,10 @@ static func create_from_genre(genre_in: GENRE, sort_in) -> BookRes:
 	var book = BookRes.new()
 	book.resource_local_to_scene = true
 	book.genre = genre_in
-	if not sort_in: sort_in = SORT.values().pick_random()
+	print(sort_in)
+	if sort_in == null: sort_in = SORT.values().pick_random()
 	book.sort = sort_in
+	print(str(sort_in == SORT.TOP))
 	return book
 
 
