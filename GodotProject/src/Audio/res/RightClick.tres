@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://dfxtyvf2gdbtr"]
+
+[ext_resource type="AudioStream" uid="uid://vcjgsv8uognd" path="res://DadAudio/Dialogue/right click a book.wav" id="1_ofnlj"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_onep3"]
+
+[resource]
+script = ExtResource("2_onep3")
+text = "Right click on a book to inspect the back, and you will find the publisher mark."
+audio = ExtResource("1_ofnlj")

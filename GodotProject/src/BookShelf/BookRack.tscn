@@ -1,8 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4cgt5eppq4su"]
+[gd_scene load_steps=23 format=3 uid="uid://b4cgt5eppq4su"]
 
 [ext_resource type="Script" path="res://src/BookShelf/BookRack.gd" id="1_mjvdr"]
 [ext_resource type="Texture2D" uid="uid://ce35vcvf3vryk" path="res://KenneyAssets/star_06.png" id="2_lv4eo"]
 [ext_resource type="Texture2D" uid="uid://cfxw4ccuyfcke" path="res://KenneyAssets/star_08.png" id="3_45gev"]
+[ext_resource type="AudioStream" uid="uid://n4g7x0fbj1yt" path="res://DadAudio/book1.ogg" id="4_fkenj"]
+[ext_resource type="AudioStream" uid="uid://c8n8qp2v8giia" path="res://DadAudio/book2.ogg" id="5_kdgmj"]
+[ext_resource type="AudioStream" uid="uid://dlcnxxe50uh4w" path="res://DadAudio/book3.ogg" id="6_i7fol"]
+[ext_resource type="AudioStream" uid="uid://cebrfqfsyfkq1" path="res://DadAudio/book4.ogg" id="7_udomo"]
+[ext_resource type="AudioStream" uid="uid://dytro0nwvuyd1" path="res://DadAudio/book5.ogg" id="8_46km1"]
+[ext_resource type="AudioStream" uid="uid://dncfss5gwq3g" path="res://DadAudio/book6.ogg" id="9_8dkmp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mulr1"]
 size = Vector3(0.65, 0.7, 0.5)
@@ -104,6 +110,22 @@ scale_curve = SubResource("CurveTexture_66cel")
 [sub_resource type="QuadMesh" id="QuadMesh_rioxq"]
 size = Vector2(0.5, 0.5)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_exw0d"]
+streams_count = 6
+random_pitch = 1.0
+stream_0/stream = ExtResource("4_fkenj")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_kdgmj")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_i7fol")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("7_udomo")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("8_46km1")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("9_8dkmp")
+stream_5/weight = 1.0
+
 [node name="BookRack" type="Area3D" groups=["highlightable"]]
 collision_layer = 4
 collision_mask = 4
@@ -136,5 +158,11 @@ one_shot = true
 explosiveness = 0.6
 process_material = SubResource("ParticleProcessMaterial_qn6yr")
 draw_pass_1 = SubResource("QuadMesh_rioxq")
+
+[node name="SFXAudio" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_exw0d")
+volume_db = -15.0
+unit_size = 6.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

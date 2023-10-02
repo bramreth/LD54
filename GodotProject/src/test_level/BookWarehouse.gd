@@ -16,6 +16,7 @@ func _ready() -> void:
 
 func play_intro() -> void:
 	get_tree().call_group("conveyor_animator", "play", "Idle")
+	get_tree().call_group("conveyor_audio", "play")
 	get_tree().call_group("conveyor", "set_constant_linear_velocity", Vector3(-1,0,0))
 
 	if not fast_intro:

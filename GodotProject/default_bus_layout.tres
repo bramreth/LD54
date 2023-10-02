@@ -14,7 +14,8 @@ db = 1
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_0xo06"]
 resource_name = "Reverb"
-wet = 0.1
+hipass = 0.2
+wet = 0.05
 
 [sub_resource type="AudioEffectDelay" id="AudioEffectDelay_r8103"]
 resource_name = "Delay"
@@ -54,7 +55,7 @@ bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectReverb_duqjb")
-bus/2/effect/0/enabled = true
+bus/2/effect/0/enabled = false
 bus/2/effect/1/effect = SubResource("AudioEffectLowPassFilter_kwxs0")
 bus/2/effect/1/enabled = true
 bus/3/name = &"Dialogue"
@@ -72,7 +73,7 @@ bus/4/bypass_fx = false
 bus/4/volume_db = 0.0
 bus/4/send = &"Dialogue"
 bus/4/effect/0/effect = SubResource("AudioEffectDelay_r8103")
-bus/4/effect/0/enabled = true
+bus/4/effect/0/enabled = false
 bus/5/name = &"Shredder"
 bus/5/solo = false
 bus/5/mute = false

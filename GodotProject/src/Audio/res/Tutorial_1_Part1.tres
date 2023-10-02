@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://tox1sqq84oc"]
 
-[ext_resource type="AudioStream" uid="uid://vjye0mfojfy8" path="res://src/Audio/files/debug.mp3" id="1_7xovq"]
+[ext_resource type="AudioStream" uid="uid://bavae745x2e8v" path="res://DadAudio/Dialogue/there are three.wav" id="1_l6m2k"]
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_a2btb"]
 
 [resource]
 script = ExtResource("2_a2btb")
 text = "There are three red Books™, please put them into Bookcases of the matching color for long term storage"
-audio = ExtResource("1_7xovq")
+audio = ExtResource("1_l6m2k")

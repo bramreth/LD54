@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://v8n23bu2e60l"]
+
+[ext_resource type="AudioStream" uid="uid://cx3safr8dnois" path="res://DadAudio/Dialogue/you can pick up.wav" id="1_m12o4"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_q7mvm"]
+
+[resource]
+script = ExtResource("2_q7mvm")
+text = "You can pick up a book by left-clicking, and put it down by pressing F."
+audio = ExtResource("1_m12o4")

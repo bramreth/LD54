@@ -12,6 +12,7 @@ var dialog_packets := {
 	"tutorial_1": [
 		preload("res://src/Audio/res/Alarm.tres"),
 		preload("res://src/Audio/res/Tutorial_1_Part1.tres"),
+		preload("res://src/Audio/res/errNews.tres"),
 		func(): UiEventBus.lock_lever.emit(false),
 		preload("res://src/Audio/res/Tutorial_1_Part3.tres")
 	],
@@ -19,10 +20,22 @@ var dialog_packets := {
 		func():
 			UiEventBus.lock_lever.emit(true),
 		preload("res://src/Audio/res/Alarm.tres"),
-		preload("res://src/Audio/res/Tutorial_1_Part2.tres"),
-
+		preload("res://src/Audio/res/PickUp.tres"),
+		preload("res://src/Audio/res/thereIs.tres"),
+		preload("res://src/Audio/res/RightClick.tres"),
+		preload("res://src/Audio/res/MakeSure.tres"),
 		func():
 			UiEventBus.lock_lever.emit(false),
+	],
+	"tutorial_3": [
+		func():
+			UiEventBus.lock_lever.emit(true),
+		preload("res://src/Audio/res/Alarm.tres"),
+		preload("res://src/Audio/res/Implore.tres"),
+		func():
+			UiEventBus.lock_lever.emit(false),
+	
+#		preload("res://src/Audio/res/Tutorial_1_Part2.tres")
 	],
 	"unlock_hands": [
 		func(): UiEventBus.lock_lever.emit(true),

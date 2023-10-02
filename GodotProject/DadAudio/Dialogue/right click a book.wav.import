@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vcjgsv8uognd"
+path="res://.godot/imported/right click a book.wav-71e59ea0bc705efcc62419648ed7a841.sample"
+
+[deps]
+
+source_file="res://DadAudio/Dialogue/right click a book.wav"
+dest_files=["res://.godot/imported/right click a book.wav-71e59ea0bc705efcc62419648ed7a841.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://f3aom7kcrvoi"]
 
-[ext_resource type="AudioStream" uid="uid://vjye0mfojfy8" path="res://src/Audio/files/debug.mp3" id="1_t6qoy"]
+[ext_resource type="AudioStream" uid="uid://cre566sd7osu1" path="res://DadAudio/Dialogue/this is a public.wav" id="1_tm241"]
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_hrlcf"]
 
 [resource]
 script = ExtResource("2_hrlcf")
 text = "This is a public message to Bookshop™ warehouse gremlin 3462."
-audio = ExtResource("1_t6qoy")
+audio = ExtResource("1_tm241")

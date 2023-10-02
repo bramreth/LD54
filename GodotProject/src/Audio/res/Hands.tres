@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://dypu5qrk16i22"]
 
-[ext_resource type="AudioStream" uid="uid://vjye0mfojfy8" path="res://src/Audio/files/debug.mp3" id="1_oxs5y"]
+[ext_resource type="AudioStream" uid="uid://bs4sosq4ynh5r" path="res://DadAudio/Dialogue/you can fit what.wav" id="1_x50ml"]
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_7d2y7"]
 
 [resource]
 script = ExtResource("2_7d2y7")
 text = "You can fit what, like 3 Books™ in there? Try it."
-audio = ExtResource("1_oxs5y")
+audio = ExtResource("1_x50ml")

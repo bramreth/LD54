@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://bpw6ixsdhu4gk"]
 
-[ext_resource type="AudioStream" uid="uid://vjye0mfojfy8" path="res://src/Audio/files/debug.mp3" id="1_0s744"]
+[ext_resource type="AudioStream" uid="uid://b0bdhnoff7nm1" path="res://DadAudio/Dialogue/when your task.wav" id="1_8mwee"]
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_edxpx"]
 
 [resource]
 script = ExtResource("2_edxpx")
 text = "When your task is complete complete, approach the Task Appraisal Lever™ and yank it for Assessment™"
-audio = ExtResource("1_0s744")
+audio = ExtResource("1_8mwee")

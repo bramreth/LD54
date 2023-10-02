@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=98 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="Texture2D" uid="uid://c7mcmdtwy5nci" path="res://KenneyAssets/boiler_room_1k.hdr" id="2_goj4e"]
@@ -16,13 +16,13 @@
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="8_wflrt"]
 [ext_resource type="Texture2D" uid="uid://bpm46y6hwxpl4" path="res://MashaAssets/bh_square.png" id="9_0omro"]
 [ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="9_hslbt"]
-[ext_resource type="Material" path="res://Bram's 3D Hellscape/FloorEdge.tres" id="9_o76vd"]
+[ext_resource type="Material" uid="uid://c0ax3rbf5vtbq" path="res://Bram's 3D Hellscape/FloorEdge.tres" id="9_o76vd"]
 [ext_resource type="Texture2D" uid="uid://brif0bb1bh5vx" path="res://KenneyAssets/window_03.png" id="10_awm3o"]
 [ext_resource type="Texture2D" uid="uid://oyqi4k53mda5" path="res://MashaAssets/mt_tri.png" id="10_dflxv"]
-[ext_resource type="Material" path="res://Bram's 3D Hellscape/Carpet.tres" id="10_eputv"]
+[ext_resource type="Material" uid="uid://ceban57y1up7g" path="res://Bram's 3D Hellscape/Carpet.tres" id="10_eputv"]
 [ext_resource type="PackedScene" uid="uid://b2yx8u68xoo4e" path="res://BackgroundTrash/clock.tscn" id="10_jav2w"]
 [ext_resource type="Texture2D" uid="uid://cybxlwww457gf" path="res://MashaAssets/art_circle.png" id="11_6q0tx"]
-[ext_resource type="Material" path="res://Bram's 3D Hellscape/Walls.tres" id="11_27d8o"]
+[ext_resource type="Material" uid="uid://d1i355156omih" path="res://Bram's 3D Hellscape/Walls.tres" id="11_27d8o"]
 [ext_resource type="PackedScene" uid="uid://bsuxb2bp6rdm6" path="res://BackgroundTrash/air_vent.tscn" id="11_vcjia"]
 [ext_resource type="Texture2D" uid="uid://cjdeqmwa5o6mw" path="res://Bram's 3D Hellscape/4K-cloth_3_Dif.jpg" id="12_rtb5g"]
 [ext_resource type="Texture2D" uid="uid://cfm1bun428jxq" path="res://addons/kenney_prototype_tools/textures/dark/texture_09.png" id="12_xhbwa"]
@@ -39,15 +39,18 @@
 [ext_resource type="Texture2D" uid="uid://dpnqelist35c6" path="res://poster2.JPG" id="22_cbvax"]
 [ext_resource type="Texture2D" uid="uid://bfm2wtsswa5y5" path="res://poster4.PNG" id="23_1h427"]
 [ext_resource type="Texture2D" uid="uid://cdx7ahvgk8obm" path="res://KenneyAssets/circle_05.png" id="25_am1lw"]
+[ext_resource type="AudioStream" uid="uid://bnunn726m237e" path="res://DadAudio/clock.ogg" id="27_0r3vd"]
 [ext_resource type="PackedScene" uid="uid://b30p107cytvc3" path="res://src/tutorial_src/tutorial.tscn" id="27_3kyj5"]
 [ext_resource type="PackedScene" uid="uid://jn4jo5ickom0" path="res://src/BookSpawner/Trash/Trash_4.tscn" id="28_bd6t3"]
 [ext_resource type="Script" path="res://src/test_level/StartGameCamera.gd" id="28_oc3g7"]
+[ext_resource type="AudioStream" uid="uid://4l30rl68xp81" path="res://DadAudio/fan.ogg" id="29_4ysat"]
 [ext_resource type="FontFile" uid="uid://ij353qf6fdpf" path="res://addons/brambox/UserInterface/Font/Staatliches-Regular.ttf" id="29_bcrpl"]
 [ext_resource type="PackedScene" uid="uid://dstrqgbqoti17" path="res://src/test_level/BlankTube.tscn" id="34_4hgnu"]
 [ext_resource type="Texture2D" uid="uid://1tlc4rox8dhr" path="res://MashaAssets/Children of Time.png" id="35_2if5c"]
 [ext_resource type="Texture2D" uid="uid://d0kc2spou3m8r" path="res://Bram's 3D Hellscape/Book/book_Windy Wendy Leaves Her Pan.png" id="35_4fcwx"]
 [ext_resource type="Material" uid="uid://jyvg3ym6j4p2" path="res://Bram's 3D Hellscape/Book/Material.001.tres" id="36_yvvkk"]
 [ext_resource type="Texture2D" uid="uid://cjhol7govlg0t" path="res://MashaAssets/Wuthering Heights.png" id="38_dsdwv"]
+[ext_resource type="AudioStream" uid="uid://n2aydjtmycpy" path="res://DadAudio/three-tubes.ogg" id="42_50v2t"]
 [ext_resource type="PackedScene" uid="uid://di8erld2i08dx" path="res://src/book/IdiotBook.tscn" id="46_bebwn"]
 
 [sub_resource type="Gradient" id="Gradient_qlo87"]
@@ -735,8 +738,23 @@ collision_mask = 4
 [node name="Clock" parent="Background" instance=ExtResource("10_jav2w")]
 transform = Transform3D(2.18557e-08, -0.5, -7.54979e-08, -0.5, -2.18557e-08, -1.74393e-16, -3.12572e-15, 7.54979e-08, -0.5, 7.46552, 3, 3.91422)
 
+[node name="SFXAudio" type="AudioStreamPlayer3D" parent="Background/Clock"]
+stream = ExtResource("27_0r3vd")
+volume_db = -15.0
+unit_size = 6.0
+autoplay = true
+bus = &"SFX"
+
 [node name="AirVent" parent="Background" instance=ExtResource("11_vcjia")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0, -1)
+
+[node name="SFXAudio" type="AudioStreamPlayer3D" parent="Background/AirVent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02807, 2.11639, 6.88805)
+stream = ExtResource("29_4ysat")
+volume_db = -16.0
+unit_size = 6.0
+autoplay = true
+bus = &"SFX"
 
 [node name="Sprite3D" type="Sprite3D" parent="Background"]
 transform = Transform3D(-0.0747146, 0.00653668, 6.53176e-09, 0.00653668, 0.0747146, -5.71455e-10, -6.55671e-09, 0, -0.075, 6.1, 2, 6.95)
@@ -810,6 +828,12 @@ draw_pass_1 = SubResource("ArrayMesh_t8kao")
 
 [node name="BlankTube2" parent="Background/BlankTube" instance=ExtResource("34_4hgnu")]
 transform = Transform3D(1, -3.48787e-16, -3.48787e-16, -3.48787e-16, -1, 8.74228e-08, -3.48787e-16, -8.74228e-08, -1, 0, -4.23042, 0)
+
+[node name="SFXAudio" type="AudioStreamPlayer3D" parent="Background/BlankTube"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87563, -1.90877, -0.0452113)
+stream = ExtResource("42_50v2t")
+unit_size = 0.75
+autoplay = true
 
 [node name="BlankTube2" parent="Background" instance=ExtResource("34_4hgnu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 3.80028, -5)
