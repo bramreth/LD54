@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://ciwcukidbvymx"]
+
+[ext_resource type="AudioStream" uid="uid://o3br6u5uth75" path="res://DadAudio/Dialogue/if any employees.wav" id="1_hoipm"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_7eirm"]
+
+[resource]
+script = ExtResource("2_7eirm")
+text = "If any employees do find the cat shredder - we must know its wherabouts at once."
+audio = ExtResource("1_hoipm")
