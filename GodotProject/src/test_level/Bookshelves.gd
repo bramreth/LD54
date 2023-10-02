@@ -11,7 +11,7 @@ func round_started(round: int, _books: Array) -> void:
 		RoundManager.TUTORIAL_ROUND_1: show_tutorial_shelf()
 		RoundManager.TUTORIAL_ROUND_2: pass
 		2: show_totorial_row()
-		3: show_first_area()
+		4: show_first_area()
 		_: pass
 
 
