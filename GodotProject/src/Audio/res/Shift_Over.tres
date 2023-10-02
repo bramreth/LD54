@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://1dhcg0g5wbg0"]
 
-[ext_resource type="AudioStream" uid="uid://b5agyirr3favi" path="res://src/Audio/files/debug.mp3" id="1_nwp5x"]
+[ext_resource type="AudioStream" uid="uid://c27cam10rtab1" path="res://DadAudio/Dialogue/final_1.wav" id="1_20wwl"]
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_cajbo"]
 
 [resource]
 script = ExtResource("2_cajbo")
-text = "Thank you for your effort today Gremlin"
-audio = ExtResource("1_nwp5x")
+text = "Gremlin, I don't remember your employee number now - but I want to tell you what a pleasure it was to have you working in these halls."
+audio = ExtResource("1_20wwl")

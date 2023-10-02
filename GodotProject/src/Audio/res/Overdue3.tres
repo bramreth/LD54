@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://dhu7i05as8eja"]
+
+[ext_resource type="AudioStream" uid="uid://8khbefy6e0bl" path="res://DadAudio/Dialogue/overdue_3.wav" id="1_uke8q"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_um6ge"]
+
+[resource]
+script = ExtResource("2_um6ge")
+text = "I hope you enjoy the rest of your shift."
+audio = ExtResource("1_uke8q")

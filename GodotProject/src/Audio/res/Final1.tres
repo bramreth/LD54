@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://hvruwensms3d"]
+
+[ext_resource type="AudioStream" uid="uid://covmvc5o4otp6" path="res://DadAudio/Dialogue/overdue_1.wav" id="1_ebef3"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_x7xc1"]
+
+[resource]
+script = ExtResource("2_x7xc1")
+text = "Well doesn't time fly! Just think, at the end of this shift"
+audio = ExtResource("1_ebef3")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://cuhghgt726jcq"]
+
+[ext_resource type="AudioStream" uid="uid://enmq33ftdkkw" path="res://DadAudio/Dialogue/any books making.wav" id="1_uaibb"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_xf0rl"]
+
+[resource]
+script = ExtResource("2_xf0rl")
+text = "Any books making their way into the cat shredder get lost to the accounting software, which is unnaceptable."
+audio = ExtResource("1_uaibb")

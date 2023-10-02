@@ -41,6 +41,7 @@ func round_started(round: int, _books: Array) -> void:
 			blocked_area.queue_free()
 			shredder.start()
 		8: Announcer.queue(DialogPacketDb.dialog_packets.shredder)
+		9: Announcer.queue(DialogPacketDb.dialog_packets.overdue)
 		RoundManager.FINAL_ROUND: Announcer.queue(DialogPacketDb.dialog_packets.day_finished)
 
 func _on_check_button_toggled(button_pressed: bool) -> void:

@@ -46,8 +46,17 @@ var dialog_packets := {
 		func():
 			UiEventBus.lock_lever.emit(true),
 		preload("res://src/Audio/res/IfAnyEmployees.tres"),
-		preload("res://src/Audio/res/anybooksmaking.tres"),
+		preload("res://src/Audio/res/any.tres"),
 		preload("res://src/Audio/res/IREPEAT.tres"),
+		func():
+			UiEventBus.lock_lever.emit(false),
+	],
+	"overdue": [
+		func():
+			UiEventBus.lock_lever.emit(true),
+		preload("res://src/Audio/res/Overdue1.tres"),
+		preload("res://src/Audio/res/Overdue2.tres"),
+		preload("res://src/Audio/res/Overdue3.tres"),
 		func():
 			UiEventBus.lock_lever.emit(false),
 	],
@@ -59,12 +68,12 @@ var dialog_packets := {
 		func(): UiEventBus.lock_lever.emit(false)
 	],
 	"scifi_round": [
-		func(): UiEventBus.lock_lever.emit(false),
+		func(): UiEventBus.lock_lever.emit(true),
 		preload("res://src/Audio/res/Blue.tres"),
 		func(): UiEventBus.lock_lever.emit(false)
 	],
 	"limited": [
-		func(): UiEventBus.lock_lever.emit(false),
+		func(): UiEventBus.lock_lever.emit(true),
 		preload("res://src/Audio/res/limited.tres"),
 		preload("res://src/Audio/res/wehavelimited.tres"),
 		func(): UiEventBus.lock_lever.emit(false)

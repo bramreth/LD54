@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://cjg2bplrffqhg"]
+
+[ext_resource type="AudioStream" uid="uid://bnbuh8kf1rcsm" path="res://DadAudio/Dialogue/overdue_2.wav" id="1_lgyvl"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_iagmd"]
+
+[resource]
+script = ExtResource("2_iagmd")
+text = "your overdue library book will be paid off. Courtesy of Books and Co Limited Incorporated Sons and Gentlemen"
+audio = ExtResource("1_lgyvl")
