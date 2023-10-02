@@ -282,7 +282,7 @@ texture = ExtResource("3_r0uy1")
 
 [node name="Voice" type="AudioStreamPlayer3D" parent="CSGBox3D/CSGBox3D2/AnimatedSprite3D"]
 transform = Transform3D(1, -5.29396e-23, 3.80994e-22, 7.86666e-23, 1, 1.8466e-07, -7.86334e-23, 0, 1, -2.24213e-16, -0.15009, 0.259964)
-unit_size = 2.0
+unit_size = 5.0
 bus = &"Dialogue"
 
 [node name="Face" type="Sprite3D" parent="CSGBox3D/CSGBox3D2/AnimatedSprite3D"]

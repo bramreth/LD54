@@ -48,8 +48,10 @@ func _ready() -> void:
 			sort_label.text = "%d book incorrect row" % incorrect_sort
 	)
 
+@onready var control: Node2D = $Control
 
 func final_evaluation() -> void:
+	control.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	set_visiblity(true)
 	mistakes_label.visible = false
@@ -59,10 +61,11 @@ func final_evaluation() -> void:
 	score_label.visible = true
 	time_label.visible = true
 	var total_score := RoundManager.calculate_total_score()
-	score_label.text = "Final score: %.2f percent" % total_score
+	score_label.text = "Final score: %.2f %" % total_score
 	time_label.text = "Final time: %.2f seconds" % RoundManager.calculate_total_time()
 	flavour_label.text = "%d Gremlins did better than you" % num_of_better_gremlins(total_score)
-	proceed_button.pressed.connect(return_control)
+	proceed_button.pressed.connect(get_tree().reload_current_scene)
+	
 
 
 func num_of_better_gremlins(score: float) -> int:

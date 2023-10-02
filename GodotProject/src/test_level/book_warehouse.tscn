@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=114 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="Texture2D" uid="uid://c7mcmdtwy5nci" path="res://KenneyAssets/boiler_room_1k.hdr" id="2_goj4e"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://qog8enelwhx8" path="res://src/ConveyorBelt/conveyor.tscn" id="4_v6cgb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_yieme"]
 [ext_resource type="Script" path="res://src/test_level/BookShelfRow.gd" id="5_d2klj"]
+[ext_resource type="AudioStream" uid="uid://ci7mhocyvu7gv" path="res://DadAudio/floatzart.ogg" id="6_ajxfp"]
+[ext_resource type="AudioStream" uid="uid://dmi1gbtqste7s" path="res://DadAudio/moatzart.ogg" id="6_fbg2r"]
 [ext_resource type="PackedScene" uid="uid://cqqvwy1c75xv7" path="res://src/BookSpawner/book_spawner.tscn" id="7_vwrja"]
 [ext_resource type="Script" path="res://src/test_level/DecorativeShelf.gd" id="8_5elcg"]
 [ext_resource type="PackedScene" uid="uid://b4mrqfvtlycnc" path="res://addons/brambox/UserInterface/user_interface.tscn" id="8_qiqft"]
@@ -52,6 +54,10 @@
 [ext_resource type="Texture2D" uid="uid://cjhol7govlg0t" path="res://MashaAssets/Wuthering Heights.png" id="38_dsdwv"]
 [ext_resource type="AudioStream" uid="uid://n2aydjtmycpy" path="res://DadAudio/three-tubes.ogg" id="42_50v2t"]
 [ext_resource type="PackedScene" uid="uid://di8erld2i08dx" path="res://src/book/IdiotBook.tscn" id="46_bebwn"]
+[ext_resource type="Script" path="res://src/test_level/DoorTut.gd" id="50_k8awi"]
+[ext_resource type="Texture2D" uid="uid://bnc6s3ofbe184" path="res://KenneyAssets/circle_02.png" id="51_v6wjf"]
+[ext_resource type="Texture2D" uid="uid://cgudugnolhlbx" path="res://MashaAssets/Untitled_Artwork.png" id="52_cfkii"]
+[ext_resource type="AudioStream" uid="uid://dwf1e0mdlv4kt" path="res://DadAudio/break-planks.ogg" id="57_uato7"]
 
 [sub_resource type="Gradient" id="Gradient_qlo87"]
 offsets = PackedFloat32Array(0, 0.0740741, 0.948148, 1)
@@ -81,6 +87,19 @@ volumetric_fog_density = 0.0
 volumetric_fog_length = 6.0
 adjustment_enabled = true
 adjustment_color_correction = SubResource("GradientTexture1D_5uj7l")
+
+[sub_resource type="PrismMesh" id="PrismMesh_gmtgh"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u64mu"]
+streams_count = 2
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("6_ajxfp")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_fbg2r")
+stream_1/weight = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28p30"]
 resource_local_to_scene = true
@@ -409,8 +428,315 @@ size = Vector3(1, 4, 5)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tw55b"]
 albedo_color = Color(0.321569, 0.235294, 0.152941, 1)
 
+[sub_resource type="Animation" id="Animation_jnhhr"]
+resource_name = "Dissapear"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D/CSGBox3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 4, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBox3D/CSGBox3D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 4, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGBox3D/CSGBox3D4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0.869333, -0.232937), Vector3(0, 4, -0.233)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CSGBox3D/CSGBox3D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0, 0.482963, -0.12941), Vector3(0, 4, -0.129)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CSGBox3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1, 1.3),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(3.25, -0.25, 2.5), Vector3(3.25, 4, 2.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CSGBox3D/CSGBox3D2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(-0.261799, 0, 0), Vector3(-0.767945, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CSGBox3D/CSGBox3D3:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0), Vector3(-0.383972, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CSGBox3D/CSGBox3D4:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.3, 0.8),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(-0.349066, 0, 0), Vector3(-0.698132, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CSGBox3D/CSGBox3D5:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(2.589e-08, 0, 0), Vector3(-0.244346, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CSGBox3D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1, 1.3),
+"transitions": PackedFloat32Array(-3, -3),
+"update": 0,
+"values": [Vector3(0.261799, 0, 0), Vector3(0.436332, 0, 0)]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8vw4a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D/CSGBox3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CSGBox3D/CSGBox3D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CSGBox3D/CSGBox3D4:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.869333, -0.232937)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CSGBox3D/CSGBox3D5:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.482963, -0.12941)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CSGBox3D:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.25, -0.25, 2.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CSGBox3D/CSGBox3D2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.261799, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CSGBox3D/CSGBox3D3:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CSGBox3D/CSGBox3D4:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.349066, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CSGBox3D/CSGBox3D5:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.589e-08, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CSGBox3D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.261799, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5d5jh"]
+_data = {
+"Dissapear": SubResource("Animation_jnhhr"),
+"RESET": SubResource("Animation_8vw4a")
+}
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0wob"]
 albedo_color = Color(0.309804, 0.309804, 0.309804, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aq3f0"]
+size = Vector3(3, 4, 3)
+
+[sub_resource type="Animation" id="Animation_toaob"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(-3, -3, -3),
+"update": 0,
+"values": [Vector3(1.25, 1.25, 1.25), Vector3(1.4, 1.4, 1.4), Vector3(1.25, 1.25, 1.25)]
+}
+
+[sub_resource type="Animation" id="Animation_4uaf8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.25, 1.25, 1.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fd4pi"]
+_data = {
+"Idle": SubResource("Animation_toaob"),
+"RESET": SubResource("Animation_4uaf8")
+}
 
 [sub_resource type="Curve" id="Curve_t5oat"]
 _data = [Vector2(0, 0), 0.0, 4.00134, 0, 0, Vector2(0.508648, 1), 0.0, 0.0, 0, 0, Vector2(0.750899, 0), -2.86934, 0.0, 0, 0]
@@ -469,7 +795,10 @@ roughness = 0.13
 material = SubResource("StandardMaterial3D_u7wjg")
 size = Vector3(0.1, 2.5, 4)
 
-[node name="BookWarehouse" type="Node3D"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lbb53"]
+data = PackedVector3Array(-0.05, 1.25, 2, 0.05, 1.25, 2, -0.05, -1.25, 2, 0.05, 1.25, 2, 0.05, -1.25, 2, -0.05, -1.25, 2, 0.05, 1.25, -2, -0.05, 1.25, -2, 0.05, -1.25, -2, -0.05, 1.25, -2, -0.05, -1.25, -2, 0.05, -1.25, -2, 0.05, 1.25, 2, 0.05, 1.25, -2, 0.05, -1.25, 2, 0.05, 1.25, -2, 0.05, -1.25, -2, 0.05, -1.25, 2, -0.05, 1.25, -2, -0.05, 1.25, 2, -0.05, -1.25, -2, -0.05, 1.25, 2, -0.05, -1.25, 2, -0.05, -1.25, -2, 0.05, 1.25, 2, -0.05, 1.25, 2, 0.05, 1.25, -2, -0.05, 1.25, 2, -0.05, 1.25, -2, 0.05, 1.25, -2, -0.05, -1.25, 2, 0.05, -1.25, 2, -0.05, -1.25, -2, 0.05, -1.25, 2, 0.05, -1.25, -2, -0.05, -1.25, -2)
+
+[node name="BookWarehouse" type="Node3D" groups=["warehouse"]]
 script = ExtResource("1_bbmif")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -491,6 +820,23 @@ fov = 37.8493
 script = ExtResource("4_yieme")
 
 [node name="AnnouncerSpeaker" parent="." instance=ExtResource("14_cejp5")]
+
+[node name="Music" type="Node3D" parent="."]
+transform = Transform3D(0.13537, 0, -0.990795, 0, 1, 0, 0.990795, 0, 0.13537, -4.2, 3.8, -1.61552)
+
+[node name="Speaker" type="CSGBox3D" parent="Music"]
+size = Vector3(0.2, 0.5, 0.2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Music/Speaker"]
+transform = Transform3D(0.353553, -0.612372, 0.707107, 0.866025, 0.5, 4.79751e-17, -0.353553, 0.612372, 0.707107, 0, -0.2, 0)
+mesh = SubResource("PrismMesh_gmtgh")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Music"]
+stream = SubResource("AudioStreamRandomizer_u64mu")
+volume_db = -5.0
+unit_size = 5.0
+autoplay = true
+bus = &"Music"
 
 [node name="Bookshelves" type="Node3D" parent="."]
 script = ExtResource("4_065el")
@@ -944,9 +1290,15 @@ size = Vector3(0.2, 0.2, 5)
 material = SubResource("StandardMaterial3D_tw55b")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="BlockedArea/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, -2.03547e-08, 0, 2.589e-08, 1, 0, 0.482963, -0.12941)
+transform = Transform3D(1, 0, 0, 0, 1, -2.589e-08, 0, 2.589e-08, 1, 0, 0.482963, -0.12941)
 size = Vector3(0.2, 0.2, 5)
 material = SubResource("StandardMaterial3D_tw55b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BlockedArea"]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_5d5jh")
+}
 
 [node name="BookSpawner" parent="." instance=ExtResource("7_vwrja")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 2)
@@ -972,6 +1324,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
 size = Vector3(0.2, 0.2, 0.4)
 
 [node name="Tutorial" parent="." instance=ExtResource("27_3kyj5")]
+
+[node name="DoorTut" type="Node3D" parent="." groups=["doortut"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67789, 0.123712, -0.0426617)
+script = ExtResource("50_k8awi")
+
+[node name="BookDumpArea" type="Area3D" parent="DoorTut"]
+transform = Transform3D(0.997243, 0, 0, 0, 0.997243, 0, 0, 0, 0.997243, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorTut/BookDumpArea"]
+shape = SubResource("BoxShape3D_aq3f0")
+
+[node name="BookDumpArea" type="Sprite3D" parent="DoorTut/BookDumpArea"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+axis = 1
+texture = ExtResource("51_v6wjf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DoorTut/BookDumpArea/BookDumpArea"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_fd4pi")
+}
+
+[node name="Arrow" type="Sprite3D" parent="DoorTut/BookDumpArea/BookDumpArea"]
+transform = Transform3D(0.106361, 0, 0, 0, 0.106361, 0, 0, 0, 0.106361, 0, 1.44347, 0)
+billboard = 2
+texture = ExtResource("52_cfkii")
 
 [node name="Book" parent="." instance=ExtResource("46_bebwn")]
 transform = Transform3D(0.565125, 0, -0.825005, 0, 1, 0, 0.825005, 0, 0.565125, 3.9171, 1.05, 6.04406)
@@ -1075,6 +1453,21 @@ material = ExtResource("8_wflrt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 0, 0)
 mesh = SubResource("BoxMesh_3ogq1")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Secret/MeshInstance3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Secret/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lbb53")
+
+[node name="SFXAudioSmash" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02405, 1.35675, 0.0876334)
+visible = false
+stream = ExtResource("57_uato7")
+unit_size = 0.75
+autoplay = true
+
+[connection signal="finished" from="Music/AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
 [connection signal="clear_books" from="BookSpawner" to="Player" method="_on_book_spawner_clear_books"]
 [connection signal="toggled" from="StartGameCamera/StartCanvas/MarginContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

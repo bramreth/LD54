@@ -80,10 +80,15 @@ var dialog_packets := {
 	],
 	"zone_unlocked": [
 		preload("res://src/Audio/res/Zone_Unlocked.tres"),
-		preload("res://src/Audio/res/Zone_Unlocked_Part2.tres")
+		preload("res://src/Audio/res/Zone_Unlocked_Part2.tres"),
+		func():
+			get_tree().get_first_node_in_group("doortut").show_book_dump(),
+		null,
+		func():
+			get_tree().get_first_node_in_group("warehouse").new_zone(),
 	],
 	"day_finished": [
-		func(): UiEventBus.lock_lever.emit(false),
+		func(): UiEventBus.lock_lever.emit(true),
 		preload("res://src/Audio/res/Shift_Over.tres"), 
 		preload("res://src/Audio/res/Shift_Over_2.tres"),
 		func(): RoundManager.final_evaluation()

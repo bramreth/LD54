@@ -45,10 +45,10 @@ func _process(delta: float) -> void:
 
 
 func _on_shredding() -> void:
-	shreds_left -= 1
-	if shreds_left < 1: 
-		set_process(false)
-		area_3d.disable()
+#	shreds_left -= 1
+#	if shreds_left < 1: 
+#		set_process(false)
+#		area_3d.disable()
 	animation_player.play("shred", -1, 2.0)
 	face_animation_player.play("shred")
 	callout(nomnom, happy_face)

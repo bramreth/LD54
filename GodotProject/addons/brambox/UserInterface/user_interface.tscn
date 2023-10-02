@@ -230,6 +230,33 @@ layout_mode = 2
 size_flags_vertical = 10
 text = "Resume tasks"
 
+[node name="Control" type="Node2D" parent="Evaluation"]
+visible = false
+position = Vector2(29, 18)
+
+[node name="PanelContainer" type="PanelContainer" parent="Evaluation/Control"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_4oy2w")
+
+[node name="Label" type="Label" parent="Evaluation/Control/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Evaluation/Control/PanelContainer"]
+custom_minimum_size = Vector2(460, 400)
+layout_mode = 2
+bbcode_enabled = true
+text = "Thankyou for playing ♥
+
+The Book and co team
+[url=https://linktr.ee/bramwellgames]Dev: Bramwell[/url]
+[url=https://twitter.com/MaxTaubert7]Dev: Max[/url]
+[url=https://www.linkedin.com/in/masha-michelle-taubert-650682139]Art+: Masha[/url]
+[url=https://soundcloud.com/flangeworthy]music: Flangeworthy[/url]
+"
+fit_content = true
+
 [node name="PauseScreen" type="Control" parent="."]
 process_mode = 3
 visible = false
@@ -290,6 +317,7 @@ text = "Quit Game"
 unique_name_in_owner = true
 layout_mode = 1
 
+[connection signal="meta_clicked" from="Evaluation/Control/PanelContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="pressed" from="PauseScreen/PauseContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="PauseScreen/PauseContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="PauseScreen/PauseContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

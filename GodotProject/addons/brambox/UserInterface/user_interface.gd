@@ -51,3 +51,7 @@ func _on_settings_container_exit() -> void:
 	pause_container.visible = true
 	settings_container.visible = false
 	resume_button.grab_focus()
+
+
+func _on_rich_text_label_meta_clicked(meta) -> void:
+	OS.shell_open(meta)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/TaskAppraisalLever/task_appraisal_lever.gd" id="1_4ovfc"]
 [ext_resource type="FontFile" uid="uid://ij353qf6fdpf" path="res://addons/brambox/UserInterface/Font/Staatliches-Regular.ttf" id="1_7u62x"]
 [ext_resource type="Texture2D" uid="uid://djv0wtl16pmmr" path="res://Bram's 3D Hellscape/Lever/lever_Palette.png" id="3_ujy6g"]
-[ext_resource type="AudioStream" uid="uid://bkks0rbk0jxwg" path="res://MashaAssets/audio/Leaver pull with pop.mp3" id="4_oy0vs"]
+[ext_resource type="AudioStream" uid="uid://d2sw85fo6gsyd" path="res://DadAudio/lever.ogg" id="4_t77ew"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xaikq"]
 radius = 0.6
@@ -263,7 +263,7 @@ tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("4_oy0vs")
+"stream": ExtResource("4_t77ew")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -602,4 +602,6 @@ mesh = SubResource("ArrayMesh_67w3y")
 skeleton = NodePath("")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+volume_db = -8.0
+unit_size = 2.0
 bus = &"SFX"

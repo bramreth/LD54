@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var fast_intro: bool = false
+@onready var animation_player: AnimationPlayer = $BlockedArea/AnimationPlayer
 
 @onready var task_appraisal_lever: StaticBody3D = $TaskAppraisalLever
 @onready var blocked_area: StaticBody3D = $BlockedArea
@@ -38,8 +39,6 @@ func round_started(round: int, _books: Array) -> void:
 		6: Announcer.queue(DialogPacketDb.dialog_packets.diesel)
 		RoundManager.BLOCKED_AREA_UNVEILED:
 			Announcer.queue(DialogPacketDb.dialog_packets.zone_unlocked)
-			blocked_area.queue_free()
-			shredder.start()
 		8: Announcer.queue(DialogPacketDb.dialog_packets.shredder)
 		9: Announcer.queue(DialogPacketDb.dialog_packets.overdue)
 		RoundManager.FINAL_ROUND: Announcer.queue(DialogPacketDb.dialog_packets.day_finished)
@@ -47,7 +46,12 @@ func round_started(round: int, _books: Array) -> void:
 func _on_check_button_toggled(button_pressed: bool) -> void:
 	fast_intro = button_pressed
 
-
+func new_zone() -> void:
+	shredder.start(
+	)
+	animation_player.play("Dissapear")
+	$SFXAudioSmash.play()
+			
 func start_production_speed_timer() -> void:
 	production_speed_timer.stop()
 	if production_speed_complaint: return
@@ -57,3 +61,7 @@ func start_production_speed_timer() -> void:
 func _on_timer_timeout() -> void:
 	production_speed_complaint = true
 	Announcer.queue(DialogPacketDb.quips.too_slow, -1)
+
+
+func _on_audio_stream_player_3d_finished() -> void:
+	$Music/AudioStreamPlayer3D.play()
