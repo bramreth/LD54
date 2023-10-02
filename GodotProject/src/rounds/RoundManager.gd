@@ -13,8 +13,7 @@ var total_score: Dictionary = {}
 
 
 func start_game() -> void:
-	current_round = 9
-	UiEventBus.lock_lever.emit(false)
+	current_round = 0
 	total_score.clear()
 	timer.start(1.0)
 

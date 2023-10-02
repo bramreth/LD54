@@ -48,11 +48,11 @@ func _on_check_button_toggled(button_pressed: bool) -> void:
 
 
 func start_production_speed_timer() -> void:
-	if production_speed_complaint: return
 	production_speed_timer.stop()
+	if production_speed_complaint: return
 	production_speed_timer.start(45)
 
 
 func _on_timer_timeout() -> void:
 	production_speed_complaint = true
-	Announcer.queue(DialogPacketDb.quips.too_slow)
+	Announcer.queue(DialogPacketDb.quips.too_slow, -1)
