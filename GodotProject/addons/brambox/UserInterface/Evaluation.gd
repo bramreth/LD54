@@ -59,8 +59,8 @@ func final_evaluation() -> void:
 	score_label.visible = true
 	time_label.visible = true
 	var total_score := RoundManager.calculate_total_score()
-	score_label.text = str(total_score)
-	time_label.text = str(RoundManager.calculate_total_time())
+	score_label.text = "Final score: %.2f percent" % total_score
+	time_label.text = "Final time: %.2f seconds" % RoundManager.calculate_total_time()
 	flavour_label.text = "%d Gremlins did better than you" % num_of_better_gremlins(total_score)
 	proceed_button.pressed.connect(return_control)
 
