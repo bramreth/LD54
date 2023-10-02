@@ -25,10 +25,12 @@ func evalutae() -> void:
 
 
 func update_score(score: float) -> void:
+	if not total_score.keys().has(current_round): total_score[current_round] = {}
 	total_score[current_round][SCORE] = score
 
 
 func update_time(time: float) -> void:
+	if not total_score.keys().has(current_round): total_score[current_round] = {}
 	total_score[current_round][TIME] = time
 
 

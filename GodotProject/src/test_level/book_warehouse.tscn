@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://cekdchqmtjhru"]
+[gd_scene load_steps=95 format=3 uid="uid://cekdchqmtjhru"]
 
 [ext_resource type="Script" path="res://src/test_level/BookWarehouse.gd" id="1_bbmif"]
 [ext_resource type="Texture2D" uid="uid://c7mcmdtwy5nci" path="res://KenneyAssets/boiler_room_1k.hdr" id="2_goj4e"]
@@ -16,13 +16,13 @@
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="8_wflrt"]
 [ext_resource type="Texture2D" uid="uid://bpm46y6hwxpl4" path="res://MashaAssets/bh_square.png" id="9_0omro"]
 [ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="9_hslbt"]
-[ext_resource type="Material" uid="uid://c0ax3rbf5vtbq" path="res://Bram's 3D Hellscape/FloorEdge.tres" id="9_o76vd"]
+[ext_resource type="Material" path="res://Bram's 3D Hellscape/FloorEdge.tres" id="9_o76vd"]
 [ext_resource type="Texture2D" uid="uid://brif0bb1bh5vx" path="res://KenneyAssets/window_03.png" id="10_awm3o"]
 [ext_resource type="Texture2D" uid="uid://oyqi4k53mda5" path="res://MashaAssets/mt_tri.png" id="10_dflxv"]
-[ext_resource type="Material" uid="uid://ceban57y1up7g" path="res://Bram's 3D Hellscape/Carpet.tres" id="10_eputv"]
+[ext_resource type="Material" path="res://Bram's 3D Hellscape/Carpet.tres" id="10_eputv"]
 [ext_resource type="PackedScene" uid="uid://b2yx8u68xoo4e" path="res://BackgroundTrash/clock.tscn" id="10_jav2w"]
 [ext_resource type="Texture2D" uid="uid://cybxlwww457gf" path="res://MashaAssets/art_circle.png" id="11_6q0tx"]
-[ext_resource type="Material" uid="uid://d1i355156omih" path="res://Bram's 3D Hellscape/Walls.tres" id="11_27d8o"]
+[ext_resource type="Material" path="res://Bram's 3D Hellscape/Walls.tres" id="11_27d8o"]
 [ext_resource type="PackedScene" uid="uid://bsuxb2bp6rdm6" path="res://BackgroundTrash/air_vent.tscn" id="11_vcjia"]
 [ext_resource type="Texture2D" uid="uid://cjdeqmwa5o6mw" path="res://Bram's 3D Hellscape/4K-cloth_3_Dif.jpg" id="12_rtb5g"]
 [ext_resource type="Texture2D" uid="uid://cfm1bun428jxq" path="res://addons/kenney_prototype_tools/textures/dark/texture_09.png" id="12_xhbwa"]
@@ -48,6 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://d0kc2spou3m8r" path="res://Bram's 3D Hellscape/Book/book_Windy Wendy Leaves Her Pan.png" id="35_4fcwx"]
 [ext_resource type="Material" uid="uid://jyvg3ym6j4p2" path="res://Bram's 3D Hellscape/Book/Material.001.tres" id="36_yvvkk"]
 [ext_resource type="Texture2D" uid="uid://cjhol7govlg0t" path="res://MashaAssets/Wuthering Heights.png" id="38_dsdwv"]
+[ext_resource type="PackedScene" uid="uid://di8erld2i08dx" path="res://src/book/IdiotBook.tscn" id="46_bebwn"]
 
 [sub_resource type="Gradient" id="Gradient_qlo87"]
 offsets = PackedFloat32Array(0, 0.0740741, 0.948148, 1)
@@ -947,6 +948,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
 size = Vector3(0.2, 0.2, 0.4)
 
 [node name="Tutorial" parent="." instance=ExtResource("27_3kyj5")]
+
+[node name="Book" parent="." instance=ExtResource("46_bebwn")]
+transform = Transform3D(0.565125, 0, -0.825005, 0, 1, 0, 0.825005, 0, 0.565125, 3.9171, 1.05, 6.04406)
 
 [node name="Coffee" parent="." instance=ExtResource("28_bd6t3")]
 transform = Transform3D(0.965926, -4.27175e-16, -0.258819, 3.48787e-16, 1, -3.48787e-16, 0.258819, 2.4663e-16, 0.965926, 3.83176, 0.910714, 6.4285)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://di8erld2i08dx"]
+
+[ext_resource type="PackedScene" uid="uid://c8yli7labwl3f" path="res://src/book/Book.tscn" id="1_fbsna"]
+[ext_resource type="Script" path="res://src/book/IdiotBook.gd" id="2_1sljm"]
+[ext_resource type="Shader" uid="uid://dlj07njpitotq" path="res://src/book/BookFire.tres" id="2_8qfvo"]
+[ext_resource type="Script" path="res://src/book/BookRes.gd" id="3_w2hjx"]
+[ext_resource type="Texture2D" uid="uid://c5ra3ketq4tdv" path="res://MashaAssets/idiots.png" id="5_tu1nt"]
+
+[sub_resource type="Resource" id="Resource_mu115"]
+script = ExtResource("3_w2hjx")
+name = "Idiot Book"
+genre = 0
+sort = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itrnw"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_8qfvo")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/book_texture = ExtResource("5_tu1nt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3tgo"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="Book" instance=ExtResource("1_fbsna")]
+script = ExtResource("2_1sljm")
+book_res = SubResource("Resource_mu115")
+
+[node name="BookMesh" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_itrnw")
+
+[node name="Highlight" parent="BookMesh" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_a3tgo")

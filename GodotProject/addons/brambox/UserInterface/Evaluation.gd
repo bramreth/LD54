@@ -54,7 +54,7 @@ func evaluate() -> void:
 	set_visiblity(true)
 	score_label.text = str(get_score())
 	proceed_button.pressed.connect(return_control)
-	var remaining_books := get_tree().get_nodes_in_group("book")
+	var remaining_books := get_tree().get_nodes_in_group("book").filter(func(book): return not book.is_in_group("IdiotBook"))
 	printt(remaining_books.size() + incorrect_genre + incorrect_sort, correct_genre, incorrect_genre, correct_sort, incorrect_sort)
 	var mistakes = (remaining_books.size() + incorrect_genre + incorrect_sort)
 	mistakes_label.visible = mistakes > 0

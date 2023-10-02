@@ -31,6 +31,7 @@ func is_full() -> bool: return books.size() >= max_books
 func try_add_book(book: Book) -> void:
 	if is_full(): return
 	if not book.book_res: return
+	if book.is_in_group("IdiotBook"): return
 	if book.in_rack: return
 	book.in_rack = true
 	var mesh = book.seperate_mesh()
