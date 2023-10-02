@@ -4,6 +4,7 @@ signal clear_books()
 
 var current_wave := 0
 var book = preload("res://src/book/Book.tscn")
+var idiot_book = preload("res://src/book/IdiotBook.tscn")
 var trash = [
 	preload("res://src/BookSpawner/Trash/Trash_1.tscn"),
 	preload("res://src/BookSpawner/Trash/Trash_2.tscn"),
@@ -33,6 +34,8 @@ func _process(delta: float) -> void:
 
 func round_started(round: int, items: Array) -> void:
 	cull_existing_books()
+	if get_tree().get_nodes_in_group("IdiotBook").size() < 1: spawn_idiot_book()
+	if randi_range(0, 2) < 1: spawn_idiot_book()
 	items_to_spawn.clear()
 	items_to_spawn += items
 
@@ -48,6 +51,11 @@ func spawn_book(book_res: BookRes) -> void:
 	spawn_point.add_child(new_book)
 	new_book.apply_torque_impulse(Vector3(randf(), randf(), randf()) * 3.0)
 	new_book.setup(book_res)
+
+
+func spawn_idiot_book() -> void:
+	var new_book: Book = idiot_book.instantiate()
+	spawn_point.add_child(new_book)
 
 
 func cull_existing_books() -> void:
