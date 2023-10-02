@@ -31,8 +31,11 @@ func round_started(round: int, _books: Array) -> void:
 	match(round):
 		RoundManager.TUTORIAL_ROUND_1: Announcer.queue(DialogPacketDb.get_tutorial_dialog(1))
 		RoundManager.TUTORIAL_ROUND_2: Announcer.queue(DialogPacketDb.get_tutorial_dialog(2))
-		RoundManager.FIRST_ALL_ONE_GENRE_ROUND: pass
+		RoundManager.TUTORIAL_ROUND_3: Announcer.queue(DialogPacketDb.get_tutorial_dialog(3))
 		3: Announcer.queue(DialogPacketDb.dialog_packets.unlock_hands)
+		4: Announcer.queue(DialogPacketDb.dialog_packets.scifi_round)
+		5: Announcer.queue(DialogPacketDb.dialog_packets.limited)
+		6: Announcer.queue(DialogPacketDb.dialog_packets.diesel)
 		RoundManager.BLOCKED_AREA_UNVEILED:
 			Announcer.queue(DialogPacketDb.dialog_packets.zone_unlocked)
 			blocked_area.queue_free()

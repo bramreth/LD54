@@ -135,7 +135,6 @@ func _on_timer_timeout() -> void:
 const TUTORIAL_ROUND_1 := 0
 const TUTORIAL_ROUND_2 := 1
 const TUTORIAL_ROUND_3 := 2
-const FIRST_ALL_ONE_GENRE_ROUND := 4
 const BLOCKED_AREA_UNVEILED := 7
 const FINAL_ROUND := 10
 
