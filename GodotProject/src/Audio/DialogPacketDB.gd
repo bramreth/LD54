@@ -25,7 +25,7 @@ var dialog_packets := {
 			UiEventBus.lock_lever.emit(false),
 	],
 	"unlock_hands": [
-		func(): UiEventBus.lock_lever.emit(false),
+		func(): UiEventBus.lock_lever.emit(true),
 		preload("res://src/Audio/res/Hands_Use_Them.tres"),
 		func(): RoundManager.unlock_full_hands.emit(),
 		preload("res://src/Audio/res/Hands.tres"),
@@ -35,7 +35,12 @@ var dialog_packets := {
 		preload("res://src/Audio/res/Zone_Unlocked.tres"),
 		preload("res://src/Audio/res/Zone_Unlocked_Part2.tres")
 	],
-
+	"day_finished": [
+		func(): UiEventBus.lock_lever.emit(false),
+		preload("res://src/Audio/res/Shift_Over.tres"), 
+		preload("res://src/Audio/res/Shift_Over_2.tres"),
+		func(): RoundManager.final_evaluation()
+	]
 }
 
 var quips := {

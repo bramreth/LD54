@@ -49,6 +49,26 @@ func _ready() -> void:
 	)
 
 
+func final_evaluation() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	set_visiblity(true)
+	mistakes_label.visible = false
+	remnants_label.visible = false
+	genre_label.visible = false
+	sort_label.visible = false
+	score_label.visible = true
+	time_label.visible = true
+	var total_score := RoundManager.calculate_total_score()
+	score_label.text = str(total_score)
+	time_label.text = str(RoundManager.calculate_total_time())
+	flavour_label.text = "%d Gremlins did better than you" % num_of_better_gremlins(total_score)
+	proceed_button.pressed.connect(return_control)
+
+
+func num_of_better_gremlins(score: float) -> int:
+	return int(5000.0/score) + randi_range(7,99)
+
+
 func evaluate() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	set_visiblity(true)

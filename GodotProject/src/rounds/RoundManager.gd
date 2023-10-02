@@ -24,6 +24,12 @@ func evalutae() -> void:
 	evaluator.evaluate()
 
 
+func final_evaluation() -> void:
+	var evaluator = get_tree().get_first_node_in_group("evaluation")
+	evaluator.proceed.connect(next_round)
+	evaluator.final_evaluation()
+
+
 func update_score(score: float) -> void:
 	if not total_score.keys().has(current_round): total_score[current_round] = {}
 	total_score[current_round][SCORE] = score
@@ -67,6 +73,7 @@ func get_round_books() -> Array:
 		7: return _generate_random_books(30) + [30]
 		8: return _generate_single_genre(null, 30, null) + [5]
 		9: return _generate_random_books(30) + [8]
+		10: return []
 		_: return _generate_random_books(_get_round_size())
 
 
@@ -130,6 +137,7 @@ const TUTORIAL_ROUND_2 := 1
 const TUTORIAL_ROUND_3 := 2
 const FIRST_ALL_ONE_GENRE_ROUND := 4
 const BLOCKED_AREA_UNVEILED := 7
+const FINAL_ROUND := 10
 
 const TUTORIAL_1 := "tutorial_1"
 const TUTORIAL_2 := "tutorial_2"
