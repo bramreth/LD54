@@ -57,7 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("throw"):
 		if is_instance_valid(get_top_book()): _drop_book(get_top_book(true))
 	if event.is_action_pressed("inspect"):
-		get_top_book().inspect()
+		if not books.is_empty(): get_top_book().inspect()
 
 
 func _add_book_to_rack(rack: BookRack) -> void:
