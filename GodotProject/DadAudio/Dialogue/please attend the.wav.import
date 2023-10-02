@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjxodfmpg2id7"
+path="res://.godot/imported/please attend the.wav-2f39066d15b3b95ba09c2729bc7dad82.sample"
+
+[deps]
+
+source_file="res://DadAudio/Dialogue/please attend the.wav"
+dest_files=["res://.godot/imported/please attend the.wav-2f39066d15b3b95ba09c2729bc7dad82.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

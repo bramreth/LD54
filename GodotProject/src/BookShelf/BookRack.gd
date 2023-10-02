@@ -11,6 +11,7 @@ signal full(rack: BookRack, score: int)
 @onready var book_offset: float = $CollisionShape3D.shape.size.x / max_books
 
 @onready var animation_player: AnimationPlayer = $Highlight/AnimationPlayer
+@onready var sfx_audio: AudioStreamPlayer3D = $SFXAudio
 
 var genre: BookRes.GENRE
 var books := []
@@ -54,7 +55,10 @@ func try_add_book(book: Book) -> void:
 	mesh.global_position += _calculate_book_offset()
 	var tween = create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	tween.tween_property(mesh, "global_transform", mesh.global_transform, 0.25).from(book_origin)
-
+	tween.tween_callback(
+		func():
+			sfx_audio.play()
+	)
 
 	if books.size() == max_books:
 		full.emit(self, _calculate_score())

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cx3safr8dnois"
+path="res://.godot/imported/you can pick up.wav-82133f4be029774dd3e0eab89930e998.sample"
+
+[deps]
+
+source_file="res://DadAudio/Dialogue/you can pick up.wav"
+dest_files=["res://.godot/imported/you can pick up.wav-82133f4be029774dd3e0eab89930e998.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

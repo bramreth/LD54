@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://qog8enelwhx8"]
+[gd_scene load_steps=15 format=3 uid="uid://qog8enelwhx8"]
 
 [ext_resource type="Material" uid="uid://5omkx13o7g3k" path="res://Bram's 3D Hellscape/Material.001.tres" id="1_l0js8"]
 [ext_resource type="Material" uid="uid://xvg0a2tst0gy" path="res://Bram's 3D Hellscape/Material.002.tres" id="2_enr2v"]
 [ext_resource type="Material" uid="uid://dxev344x40eio" path="res://Bram's 3D Hellscape/Side.tres" id="3_106q5"]
 [ext_resource type="Texture2D" uid="uid://ca8fu70w03tpr" path="res://KenneyAssets/pattern2.png" id="4_nc5jv"]
+[ext_resource type="AudioStream" uid="uid://3b1kqsm8mum2" path="res://DadAudio/ambience2.ogg" id="5_fegrg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i2j6t"]
 size = Vector3(1.5, 1, 4)
@@ -175,3 +176,10 @@ surface_material_override/1 = SubResource("StandardMaterial3D_wl0di")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -4.5)
 mesh = SubResource("ArrayMesh_v5jio")
 skeleton = NodePath("")
+
+[node name="SFXAudio" type="AudioStreamPlayer3D" parent="." groups=["conveyor_audio"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.81882)
+stream = ExtResource("5_fegrg")
+volume_db = -2.0
+unit_size = 1.0
+bus = &"SFX"

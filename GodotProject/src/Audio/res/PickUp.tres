@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://pw1h6gvaimvt"]
+
+[ext_resource type="AudioStream" uid="uid://wnghlyq6ce1i" path="res://DadAudio/Dialogue/err this is news.wav" id="1_1f3by"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_bnwxn"]
+
+[resource]
+script = ExtResource("2_bnwxn")
+text = "Err, this is news in I've just been told by HR, I forgot to tell you."
+audio = ExtResource("1_1f3by")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cigwxhtdg2ror"
+path="res://.godot/imported/please do not.wav-694ba946a71b5a65d18042905bd55987.sample"
+
+[deps]
+
+source_file="res://DadAudio/Dialogue/please do not.wav"
+dest_files=["res://.godot/imported/please do not.wav-694ba946a71b5a65d18042905bd55987.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

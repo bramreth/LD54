@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://bw6wudhfuvw4y"]
+
+[ext_resource type="AudioStream" uid="uid://ddjywacraa5g8" path="res://DadAudio/Dialogue/implore.wav" id="1_qtvv6"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_bipk0"]
+
+[resource]
+script = ExtResource("2_bipk0")
+text = "I do implore the gremlins to not eat any of the trash that falls down the chutes... No matter how tasty it looks."
+audio = ExtResource("1_qtvv6")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://ble7a4dvf386t"]
+
+[ext_resource type="AudioStream" uid="uid://coqicjtuoghc" path="res://DadAudio/Dialogue/make sure this matches.wav" id="1_2ebgh"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_qh662"]
+
+[resource]
+script = ExtResource("2_qh662")
+text = "Make sure this matches the row in the bookshelf you put the book into."
+audio = ExtResource("1_2ebgh")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bjd11txrswwya"
+path="res://.godot/imported/Audio Track-11.wav-cd1ef24aef8afb0fca1f10f7da4fd6f0.sample"
+
+[deps]
+
+source_file="res://DadAudio/Dialogue/Audio Track-11.wav"
+dest_files=["res://.godot/imported/Audio Track-11.wav-cd1ef24aef8afb0fca1f10f7da4fd6f0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

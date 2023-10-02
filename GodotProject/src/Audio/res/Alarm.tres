@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://0cvrkoanoafj"]
 
-[ext_resource type="AudioStream" uid="uid://4lba7wrppob6" path="res://src/Audio/files/alarm.mp3" id="1_1hxek"]
+[ext_resource type="AudioStream" uid="uid://ci84ce3f6af5g" path="res://src/Audio/files/alarm.wav" id="1_2a3wt"]
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="1_nbsul"]
 
 [resource]
 script = ExtResource("1_nbsul")
 text = "..."
-audio = ExtResource("1_1hxek")
+audio = ExtResource("1_2a3wt")

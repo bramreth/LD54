@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://b12gyg2s0ivky"]
+
+[ext_resource type="AudioStream" uid="uid://dwl32fx2ieaue" path="res://DadAudio/Dialogue/there is one.wav" id="1_12esq"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_ak5wv"]
+
+[resource]
+script = ExtResource("2_ak5wv")
+text = "There is one extra step. You need to make sure you put the right books in the right rows."
+audio = ExtResource("1_12esq")
