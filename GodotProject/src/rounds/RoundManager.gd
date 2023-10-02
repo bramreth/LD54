@@ -53,7 +53,6 @@ func next_round() -> void:
 
 
 #Zone 1/2 - 81 Books each
-#Zone 3 - 108 Books
 func get_round_books() -> Array:
 	match(current_round):
 		0: return _generate_single_genre(BookRes.GENRE.CLASSICS, 3, BookRes.SORT.TOP)
