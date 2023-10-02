@@ -13,7 +13,8 @@ var total_score: Dictionary = {}
 
 
 func start_game() -> void:
-	current_round = 0
+	current_round = 9
+	UiEventBus.lock_lever.emit(false)
 	total_score.clear()
 	timer.start(1.0)
 
@@ -22,6 +23,12 @@ func evalutae() -> void:
 	var evaluator = get_tree().get_first_node_in_group("evaluation")
 	evaluator.proceed.connect(next_round)
 	evaluator.evaluate()
+
+
+func final_evaluation() -> void:
+	var evaluator = get_tree().get_first_node_in_group("evaluation")
+	evaluator.proceed.connect(next_round)
+	evaluator.final_evaluation()
 
 
 func update_score(score: float) -> void:
@@ -38,14 +45,14 @@ func calculate_total_score() -> float:
 	var rounds = total_score.keys().size()
 	var total_score_value: float = 0.0
 	for key in total_score.keys():
-		total_score += total_score[key][SCORE]
-	return total_score_value / rounds
+		total_score_value += total_score[key][SCORE]
+	return total_score_value * 100 / rounds
 
 
 func calculate_total_time() -> float:
 	var total_time: float = 0.0
 	for key in total_score.keys():
-		total_score += total_score[key][TIME]
+		total_time += total_score[key][TIME]
 	return total_time
 
 
@@ -67,6 +74,7 @@ func get_round_books() -> Array:
 		7: return _generate_random_books(30) + [30]
 		8: return _generate_single_genre(null, 30, null) + [5]
 		9: return _generate_random_books(30) + [8]
+		10: return []
 		_: return _generate_random_books(_get_round_size())
 
 
@@ -76,9 +84,9 @@ func _generate_single_genre(
 	sort
 ) -> Array:
 	var books := []
+	if genre == null: genre = BookRes.GENRE.values().pick_random()
+	if sort == null: sort = BookRes.SORT.values().pick_random()
 	for i in range(amount):
-		if genre == null: BookRes.GENRE.values().pick_random()
-		if sort == null: BookRes.SORT.values().pick_random()
 		books.append(BookRes.create_from_genre(genre, sort))
 	return books
 
@@ -129,6 +137,7 @@ const TUTORIAL_ROUND_1 := 0
 const TUTORIAL_ROUND_2 := 1
 const TUTORIAL_ROUND_3 := 2
 const BLOCKED_AREA_UNVEILED := 7
+const FINAL_ROUND := 10
 
 const TUTORIAL_1 := "tutorial_1"
 const TUTORIAL_2 := "tutorial_2"

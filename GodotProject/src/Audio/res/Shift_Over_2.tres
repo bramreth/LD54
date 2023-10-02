@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://chrr0xllnl1w0"]
+
+[ext_resource type="AudioStream" uid="uid://b5agyirr3favi" path="res://src/Audio/files/debug.mp3" id="1_ork5d"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_br6wy"]
+
+[resource]
+script = ExtResource("2_br6wy")
+text = "You will shortly be given your final evaluation"
+audio = ExtResource("1_ork5d")
