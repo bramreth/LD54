@@ -54,4 +54,4 @@ func start_production_speed_timer() -> void:
 
 func _on_timer_timeout() -> void:
 	production_speed_complaint = true
-	Announcer.queue(DialogPacketDb.quips.too_slow)
+	Announcer.queue(DialogPacketDb.quips.too_slow, -1)
