@@ -1,11 +1,14 @@
 extends Node3D
 
 @export var fast_intro: bool = false
+
 @onready var task_appraisal_lever: StaticBody3D = $TaskAppraisalLever
 @onready var blocked_area: StaticBody3D = $BlockedArea
 @onready var blocked_area_2: StaticBody3D = $BlockedArea2
 @onready var shredder: Node3D = $Shredder
 @onready var production_speed_timer: Timer = $Timer
+
+var production_speed_complaint := false
 
 func _ready() -> void:
 	RoundManager.round_started.connect(round_started)
@@ -39,9 +42,11 @@ func _on_check_button_toggled(button_pressed: bool) -> void:
 
 
 func start_production_speed_timer() -> void:
+	if production_speed_complaint: return
 	production_speed_timer.stop()
-	production_speed_timer.start(randf_range(30.0, 45.0))
+	production_speed_timer.start(45)
 
 
 func _on_timer_timeout() -> void:
+	production_speed_complaint = true
 	Announcer.queue(DialogPacketDb.quips.too_slow)
