@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://c3xsyyltcydpx"]
+
+[ext_resource type="AudioStream" uid="uid://xh2fc0trfpbp" path="res://DadAudio/Dialogue/limited-space.wav" id="1_1x3in"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_cbolf"]
+
+[resource]
+script = ExtResource("2_cbolf")
+text = "If yall find yourself running out of space™ I can only apologize."
+audio = ExtResource("1_1x3in")

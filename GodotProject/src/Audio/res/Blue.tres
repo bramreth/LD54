@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://b6dewbyjyj21j"]
+
+[ext_resource type="AudioStream" uid="uid://cjad0meo5eog5" path="res://DadAudio/Dialogue/blue-shelves.wav" id="1_1dbv7"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_bswtq"]
+
+[resource]
+script = ExtResource("2_bswtq")
+text = "Yall should now have access to blue bookshelves. You can put a selection of blue books into em. Good luck."
+audio = ExtResource("1_1dbv7")

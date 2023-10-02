@@ -5,5 +5,5 @@
 
 [resource]
 script = ExtResource("2_edxpx")
-text = "When your task is complete complete, approach the Task Appraisal Lever™ and yank it for Assessment™"
+text = "When your task is complete, approach the Task Appraisal Lever™ and yank it for Assessment™"
 audio = ExtResource("1_8mwee")

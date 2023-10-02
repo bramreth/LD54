@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://c8e5npkew0q0k"]
+
+[ext_resource type="AudioStream" uid="uid://cor7fnlomrodp" path="res://DadAudio/Dialogue/we have limited.wav" id="1_u4276"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_c62gi"]
+
+[resource]
+script = ExtResource("2_c62gi")
+text = "We have limited space at Books and Co and Stuff Limited Incoporated and Family."
+audio = ExtResource("1_u4276")

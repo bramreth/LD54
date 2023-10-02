@@ -34,14 +34,30 @@ var dialog_packets := {
 		preload("res://src/Audio/res/Implore.tres"),
 		func():
 			UiEventBus.lock_lever.emit(false),
-	
-#		preload("res://src/Audio/res/Tutorial_1_Part2.tres")
+	],
+	"diesel": [
+		func():
+			UiEventBus.lock_lever.emit(true),
+		preload("res://src/Audio/res/Tutorial_1_Part2.tres"),
+		func():
+			UiEventBus.lock_lever.emit(false),
 	],
 	"unlock_hands": [
 		func(): UiEventBus.lock_lever.emit(false),
 		preload("res://src/Audio/res/Hands_Use_Them.tres"),
 		func(): RoundManager.unlock_full_hands.emit(),
 		preload("res://src/Audio/res/Hands.tres"),
+		func(): UiEventBus.lock_lever.emit(false)
+	],
+	"scifi_round": [
+		func(): UiEventBus.lock_lever.emit(false),
+		preload("res://src/Audio/res/Blue.tres"),
+		func(): UiEventBus.lock_lever.emit(false)
+	],
+	"limited": [
+		func(): UiEventBus.lock_lever.emit(false),
+		preload("res://src/Audio/res/limited.tres"),
+		preload("res://src/Audio/res/wehavelimited.tres"),
 		func(): UiEventBus.lock_lever.emit(false)
 	],
 	"zone_unlocked": [

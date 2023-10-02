@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://04scw53bayqf"]
 
-[ext_resource type="AudioStream" uid="uid://cigwxhtdg2ror" path="res://DadAudio/Dialogue/please do not.wav" id="1_8rb05"]
+[ext_resource type="AudioStream" uid="uid://cidkspxeo1377" path="res://DadAudio/Dialogue/diesel.wav" id="1_4dseg"]
 [ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_ov83h"]
 
 [resource]
 script = ExtResource("2_ov83h")
-text = "Please do not insert yourself into any book recepticles. They are powered by diesel engines the military uses to rotate tank barrels. We are not able to afford another lawsuit."
-audio = ExtResource("1_8rb05")
+text = "Please do not insert yourself into any book receptacles. They are powered by diesel engines the military uses to rotate tank barrels. We ain't indulging any other frivolous lawsuits."
+audio = ExtResource("1_4dseg")
