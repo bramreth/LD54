@@ -83,10 +83,14 @@ func _generate_single_genre(
 	sort
 ) -> Array:
 	var books := []
-	if genre == null: genre = BookRes.GENRE.values().pick_random()
-	if sort == null: sort = BookRes.SORT.values().pick_random()
 	for i in range(amount):
-		books.append(BookRes.create_from_genre(genre, sort))
+		var local_sort = sort
+		var local_genre = genre
+		printt(genre, sort)
+		if genre == null: local_genre = BookRes.GENRE.values().pick_random()
+		if sort == null: local_sort = BookRes.SORT.values().pick_random()
+		print(sort)
+		books.append(BookRes.create_from_genre(local_genre, local_sort))
 	return books
 
 
@@ -101,29 +105,29 @@ func _get_round_size() -> int: return (current_round + 1) * 2
 
 
 func calculate_letter_grade(score: float) -> String:
-	if score <= 0.59:
+	if score <= 0.10:
 		return "F"
-	elif score <= 0.62:
+	elif score <= 0.20:
 		return "D-"
-	elif score <= 0.66:
+	elif score <= 0.30:
 		return "D"
-	elif score <= 0.69:
+	elif score <= 0.40:
 		return "D+"
-	elif score <= 0.72:
+	elif score <= 0.50:
 		return "C-"
-	elif score <= 0.76:
+	elif score <= 0.60:
 		return "C"
-	elif score <= 0.79:
+	elif score <= 0.70:
 		return "C+"
-	elif score <= 0.82:
+	elif score <= 0.80:
 		return "B-"
-	elif score <= 0.86:
+	elif score <= 0.85:
 		return "B"
-	elif score <= 0.89:
+	elif score <= 0.90:
 		return "B+"
-	elif score <= 0.92:
+	elif score <= 0.94:
 		return "A-"
-	elif score <= 0.96:
+	elif score <= 0.98:
 		return "A"
 	else:
 		return "A+"

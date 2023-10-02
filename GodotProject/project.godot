@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Godot Project"
+config/name="Gremlin Books Incorporated"
 run/main_scene="res://src/test_level/book_warehouse.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"

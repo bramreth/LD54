@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/book/IdiotBook.gd" id="2_1sljm"]
 [ext_resource type="Shader" uid="uid://dlj07njpitotq" path="res://src/book/BookFire.tres" id="2_8qfvo"]
 [ext_resource type="Script" path="res://src/book/BookRes.gd" id="3_w2hjx"]
-[ext_resource type="Texture2D" uid="uid://c5ra3ketq4tdv" path="res://MashaAssets/idiots.png" id="5_tu1nt"]
+[ext_resource type="Texture2D" uid="uid://bcylbukqej22k" path="res://MashaAssets/idiots.png" id="5_tu1nt"]
 
 [sub_resource type="Resource" id="Resource_mu115"]
 script = ExtResource("3_w2hjx")
@@ -25,6 +25,8 @@ transparency = 1
 albedo_color = Color(1, 1, 1, 0)
 
 [node name="Book" instance=ExtResource("1_fbsna")]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("2_1sljm")
 book_res = SubResource("Resource_mu115")
 
