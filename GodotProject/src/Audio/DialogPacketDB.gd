@@ -42,6 +42,15 @@ var dialog_packets := {
 		func():
 			UiEventBus.lock_lever.emit(false),
 	],
+	"shredder": [
+		func():
+			UiEventBus.lock_lever.emit(true),
+		preload("res://src/Audio/res/IfAnyEmployees.tres"),
+		preload("res://src/Audio/res/anybooksmaking.tres"),
+		preload("res://src/Audio/res/IREPEAT.tres"),
+		func():
+			UiEventBus.lock_lever.emit(false),
+	],
 	"unlock_hands": [
 		func(): UiEventBus.lock_lever.emit(true),
 		preload("res://src/Audio/res/Hands_Use_Them.tres"),

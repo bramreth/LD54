@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogPacket" load_steps=3 format=3 uid="uid://4j4s7cnwnv1c"]
+
+[ext_resource type="AudioStream" uid="uid://duhfp6rtjpmgg" path="res://DadAudio/Dialogue/I repeat.wav" id="1_5ofhu"]
+[ext_resource type="Script" path="res://addons/brambox/UserInterface/DialogPacket.gd" id="2_vvp3g"]
+
+[resource]
+script = ExtResource("2_vvp3g")
+text = "I repeat - do not use the cat shredder."
+audio = ExtResource("1_5ofhu")
